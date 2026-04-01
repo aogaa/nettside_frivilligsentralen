@@ -5,11 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stiftelsen Vestre Aker Frivilligsentral</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .home-logo-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-radius: 24px;
+      background: rgba(120, 130, 145, 0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    .home-logo-link .site-logo {
+      max-height: 128px;
+    }
+  </style>
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner section">
-      <a class="logo-link" href="#">
+      <a class="logo-link home-logo-link" href="#">
         <img
           class="site-logo"
           src="images/vafslogo.png"
