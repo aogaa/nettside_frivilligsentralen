@@ -414,7 +414,10 @@ img {
 }
 
 .knowledge-post-item {
-  display: block;
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  gap: 1rem;
+  align-items: start;
   padding: 1.5rem 0;
   border-top: 1px solid rgba(10, 32, 78, 0.12);
 }
@@ -426,6 +429,10 @@ img {
 
 .knowledge-post-item .blog-post-meta {
   max-width: 760px;
+}
+
+.knowledge-post-item .podcast-icon {
+  margin-top: 0.2rem;
 }
 
 .knowledge-post-item .blog-post-meta h3 {
@@ -569,6 +576,10 @@ img {
   .blog-post-item {
     grid-template-columns: 72px 1fr;
     gap: 0.85rem;
+  }
+
+  .knowledge-post-item {
+    grid-template-columns: 1fr;
   }
 
   .blog-post-thumb {
