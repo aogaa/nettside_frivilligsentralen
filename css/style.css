@@ -201,4 +201,57 @@ img {
   .content-card {
     padding: 1.5rem;
   }
+
+  /* Stil for Om Oss-siden */
+.about-page {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: #1a1a1a;
+}
+
+.about-header {
+    border-left: 6px solid rgb(10,32,78);
+    padding-left: 1rem;
+    margin-bottom: 2rem;
+}
+
+.about-header h1 {
+    color: rgb(10,32,78);
+    font-size: 2.5rem;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.15rem;
+    color: #2a3550;
+    margin-top: 0.5rem;
+}
+
+.about-content hr {
+    border: none;
+    border-top: 1px solid #d0d5df;
+    margin: 2.5rem 0;
+}
+
+/* Den blå kontaktboksen nederst */
+.contact-card {
+    background: rgb(10,32,78);
+    color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+}
+
+.contact-card a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.contact-card h3 {
+    margin-top: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 0.5rem;
+}
 }
