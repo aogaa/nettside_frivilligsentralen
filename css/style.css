@@ -131,6 +131,78 @@ img {
   border-radius: 999px;
 }
 
+.activities-section {
+  padding: 4rem 0 5rem;
+  background-color: #dbeaf2;
+}
+
+.activities-intro {
+  margin: 0 auto 3rem;
+  max-width: 760px;
+  text-align: center;
+}
+
+.activities-intro h2 {
+  margin: 0;
+  color: #20242c;
+  font-size: clamp(2.75rem, 5vw, 4rem);
+  font-weight: 500;
+}
+
+.activities-intro p {
+  margin: 1rem 0 0;
+  color: #364153;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.activities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 3rem 2.5rem;
+}
+
+.activity-card {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.activity-card-image {
+  width: min(100%, 290px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 1.25rem;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.activity-card h3 {
+  margin: 0;
+  color: #20242c;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.activity-card p {
+  margin: 0.5rem auto 0;
+  max-width: 280px;
+  color: #566171;
+  font-size: 0.98rem;
+  line-height: 1.5;
+}
+
+.activity-card:hover .activity-card-image,
+.activity-card:focus-visible .activity-card-image {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(10, 32, 78, 0.16);
+}
+
+.activity-card:focus-visible {
+  outline: none;
+}
+
 .subpage-header {
   position: sticky;
   top: 0;
@@ -146,6 +218,89 @@ img {
 
 .page-content {
   padding: 4rem 0;
+}
+
+.activity-page-main {
+  padding: 0 0 4rem;
+}
+
+.activity-hero {
+  min-height: 62vh;
+  background-size: cover;
+  background-position: center var(--hero-focus, 35%);
+  background-repeat: no-repeat;
+}
+
+.activity-hero-overlay {
+  min-height: 62vh;
+  display: flex;
+  align-items: flex-end;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 32, 78, 0.18) 0%,
+    rgba(10, 32, 78, 0.62) 100%
+  );
+}
+
+.activity-hero-content {
+  padding: 8rem 0 3.5rem;
+  color: var(--color-white);
+}
+
+.activity-kicker {
+  display: inline-block;
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14rem;
+  text-transform: uppercase;
+}
+
+.activity-hero-content h1 {
+  margin: 0;
+  max-width: 12ch;
+  font-size: clamp(2.5rem, 5vw, 4.75rem);
+  line-height: 1.05;
+}
+
+.activity-intro {
+  margin: 1rem 0 0;
+  max-width: 720px;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.activity-content-wrap {
+  margin-top: -3.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.activity-content-card {
+  padding: 2.75rem;
+  border-radius: 28px;
+  background-color: var(--color-white);
+  box-shadow: 0 18px 45px rgba(10, 32, 78, 0.12);
+}
+
+.activity-body {
+  max-width: 760px;
+}
+
+.activity-body h2 {
+  margin-top: 0;
+  color: var(--color-primary);
+}
+
+.activity-placeholder {
+  margin-top: 2rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 20px;
+  background-color: var(--color-section-bg);
+}
+
+.activity-placeholder p {
+  margin: 0;
 }
 
 .main-container {
@@ -553,7 +708,28 @@ img {
     width: min(400px, 100%);
   }
 
+  .activities-section {
+    padding: 3rem 0 4rem;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
   .content-card {
+    padding: 1.5rem;
+  }
+
+  .activity-hero-content {
+    padding: 7rem 0 2.5rem;
+  }
+
+  .activity-content-wrap {
+    margin-top: -2rem;
+  }
+
+  .activity-content-card {
     padding: 1.5rem;
   }
 
