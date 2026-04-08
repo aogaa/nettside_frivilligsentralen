@@ -1,4 +1,4 @@
-README: Nettside for Vestre Aker Frivilligsentral
+﻿README: Nettside for Vestre Aker Frivilligsentral
 Dette prosjektet er en moderne gjenoppbygging av nettsiden til Vestre Aker Frivilligsentral. Målet er å skape en side som er visuelt slående, enkel å navigere, og som har rom for interaktive elementer (spill).
 
 🚀 Prosjektets status
@@ -49,3 +49,4 @@ Kjør git clone https://github.com/aogaa/nettside_frivilligsentralen.git.
 Åpne mappen i din foretrukne kode-editor (f.eks. VS Code).
 
 Husk å alltid kjøre git pull før du starter, og git push når du er ferdig for dagen.
+
