@@ -344,13 +344,32 @@ img {
 
 .activity-placeholder {
   margin-top: 2rem;
-  padding: 1.5rem 1.75rem;
+  padding: 1.85rem 2rem;
   border-radius: 20px;
   background-color: var(--color-section-bg);
+  border: 1px solid rgba(10, 32, 78, 0.12);
+}
+
+.activity-placeholder h2 {
+  margin: 0 0 1rem;
+  color: var(--color-primary);
+  font-size: 1.3rem;
 }
 
 .activity-placeholder p {
   margin: 0;
+  line-height: 1.7;
+}
+
+.activity-placeholder p + p {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(10, 32, 78, 0.1);
+}
+
+.activity-placeholder strong {
+  color: var(--color-primary);
+  font-weight: 700;
 }
 
 .practical-social {
@@ -986,6 +1005,15 @@ img {
 
   .activity-content-card {
     padding: 1.5rem;
+  }
+
+  .activity-placeholder {
+    padding: 1.25rem 1.1rem;
+  }
+
+  .activity-placeholder p + p {
+    margin-top: 0.7rem;
+    padding-top: 0.7rem;
   }
 
   .location-gallery {
