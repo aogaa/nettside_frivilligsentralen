@@ -67,6 +67,50 @@ img {
   font-weight: 500;
 }
 
+.nav-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  background: rgba(10, 32, 78, 0.22);
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+.subpage-header .nav-toggle {
+  border-color: rgba(10, 32, 78, 0.35);
+  background: rgba(10, 32, 78, 0.08);
+  color: var(--color-primary);
+}
+
+.nav-toggle-lines {
+  position: relative;
+  width: 1.1rem;
+  height: 2px;
+  background: currentColor;
+}
+
+.nav-toggle-lines::before,
+.nav-toggle-lines::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 1.1rem;
+  height: 2px;
+  background: currentColor;
+}
+
+.nav-toggle-lines::before {
+  top: -0.34rem;
+}
+
+.nav-toggle-lines::after {
+  top: 0.34rem;
+}
+
 .hero {
   height: 80vh;
   background-image: linear-gradient(rgba(10, 32, 78, 0.35), rgba(10, 32, 78, 0.35)), url("../images/hoved.jpg");
@@ -793,19 +837,60 @@ img {
 
 @media (max-width: 768px) {
   .header-inner {
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 1rem 0;
+  }
+
+  .nav-toggle {
+    display: inline-flex;
   }
 
   .main-nav {
-    gap: 1rem;
+    display: none;
+    grid-column: 1 / -1;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.55rem 0 0.3rem;
+  }
+
+  .site-header.nav-open .main-nav,
+  .subpage-header.nav-open .main-nav {
+    display: flex;
+  }
+
+  .main-nav a {
+    display: block;
+    width: 100%;
+    padding: 0.45rem 0;
+  }
+
+  .site-header .main-nav a {
+    color: var(--color-white);
+  }
+
+  .subpage-header .main-nav a {
+    color: var(--color-primary);
   }
 
   .hero-content {
     text-align: left;
+    padding-top: 2.8rem;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(1.85rem, 8vw, 2.6rem);
+    line-height: 1.12;
+    max-width: 11ch;
   }
 
   .hero-tagline {
+    margin-top: 0.65rem;
+    font-size: 0.88rem;
     letter-spacing: 0.2rem;
   }
 
