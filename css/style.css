@@ -372,6 +372,21 @@ img {
   font-weight: 700;
 }
 
+.schedule-block + .schedule-block {
+  margin-top: 1.1rem;
+  padding-top: 1.1rem;
+  border-top: 1px solid rgba(10, 32, 78, 0.18);
+}
+
+.schedule-block p + p {
+  margin-top: 0.45rem;
+}
+
+.activity-placeholder .schedule-block p {
+  border-top: 0;
+  padding-top: 0;
+}
+
 .practical-social {
   margin-top: 1rem !important;
 }
