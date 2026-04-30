@@ -389,8 +389,13 @@ img {
 
 .cost-box .cost-highlight {
   margin-top: 0.85rem;
-  padding-top: 0.85rem;
-  border-top: 1px solid rgba(10, 32, 78, 0.1);
+  padding-top: 0;
+  border-top: 0;
+}
+
+.cost-box > p + p {
+  border-top: 0;
+  padding-top: 0;
 }
 
 .cost-box .cost-subtitle {
