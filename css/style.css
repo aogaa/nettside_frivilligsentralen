@@ -387,6 +387,34 @@ img {
   padding-top: 0;
 }
 
+.cost-box .cost-highlight {
+  margin-top: 0.85rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(10, 32, 78, 0.1);
+}
+
+.cost-box .cost-subtitle {
+  margin-top: 0.95rem;
+  margin-bottom: 0.9rem;
+}
+
+.cost-rows p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.cost-rows p + p {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(10, 32, 78, 0.1);
+}
+
+.cost-note {
+  margin-top: 0.85rem !important;
+  padding-top: 0.85rem;
+  border-top: 1px solid rgba(10, 32, 78, 0.1);
+}
+
 .faq-section {
   margin-top: 2.2rem;
 }
