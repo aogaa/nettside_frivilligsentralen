@@ -197,22 +197,30 @@
     }
 
     function fitCurrentWord() {
-      word.style.removeProperty("--reader-word-scale");
+      word.style.removeProperty("font-size");
       word.classList.remove("allow-word-break");
 
       if (!word.textContent || readyText || !words.length) {
         return;
       }
 
-      const availableWidth = word.clientWidth;
+      const plainWord = word.textContent.replace(/[^\p{L}\p{N}]/gu, "");
+
+      if (plainWord.length < 13) {
+        return;
+      }
+
+      const baseFontSize = parseFloat(window.getComputedStyle(word).fontSize);
+      const display = reader.querySelector(".speed-reader-display");
+      const availableWidth = display ? display.clientWidth - 48 : word.clientWidth;
       const actualWidth = word.scrollWidth;
 
-      if (!availableWidth || actualWidth <= availableWidth) {
+      if (!baseFontSize || !availableWidth || actualWidth <= availableWidth * 1.02) {
         return;
       }
 
       const scale = Math.max(0.42, Math.min(1, availableWidth / actualWidth));
-      word.style.setProperty("--reader-word-scale", scale.toFixed(3));
+      word.style.fontSize = `${Math.round(baseFontSize * scale)}px`;
 
       requestAnimationFrame(() => {
         if (word.scrollWidth > word.clientWidth) {
@@ -305,7 +313,10 @@
       if (readyText) {
         readyText = false;
         index = Math.max(index, 1);
+        setPlaying(true);
         update();
+        scheduleNext();
+        return;
       }
 
       setPlaying(true);

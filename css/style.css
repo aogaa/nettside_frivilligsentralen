@@ -806,8 +806,9 @@ img {
 }
 
 .speed-reader-word {
-  --reader-word-scale: 1;
   min-height: 3.6rem;
+  width: 100%;
+  max-width: 100%;
   margin: 1rem 0 1.25rem;
   display: flex;
   align-items: center;
@@ -912,7 +913,7 @@ img {
 .speed-reader.is-reading .speed-reader-word {
   min-height: 0;
   margin: 1.25rem 0 1.75rem;
-  font-size: calc(clamp(3.4rem, 10vw, 6.8rem) * var(--reader-word-scale));
+  font-size: clamp(3.4rem, 10vw, 6.8rem);
   line-height: 1.05;
 }
 
@@ -1569,7 +1570,7 @@ img {
 
   .speed-reader.is-reading .speed-reader-word {
     width: 100%;
-    font-size: calc(clamp(2.4rem, 16vw, 4.2rem) * var(--reader-word-scale));
+    font-size: clamp(2.4rem, 16vw, 4.2rem);
   }
 
   .speed-reader-controls {
