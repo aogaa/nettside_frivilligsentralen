@@ -815,6 +815,8 @@ img {
   font-size: 2rem;
   font-weight: 700;
   line-height: 1.2;
+  overflow-wrap: anywhere;
+  text-align: center;
 }
 
 .speed-reader-progress {
@@ -1553,6 +1555,15 @@ img {
 
   .speed-reader-word {
     font-size: 1.65rem;
+  }
+
+  .speed-reader.is-reading .speed-reader-display {
+    padding: 2rem 1rem;
+  }
+
+  .speed-reader.is-reading .speed-reader-word {
+    width: 100%;
+    font-size: clamp(2.4rem, 16vw, 4.2rem);
   }
 
   .speed-reader-controls {
