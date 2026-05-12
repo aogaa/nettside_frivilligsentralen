@@ -883,6 +883,39 @@ img {
   color: #3c3c3c;
 }
 
+.speed-reader.is-reading {
+  max-width: min(100%, 1040px);
+}
+
+.speed-reader.is-reading .speed-reader-tabs,
+.speed-reader.is-reading .speed-reader-speed,
+.speed-reader.is-reading .speed-reader-tip {
+  display: none;
+}
+
+.speed-reader.is-reading .speed-reader-display {
+  min-height: min(42vh, 420px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2.5rem 2rem;
+}
+
+.speed-reader.is-reading .speed-reader-word {
+  min-height: 0;
+  margin: 1.25rem 0 1.75rem;
+  font-size: clamp(3.4rem, 10vw, 6.8rem);
+  line-height: 1.05;
+}
+
+.speed-reader.is-reading .speed-reader-count {
+  font-size: 1rem;
+}
+
+.speed-reader.is-reading .speed-reader-controls {
+  margin-top: 1rem;
+}
+
 .article-body {
   max-width: 800px;
   margin: 0 auto;

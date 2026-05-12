@@ -166,6 +166,7 @@
 
     function setPlaying(nextPlaying) {
       playing = nextPlaying;
+      reader.classList.toggle("is-reading", playing);
 
       if (!playing && timer) {
         clearTimeout(timer);
