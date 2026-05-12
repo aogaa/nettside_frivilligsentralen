@@ -657,6 +657,31 @@ img {
   object-fit: contain;
 }
 
+.real-article-hero {
+  height: auto;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  padding: 2rem 3rem;
+  background-color: var(--color-white);
+}
+
+.real-article-hero img {
+  width: 150px;
+  max-width: 34vw;
+  flex: 0 0 auto;
+}
+
+.real-article-hero p {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: clamp(1.35rem, 3vw, 2.35rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
 .article-content {
   padding: 2.75rem;
 }
@@ -1467,6 +1492,22 @@ img {
 
   .article-logo-hero {
     padding: 1.5rem;
+  }
+
+  .real-article-hero {
+    min-height: 0;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+  }
+
+  .real-article-hero img {
+    width: 86px;
+    max-width: 30vw;
+  }
+
+  .real-article-hero p {
+    font-size: 1.2rem;
   }
 
   .speed-reader-tabs {
