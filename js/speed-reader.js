@@ -8,24 +8,45 @@
   const articlePaths = {
     no: "beredskap-bygges-for-krisen.html",
     en: "preparedness-is-built-before-the-crisis.html",
+    de: "vorsorge-wird-vor-der-krise-aufgebaut.html",
   };
 
   const labels = {
     no: {
-      start: "▷ Start",
-      pause: "⏸ Pause",
+      start: "Start",
+      pause: "Pause",
       ready: "Trykk start",
       loading: "Laster tekst",
       empty: "Ingen tekst funnet",
       unit: "ord",
+      speedLabel: "Hastighet",
+      speedUnit: "ord/min",
+      speedLabels: ["Rolig", "Normal", "Rask", "Veldig rask"],
+      tip: "<strong>Tips:</strong> Start på ca. 250-300 ord/min hvis du er ny til metoden. De fleste klarer 400-500 etter litt øvelse. Fokuser blikket på midten av skjermen og la ordene komme til deg.",
     },
     en: {
-      start: "▷ Start",
-      pause: "⏸ Pause",
+      start: "Start",
+      pause: "Pause",
       ready: "Press start",
       loading: "Loading text",
       empty: "No text found",
       unit: "words",
+      speedLabel: "Speed",
+      speedUnit: "words/min",
+      speedLabels: ["Calm", "Normal", "Fast", "Very fast"],
+      tip: "<strong>Tip:</strong> Start at around 250-300 words/min if you are new to the method. Most people can manage 400-500 after a little practice. Focus your gaze on the centre of the screen and let the words come to you.",
+    },
+    de: {
+      start: "Start",
+      pause: "Pause",
+      ready: "Start drücken",
+      loading: "Text wird geladen",
+      empty: "Kein Text gefunden",
+      unit: "Wörter",
+      speedLabel: "Geschwindigkeit",
+      speedUnit: "Wörter/min",
+      speedLabels: ["Ruhig", "Normal", "Schnell", "Sehr schnell"],
+      tip: "<strong>Tipp:</strong> Beginnen Sie mit ca. 250-300 Wörtern/min, wenn die Methode neu für Sie ist. Viele schaffen nach etwas Übung 400-500. Richten Sie den Blick auf die Mitte des Bildschirms und lassen Sie die Wörter zu sich kommen.",
     },
   };
 
@@ -66,8 +87,7 @@
       return textCache[lang];
     }
 
-    const path = articlePaths[lang];
-    const response = await fetch(path);
+    const response = await fetch(articlePaths[lang]);
     const html = await response.text();
     const doc = new DOMParser().parseFromString(html, "text/html");
     const words = normalizeWords(extractArticleText(doc));
@@ -78,6 +98,13 @@
 
   function sentencePause(word) {
     return /[.!?]"?$/.test(word) ? 1.7 : 1;
+  }
+
+  function requestedLanguage(fallback) {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get("lang");
+
+    return articlePaths[lang] ? lang : fallback;
   }
 
   function setupReader(reader) {
@@ -91,8 +118,12 @@
     const reset = reader.querySelector('[data-reader-action="reset"]');
     const speed = reader.querySelector('input[type="range"]');
     const speedValue = reader.querySelector("[data-reader-speed-value]");
+    const speedLabel = reader.querySelector("[data-reader-speed-label]");
+    const speedUnit = reader.querySelector("[data-reader-speed-unit]");
+    const speedLabels = reader.querySelectorAll(".speed-reader-speed-labels span");
+    const tip = reader.querySelector("[data-reader-tip]");
 
-    let lang = reader.dataset.currentLang || "no";
+    let lang = requestedLanguage(reader.dataset.currentLang || "no");
     let words = [];
     let index = 0;
     let timer = null;
@@ -118,6 +149,26 @@
       toggle.textContent = playing ? activeLabels().pause : activeLabels().start;
     }
 
+    function updateStaticLabels() {
+      const copy = activeLabels();
+
+      if (speedLabel) {
+        speedLabel.textContent = copy.speedLabel;
+      }
+
+      if (speedUnit) {
+        speedUnit.textContent = copy.speedUnit;
+      }
+
+      if (tip) {
+        tip.innerHTML = copy.tip;
+      }
+
+      speedLabels.forEach((label, labelIndex) => {
+        label.textContent = copy.speedLabels[labelIndex] || "";
+      });
+    }
+
     function update() {
       const copy = activeLabels();
       const total = words.length;
@@ -127,6 +178,7 @@
       word.textContent = readyText && total ? copy.ready : total ? words[Math.max(0, Math.min(index - 1, total - 1))] : copy.empty;
       progress.style.width = total ? `${(shownIndex / total) * 100}%` : "0";
       speedValue.textContent = speed.value;
+      updateStaticLabels();
     }
 
     function scheduleNext() {
@@ -236,10 +288,7 @@
       }
     });
 
-    setLanguage(lang).then(() => {
-      readyText = true;
-      update();
-    });
+    setLanguage(lang);
   }
 
   readers.forEach(setupReader);

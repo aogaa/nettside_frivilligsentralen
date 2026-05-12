@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hurtiglesning | REAL-prosjektet</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="subpage-header">
+    <div class="header-inner section">
+      <a class="logo-link" href="index.html">
+        <img class="site-logo" src="images/vafslogo.png" alt="Stiftelsen Vestre Aker Frivilligsentral logo">
+      </a>
+      <nav class="main-nav" aria-label="Hovedmeny">
+        <a href="index.html">Hjem</a>
+        <a href="om-oss.html">Om oss</a>
+        <a href="nyhetsbrev.html">Nyhetsbrev</a>
+        <a href="faste-aktiviteter.html">Faste aktiviteter</a>
+        <a href="blogg.html">Blogg</a>
+        <a href="kunnskapsbank.html">Kunnskapsbank</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="section main-container">
+      <article class="content-card speed-reader-page">
+        <header class="page-header article-header">
+          <h1>Hurtiglesning</h1>
+          <p>Velg språk og les REAL-artikkelen ett ord av gangen.</p>
+        </header>
+
+        <section class="speed-reader" data-current-lang="no" aria-label="Speed reader">
+          <div class="speed-reader-tabs" role="tablist" aria-label="Velg språk for speed reader">
+            <button class="speed-reader-tab is-active" type="button" data-lang="no">Norsk</button>
+            <button class="speed-reader-tab" type="button" data-lang="en">English</button>
+            <button class="speed-reader-tab" type="button" data-lang="de">Deutsch</button>
+          </div>
+          <div class="speed-reader-display" aria-live="polite">
+            <p class="speed-reader-count">0 / 0 ord</p>
+            <p class="speed-reader-word">Trykk start</p>
+            <div class="speed-reader-progress" aria-hidden="true"><span></span></div>
+          </div>
+          <div class="speed-reader-controls" aria-label="Kontroller for speed reader">
+            <button type="button" data-reader-action="back">↶ -10</button>
+            <button type="button" data-reader-action="toggle">▷ Start</button>
+            <button type="button" data-reader-action="forward">+10 ↷</button>
+            <button type="button" data-reader-action="reset">↻</button>
+          </div>
+          <div class="speed-reader-speed">
+            <div class="speed-reader-speed-header">
+              <span data-reader-speed-label>Hastighet</span>
+              <strong><span data-reader-speed-value>300</span> <span data-reader-speed-unit>ord/min</span></strong>
+            </div>
+            <input type="range" min="200" max="700" step="25" value="300" aria-label="Hastighet i ord per minutt">
+            <div class="speed-reader-speed-labels" aria-hidden="true">
+              <span>Rolig</span>
+              <span>Normal</span>
+              <span>Rask</span>
+              <span>Veldig rask</span>
+            </div>
+          </div>
+          <p class="speed-reader-tip" data-reader-tip>
+            <strong>Tips:</strong> Start på ca. 250-300 ord/min hvis du er ny til metoden. De fleste klarer 400-500 etter litt øvelse. Fokuser blikket på midten av skjermen og la ordene komme til deg.
+          </p>
+        </section>
+      </article>
+    </section>
+  </main>
+  <script src="js/site-footer.js" defer></script>
+  <script src="js/site-nav.js" defer></script>
+  <script src="js/speed-reader.js" defer></script>
+</body>
+</html>
