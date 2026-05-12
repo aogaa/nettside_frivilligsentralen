@@ -10,6 +10,7 @@
     en: "preparedness-is-built-before-the-crisis.html",
     de: "vorsorge-wird-vor-der-krise-aufgebaut.html",
     hr: "pripravnost-se-gradi-prije-krize.html",
+    fr: "la-resilience-se-construit-avant-la-crise.html",
   };
 
   const labels = {
@@ -60,6 +61,18 @@
       speedUnit: "riječi/min",
       speedLabels: ["Polako", "Normalno", "Brzo", "Vrlo brzo"],
       tip: "<strong>Savjet:</strong> Počnite s oko 250-300 riječi/min ako ste novi u ovoj metodi. Većina ljudi nakon malo vježbe može čitati 400-500. Usmjerite pogled prema sredini zaslona i pustite da riječi dolaze k vama.",
+    },
+    fr: {
+      start: "Start",
+      pause: "Pause",
+      ready: "Appuyez sur start",
+      loading: "Chargement du texte",
+      empty: "Aucun texte trouvé",
+      unit: "mots",
+      speedLabel: "Vitesse",
+      speedUnit: "mots/min",
+      speedLabels: ["Calme", "Normal", "Rapide", "Très rapide"],
+      tip: "<strong>Conseil :</strong> Commencez autour de 250-300 mots/min si cette méthode est nouvelle pour vous. La plupart des personnes atteignent 400-500 après un peu d'entraînement. Fixez le centre de l'écran et laissez les mots venir à vous.",
     },
   };
 
