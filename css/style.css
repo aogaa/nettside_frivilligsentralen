@@ -651,6 +651,12 @@ img {
   object-fit: cover;
 }
 
+.article-logo-hero {
+  padding: 3rem;
+  background-color: var(--color-white);
+  object-fit: contain;
+}
+
 .article-content {
   padding: 2.75rem;
 }
@@ -824,6 +830,29 @@ img {
   font-size: 0.95rem;
 }
 
+.real-project-logos {
+  display: grid;
+  gap: 1.75rem;
+  justify-items: center;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(10, 32, 78, 0.12);
+}
+
+.real-project-logos img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.eu-logo {
+  max-width: 360px;
+}
+
+.real-partners-logo {
+  max-width: 720px;
+}
+
 .blog-section + .blog-section {
   margin-top: 3rem;
 }
@@ -858,6 +887,12 @@ img {
   display: block;
   max-width: none;
   object-fit: cover;
+}
+
+.logo-thumb {
+  padding: 0.75rem;
+  background-color: var(--color-white);
+  object-fit: contain;
 }
 
 .blog-post-meta h3 {
