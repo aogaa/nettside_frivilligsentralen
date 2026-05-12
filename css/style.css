@@ -687,6 +687,127 @@ img {
   text-decoration: underline;
 }
 
+.speed-reader {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.speed-reader-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.speed-reader-tab,
+.speed-reader-controls button {
+  min-height: 36px;
+  border: 1px solid rgba(10, 32, 78, 0.28);
+  border-radius: 8px;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.speed-reader-tab.is-active {
+  border-color: #2f78ff;
+  background-color: #d9e9ff;
+  color: #245da8;
+  font-weight: 700;
+}
+
+.speed-reader-display {
+  padding: 2rem 1rem;
+  border-radius: 8px;
+  background-color: #f6f5ef;
+  text-align: center;
+}
+
+.speed-reader-count {
+  margin: 0;
+  color: #4d4d4d;
+  font-weight: 700;
+}
+
+.speed-reader-word {
+  min-height: 3.6rem;
+  margin: 1rem 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #171717;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.speed-reader-progress {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 999px;
+  background-color: #d6d4cc;
+}
+
+.speed-reader-progress span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background-color: var(--color-primary);
+}
+
+.speed-reader-controls {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.speed-reader-controls button {
+  min-width: 72px;
+  padding: 0.35rem 0.85rem;
+}
+
+.speed-reader-speed-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.speed-reader-speed input {
+  width: 100%;
+  accent-color: var(--color-primary);
+}
+
+.speed-reader-speed-labels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  color: #666;
+  font-size: 0.8rem;
+}
+
+.speed-reader-speed-labels span:nth-child(2) {
+  text-align: center;
+}
+
+.speed-reader-speed-labels span:nth-child(3) {
+  text-align: center;
+}
+
+.speed-reader-speed-labels span:last-child {
+  text-align: right;
+}
+
+.speed-reader-tip {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #f6f5ef;
+  color: #3c3c3c;
+}
+
 .article-body {
   max-width: 800px;
   margin: 0 auto;
@@ -1296,6 +1417,18 @@ img {
 
   .article-logo-hero {
     padding: 1.5rem;
+  }
+
+  .speed-reader-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .speed-reader-word {
+    font-size: 1.65rem;
+  }
+
+  .speed-reader-controls {
+    flex-wrap: wrap;
   }
 
   .real-gallery {

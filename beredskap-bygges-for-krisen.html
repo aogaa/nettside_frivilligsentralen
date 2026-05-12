@@ -46,6 +46,42 @@
             </a>
           </header>
 
+          <section class="speed-reader" data-current-lang="no" aria-label="Speed reader">
+            <div class="speed-reader-tabs" role="tablist" aria-label="Velg språk for speed reader">
+              <button class="speed-reader-tab is-active" type="button" data-lang="no">Norsk</button>
+              <button class="speed-reader-tab" type="button" data-lang="en">English</button>
+            </div>
+            <div class="speed-reader-display" aria-live="polite">
+              <p class="speed-reader-count">0 / 0 ord</p>
+              <p class="speed-reader-word">Trykk start</p>
+              <div class="speed-reader-progress" aria-hidden="true">
+                <span></span>
+              </div>
+            </div>
+            <div class="speed-reader-controls" aria-label="Kontroller for speed reader">
+              <button type="button" data-reader-action="back">↶ -10</button>
+              <button type="button" data-reader-action="toggle">▷ Start</button>
+              <button type="button" data-reader-action="forward">+10 ↷</button>
+              <button type="button" data-reader-action="reset">↻</button>
+            </div>
+            <div class="speed-reader-speed">
+              <div class="speed-reader-speed-header">
+                <span>Hastighet</span>
+                <strong><span data-reader-speed-value>300</span> ord/min</strong>
+              </div>
+              <input type="range" min="200" max="700" step="25" value="300" aria-label="Hastighet i ord per minutt">
+              <div class="speed-reader-speed-labels" aria-hidden="true">
+                <span>Rolig</span>
+                <span>Normal</span>
+                <span>Rask</span>
+                <span>Veldig rask</span>
+              </div>
+            </div>
+            <p class="speed-reader-tip">
+              <strong>Tips:</strong> Start på ca. 250-300 ord/min hvis du er ny til metoden. De fleste klarer 400-500 etter litt øvelse. Fokuser blikket på midten av skjermen og la ordene komme til deg.
+            </p>
+          </section>
+
           <div class="article-body">
             <p class="article-ingress">
               Hva tenker vi egentlig på når vi snakker om beredskap?
@@ -252,5 +288,6 @@
   </main>
   <script src="js/site-footer.js" defer></script>
   <script src="js/site-nav.js" defer></script>
+  <script src="js/speed-reader.js" defer></script>
 </body>
 </html>

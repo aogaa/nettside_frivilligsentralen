@@ -46,6 +46,42 @@
             </a>
           </header>
 
+          <section class="speed-reader" data-current-lang="en" aria-label="Speed reader">
+            <div class="speed-reader-tabs" role="tablist" aria-label="Choose speed reader language">
+              <button class="speed-reader-tab" type="button" data-lang="no">Norsk</button>
+              <button class="speed-reader-tab is-active" type="button" data-lang="en">English</button>
+            </div>
+            <div class="speed-reader-display" aria-live="polite">
+              <p class="speed-reader-count">0 / 0 words</p>
+              <p class="speed-reader-word">Press start</p>
+              <div class="speed-reader-progress" aria-hidden="true">
+                <span></span>
+              </div>
+            </div>
+            <div class="speed-reader-controls" aria-label="Speed reader controls">
+              <button type="button" data-reader-action="back">↶ -10</button>
+              <button type="button" data-reader-action="toggle">▷ Start</button>
+              <button type="button" data-reader-action="forward">+10 ↷</button>
+              <button type="button" data-reader-action="reset">↻</button>
+            </div>
+            <div class="speed-reader-speed">
+              <div class="speed-reader-speed-header">
+                <span>Speed</span>
+                <strong><span data-reader-speed-value>300</span> words/min</strong>
+              </div>
+              <input type="range" min="200" max="700" step="25" value="300" aria-label="Speed in words per minute">
+              <div class="speed-reader-speed-labels" aria-hidden="true">
+                <span>Calm</span>
+                <span>Normal</span>
+                <span>Fast</span>
+                <span>Very fast</span>
+              </div>
+            </div>
+            <p class="speed-reader-tip">
+              <strong>Tip:</strong> Start at around 250-300 words/min if you are new to the method. Most people can manage 400-500 after a little practice. Focus your gaze on the centre of the screen and let the words come to you.
+            </p>
+          </section>
+
           <div class="article-body">
             <p class="article-ingress">
               What do we actually think about when we talk about preparedness?
@@ -186,5 +222,6 @@
   </main>
   <script src="js/site-footer.js" defer></script>
   <script src="js/site-nav.js" defer></script>
+  <script src="js/speed-reader.js" defer></script>
 </body>
 </html>
