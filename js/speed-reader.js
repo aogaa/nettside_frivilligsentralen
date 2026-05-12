@@ -196,6 +196,31 @@
       });
     }
 
+    function fitCurrentWord() {
+      word.style.removeProperty("--reader-word-scale");
+      word.classList.remove("allow-word-break");
+
+      if (!word.textContent || readyText || !words.length) {
+        return;
+      }
+
+      const availableWidth = word.clientWidth;
+      const actualWidth = word.scrollWidth;
+
+      if (!availableWidth || actualWidth <= availableWidth) {
+        return;
+      }
+
+      const scale = Math.max(0.42, Math.min(1, availableWidth / actualWidth));
+      word.style.setProperty("--reader-word-scale", scale.toFixed(3));
+
+      requestAnimationFrame(() => {
+        if (word.scrollWidth > word.clientWidth) {
+          word.classList.add("allow-word-break");
+        }
+      });
+    }
+
     function update() {
       const copy = activeLabels();
       const total = words.length;
@@ -206,6 +231,7 @@
       progress.style.width = total ? `${(shownIndex / total) * 100}%` : "0";
       speedValue.textContent = speed.value;
       updateStaticLabels();
+      requestAnimationFrame(fitCurrentWord);
     }
 
     function scheduleNext() {
