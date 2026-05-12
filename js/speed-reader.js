@@ -9,6 +9,7 @@
     no: "beredskap-bygges-for-krisen.html",
     en: "preparedness-is-built-before-the-crisis.html",
     de: "vorsorge-wird-vor-der-krise-aufgebaut.html",
+    hr: "pripravnost-se-gradi-prije-krize.html",
   };
 
   const labels = {
@@ -47,6 +48,18 @@
       speedUnit: "Wörter/min",
       speedLabels: ["Ruhig", "Normal", "Schnell", "Sehr schnell"],
       tip: "<strong>Tipp:</strong> Beginnen Sie mit ca. 250-300 Wörtern/min, wenn die Methode neu für Sie ist. Viele schaffen nach etwas Übung 400-500. Richten Sie den Blick auf die Mitte des Bildschirms und lassen Sie die Wörter zu sich kommen.",
+    },
+    hr: {
+      start: "Start",
+      pause: "Pauza",
+      ready: "Pritisnite start",
+      loading: "Učitavanje teksta",
+      empty: "Tekst nije pronađen",
+      unit: "riječi",
+      speedLabel: "Brzina",
+      speedUnit: "riječi/min",
+      speedLabels: ["Polako", "Normalno", "Brzo", "Vrlo brzo"],
+      tip: "<strong>Savjet:</strong> Počnite s oko 250-300 riječi/min ako ste novi u ovoj metodi. Većina ljudi nakon malo vježbe može čitati 400-500. Usmjerite pogled prema sredini zaslona i pustite da riječi dolaze k vama.",
     },
   };
 
