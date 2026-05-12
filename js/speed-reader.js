@@ -97,22 +97,25 @@
     let index = 0;
     let timer = null;
     let readyText = true;
+    let playing = false;
 
     function activeLabels() {
       return labels[lang] || labels.no;
     }
 
     function isPlaying() {
-      return timer !== null;
+      return playing;
     }
 
     function setPlaying(nextPlaying) {
-      if (!nextPlaying && timer) {
+      playing = nextPlaying;
+
+      if (!playing && timer) {
         clearTimeout(timer);
         timer = null;
       }
 
-      toggle.textContent = nextPlaying ? activeLabels().pause : activeLabels().start;
+      toggle.textContent = playing ? activeLabels().pause : activeLabels().start;
     }
 
     function update() {
@@ -140,6 +143,7 @@
       const delay = (60000 / Number(speed.value)) * sentencePause(words[Math.max(index - 1, 0)]);
 
       timer = setTimeout(() => {
+        timer = null;
         index += 1;
         readyText = false;
         update();
