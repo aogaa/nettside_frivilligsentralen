@@ -723,6 +723,20 @@ img {
   color: var(--color-white);
 }
 
+.quote-box {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.08rem;
+}
+
+.quote-box::before {
+  content: "«";
+}
+
+.quote-box::after {
+  content: "»";
+}
+
 .podcast-card {
   margin: 0 0 2rem;
   padding: 2.5rem;
@@ -864,14 +878,14 @@ img {
   display: block;
   overflow: hidden;
   border-radius: 12px;
-  background-color: var(--color-white);
+  background-color: #e8eef5;
   box-shadow: 0 8px 20px rgba(10, 32, 78, 0.08);
 }
 
 .real-gallery img {
   width: 100%;
   aspect-ratio: 4 / 3;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 180ms ease;
 }
 
