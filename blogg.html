@@ -82,38 +82,31 @@
 
         <section class="blog-section" aria-labelledby="oyeblikk-heading">
           <h2 id="oyeblikk-heading">Øyeblikk</h2>
-          <div id="oyeblikk">
-            <figure class="oyeblikk-item medium">
-              <img src="images/anita.jpg" alt="Anita på frivilligsentralen">
-            </figure>
-            <figure class="oyeblikk-item tall">
-              <img src="images/moteplass3.jpg" alt="Øyeblikk fra møteplassen">
-            </figure>
-            <figure class="oyeblikk-item square">
-              <img src="images/davidskinner.jpg" alt="David Skinner">
-            </figure>
-            <figure class="oyeblikk-item wide">
-              <img src="images/moteplass1.jpg" alt="Møteplassen på Vinderen">
-            </figure>
-            <figure class="oyeblikk-item medium">
-              <img src="images/eidsfoss1.jpg" alt="Stemningsbilde fra aktivitet">
-            </figure>
-            <figure class="oyeblikk-item square">
-              <img src="images/oddtorill.jpg" alt="Odd Torill">
-            </figure>
-            <figure class="oyeblikk-item wide">
-              <img src="images/moteplass4.jpg" alt="Samling på møteplassen">
-            </figure>
-            <figure class="oyeblikk-item tall">
-              <img src="images/moteplass2.jpg" alt="Besøkende på møteplassen">
-            </figure>
+          <div
+            id="oyeblikk"
+            class="image-carousel"
+            data-image-base-url="https://filer.frivilligsentralen.org/bilder/Nettside/"
+            aria-roledescription="karusell"
+            aria-label="Bilder fra Vestre Aker Frivilligsentral"
+          >
+            <div class="image-carousel-stage" aria-live="polite">
+              <img class="image-carousel-image is-active" alt="Bilde fra Vestre Aker Frivilligsentral">
+              <img class="image-carousel-image" alt="" aria-hidden="true">
+              <p class="image-carousel-status">Laster bilder...</p>
+            </div>
+            <div class="image-carousel-controls">
+              <button class="image-carousel-button" type="button" data-carousel-action="previous" aria-label="Forrige bilde">‹</button>
+              <button class="image-carousel-button" type="button" data-carousel-action="toggle" aria-label="Pause karusell">Ⅱ</button>
+              <button class="image-carousel-button" type="button" data-carousel-action="next" aria-label="Neste bilde">›</button>
+            </div>
           </div>
         </section>
       </div>
     </section>
   </main>
   <script src="js/analytics.js" defer></script>
-    <script src="js/site-footer.js" defer></script>
+  <script src="js/image-carousel.js" defer></script>
+  <script src="js/site-footer.js" defer></script>
   <script src="js/site-nav.js" defer></script>
 </body>
 </html>
