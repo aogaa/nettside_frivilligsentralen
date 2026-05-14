@@ -6,7 +6,7 @@
   }
 
   const endpoint = "https://n8n.aogaa.no/webhook/mailerlite-signup-v1";
-  const token = "vafmV-2026-01-18__k9H3xQp7mT2nR5sL8dF1aC4gJ6uZ0yW";
+  const token = "vafmV-2026-mailerlite__pQ8mNxR3vY7tL2sK5bF9wG6jH4cD1aE0";
   const emailInput = form.querySelector('input[name="email"]');
   const honeypotInput = form.querySelector('input[name="website"]');
   const submitButton = form.querySelector('button[type="submit"]');
