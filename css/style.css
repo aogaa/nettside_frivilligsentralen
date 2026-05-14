@@ -640,89 +640,90 @@ img {
   font-size: 1.1rem;
 }
 
-.newsletter-layout {
+.newsletter-page {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(320px, 430px);
-  gap: 2rem;
-  align-items: start;
+  place-items: center;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
 }
 
-.newsletter-copy {
-  max-width: 680px;
+.newsletter-signup-card {
+  width: min(100%, 625px);
+  padding: clamp(2rem, 4vw, 2.75rem) clamp(1.5rem, 5vw, 2.35rem);
+  border-radius: 12px;
+  background-color: #0d2244;
+  color: var(--color-white);
+  box-shadow: 0 20px 46px rgba(10, 32, 78, 0.28);
 }
 
-.newsletter-kicker {
-  display: inline-block;
-  margin-bottom: 0.65rem;
-  color: #6a7280;
-  font-size: 0.8rem;
+.newsletter-signup-header {
+  text-align: center;
+}
+
+.newsletter-signup-header h1 {
+  max-width: 15ch;
+  margin: 0 auto 0.65rem;
+  color: var(--color-white);
+  font-size: clamp(2rem, 4vw, 2.95rem);
+  line-height: 1.05;
+}
+
+.newsletter-signup-header p {
+  max-width: 520px;
+  margin: 0.7rem auto 0;
+  color: var(--color-white);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.5;
+}
+
+.newsletter-signup-header .newsletter-signup-name {
+  margin-top: 2rem;
   font-weight: 700;
-  letter-spacing: 0.08rem;
-  text-transform: uppercase;
 }
 
-.newsletter-points {
-  display: grid;
-  gap: 0.85rem;
-  margin-top: 2.25rem;
-}
-
-.newsletter-points p {
-  margin: 0;
-  padding: 1rem 1.1rem;
-  border-left: 4px solid var(--color-primary);
-  border-radius: 8px;
-  background-color: var(--color-white);
-  color: #2a3550;
-  box-shadow: 0 8px 22px rgba(10, 32, 78, 0.06);
-}
-
-.newsletter-form {
-  padding: 1.6rem;
-  border-radius: 8px;
-  background-color: var(--color-white);
-  border: 1px solid rgba(10, 32, 78, 0.12);
-  box-shadow: 0 16px 36px rgba(10, 32, 78, 0.1);
-}
-
-.newsletter-form h2 {
-  margin: 0;
-  color: var(--color-primary);
-  font-size: 1.45rem;
-}
-
-.newsletter-form p {
-  margin: 0.65rem 0 0;
-  color: #3d4859;
-}
-
-.newsletter-form label {
+.newsletter-signup-card label {
   display: block;
-  margin: 1.25rem 0 0.45rem;
-  color: var(--color-primary);
+  margin: 2rem 0 0.45rem;
+  color: var(--color-white);
+  font-size: 1.05rem;
   font-weight: 700;
 }
 
-.newsletter-form input[type="email"],
-.newsletter-form input[type="text"] {
+.newsletter-signup-card input[type="email"],
+.newsletter-signup-card input[type="text"] {
   width: 100%;
-  min-height: 3.1rem;
-  padding: 0.8rem 0.95rem;
-  border: 1px solid rgba(10, 32, 78, 0.22);
+  min-height: 3.65rem;
+  padding: 0.85rem 1rem;
+  border: 0;
   border-radius: 8px;
-  background-color: #fbfcfe;
+  background-color: var(--color-white);
   color: var(--color-text);
   font: inherit;
+  font-size: 1.1rem;
 }
 
-.newsletter-form input:focus {
-  outline: 3px solid rgba(10, 32, 78, 0.18);
-  border-color: var(--color-primary);
+.newsletter-signup-card input:focus {
+  outline: 3px solid rgba(255, 255, 255, 0.42);
+  outline-offset: 3px;
 }
 
 .newsletter-submit {
   width: 100%;
-  margin-top: 1rem;
+  min-height: 3.75rem;
+  margin-top: 0.95rem;
+  border: 0;
+  border-radius: 8px;
+  background-color: #284c8e;
+  color: var(--color-white);
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.newsletter-submit:hover,
+.newsletter-submit:focus-visible {
+  background-color: #315aa7;
 }
 
 .newsletter-submit:disabled {
@@ -731,20 +732,25 @@ img {
 }
 
 .newsletter-privacy {
-  font-size: 0.92rem;
+  margin: 1.4rem 0 0;
+  color: var(--color-white);
+  text-align: center;
+  font-size: 1rem;
 }
 
 .newsletter-message {
   min-height: 1.5rem;
+  margin: 0.85rem 0 0;
+  text-align: center;
   font-weight: 700;
 }
 
 .newsletter-message.is-success {
-  color: #1f6f43;
+  color: #b8f4d0;
 }
 
 .newsletter-message.is-error {
-  color: #9b2c2c;
+  color: #ffd0d0;
 }
 
 .newsletter-honeypot {
@@ -1876,17 +1882,17 @@ img {
     padding: 1.5rem;
   }
 
-  .newsletter-layout {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .newsletter-page {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
   }
 
-  .newsletter-points {
-    margin-top: 1.5rem;
+  .newsletter-signup-card {
+    border-radius: 10px;
   }
 
-  .newsletter-form {
-    padding: 1.25rem;
+  .newsletter-signup-header h1 {
+    max-width: 18ch;
   }
 
   .week-grid {

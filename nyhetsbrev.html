@@ -30,56 +30,42 @@
   </header>
 
   <main class="page-content">
-    <section class="section main-container">
-      <div class="content-card">
-        <div class="newsletter-layout">
-          <div class="newsletter-copy">
-            <header class="page-header">
-              <span class="newsletter-kicker">Nyhetsbrev</span>
-              <h1>Meld deg på nyhetsbrevet</h1>
-              <p>
-                Få nyheter, aktiviteter og invitasjoner fra Vestre Aker Frivilligsentral og
-                Møteplass Vinderen rett i innboksen.
-              </p>
-            </header>
+    <section class="section newsletter-page">
+      <form class="newsletter-signup-card" data-newsletter-form>
+        <header class="newsletter-signup-header">
+          <h1>Hold deg oppdatert - bli en del av fellesskapet</h1>
+          <p>
+            Meld deg på nyhetsbrevet vårt og få invitasjoner til aktiviteter, kurs,
+            arrangementer og viktige oppdateringer fra
+          </p>
+          <p class="newsletter-signup-name">
+            Vestre Aker Frivilligsentral og Møteplass Vinderen.
+          </p>
+          <p>Ett klikk - og du er med på reisen.</p>
+        </header>
 
-            <div class="newsletter-points" aria-label="Dette får du i nyhetsbrevet">
-              <p>Aktuelle arrangementer og faste aktiviteter.</p>
-              <p>Små glimt fra frivilligheten i nærmiljøet.</p>
-              <p>Muligheter til å bidra, delta og holde kontakten.</p>
-            </div>
-          </div>
+        <label for="newsletter-email">E-postadresse</label>
+        <input
+          id="newsletter-email"
+          name="email"
+          type="email"
+          inputmode="email"
+          autocomplete="email"
+          placeholder="din@email.no"
+          required
+        >
 
-          <form class="newsletter-form" data-newsletter-form>
-            <h2>Hold deg oppdatert</h2>
-            <p>
-              Skriv inn e-postadressen din, så sender vi deg en velkomstmail.
-            </p>
-
-            <label for="newsletter-email">E-postadresse</label>
-            <input
-              id="newsletter-email"
-              name="email"
-              type="email"
-              inputmode="email"
-              autocomplete="email"
-              placeholder="navn@eksempel.no"
-              required
-            >
-
-            <div class="newsletter-honeypot" aria-hidden="true">
-              <label for="newsletter-website">Nettside</label>
-              <input id="newsletter-website" name="website" type="text" tabindex="-1" autocomplete="off">
-            </div>
-
-            <button class="button-primary newsletter-submit" type="submit">Meld meg på</button>
-            <p class="newsletter-privacy">
-              Vi bruker e-postadressen din til nyhetsbrev. Du kan melde deg av når som helst.
-            </p>
-            <p class="newsletter-message" data-newsletter-message role="status" aria-live="polite"></p>
-          </form>
+        <div class="newsletter-honeypot" aria-hidden="true">
+          <label for="newsletter-website">Nettside</label>
+          <input id="newsletter-website" name="website" type="text" tabindex="-1" autocomplete="off">
         </div>
-      </div>
+
+        <button class="newsletter-submit" type="submit">Meld meg på</button>
+        <p class="newsletter-privacy">
+          Vi sender aldri spam. Du kan melde deg av når som helst.
+        </p>
+        <p class="newsletter-message" data-newsletter-message role="status" aria-live="polite"></p>
+      </form>
     </section>
   </main>
   <script src="js/analytics.js" defer></script>
