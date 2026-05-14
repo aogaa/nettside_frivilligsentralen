@@ -5,7 +5,7 @@
     return;
   }
 
-  const endpoint = "https://n8n.aogaa.no/webhook/70558d75-06a4-44e9-a233-7034223a42cb";
+  const endpoint = "https://n8n.aogaa.no/webhook/mailerlite-signup-v1";
   const token = "vafmV-2026-01-18__k9H3xQp7mT2nR5sL8dF1aC4gJ6uZ0yW";
   const emailInput = form.querySelector('input[name="email"]');
   const honeypotInput = form.querySelector('input[name="website"]');
