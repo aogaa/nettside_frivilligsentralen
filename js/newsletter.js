@@ -5,8 +5,7 @@
     return;
   }
 
-  const endpoint = "https://n8n.aogaa.no/webhook/mailerlite-signup-v1";
-  const token = "vafmV-2026-mailerlite__pQ8mNxR3vY7tL2sK5bF9wG6jH4cD1aE0";
+  const endpoint = "https://europe-west1-frivilligsentralen-org.cloudfunctions.net/newsletterSignup";
   const emailInput = form.querySelector('input[name="email"]');
   const honeypotInput = form.querySelector('input[name="website"]');
   const submitButton = form.querySelector('button[type="submit"]');
@@ -43,10 +42,9 @@
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          "x-newsletter-token": token
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify({ email })
+        body: JSON.stringify({ email, website: honeypotInput.value })
       });
 
       if (!response.ok) {
