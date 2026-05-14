@@ -1189,6 +1189,33 @@ img {
   color: rgba(255, 255, 255, 0.86);
 }
 
+.podcast-version-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.podcast-version {
+  min-width: 0;
+  padding: 1.25rem;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.podcast-version h3 {
+  margin: 0 0 0.45rem;
+  color: var(--color-white);
+  font-size: 1.15rem;
+}
+
+.podcast-version p {
+  min-height: 3.2rem;
+  margin-bottom: 1rem;
+  font-size: 0.96rem;
+}
+
 .podcast-card audio {
   width: 100%;
   display: block;
@@ -1806,6 +1833,14 @@ img {
 
   .podcast-header {
     align-items: flex-start;
+  }
+
+  .podcast-version-list {
+    grid-template-columns: 1fr;
+  }
+
+  .podcast-version p {
+    min-height: 0;
   }
 
   .article-hero-image {
