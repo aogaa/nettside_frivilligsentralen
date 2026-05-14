@@ -35,13 +35,13 @@
 
         <section class="speed-reader" data-current-lang="no" aria-label="Speed reader">
           <div class="speed-reader-tabs" role="tablist" aria-label="Velg språk for speed reader">
-            <button class="speed-reader-tab is-active" type="button" data-lang="no">Norsk</button>
-            <button class="speed-reader-tab" type="button" data-lang="en">English</button>
-            <button class="speed-reader-tab" type="button" data-lang="de">Deutsch</button>
-            <button class="speed-reader-tab" type="button" data-lang="hr">Hrvatski</button>
-            <button class="speed-reader-tab" type="button" data-lang="fr">Français</button>
+            <button id="speed-reader-tab-no" class="speed-reader-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="speed-reader-panel" tabindex="0" data-lang="no">Norsk</button>
+            <button id="speed-reader-tab-en" class="speed-reader-tab" type="button" role="tab" aria-selected="false" aria-controls="speed-reader-panel" tabindex="-1" data-lang="en">English</button>
+            <button id="speed-reader-tab-de" class="speed-reader-tab" type="button" role="tab" aria-selected="false" aria-controls="speed-reader-panel" tabindex="-1" data-lang="de">Deutsch</button>
+            <button id="speed-reader-tab-hr" class="speed-reader-tab" type="button" role="tab" aria-selected="false" aria-controls="speed-reader-panel" tabindex="-1" data-lang="hr">Hrvatski</button>
+            <button id="speed-reader-tab-fr" class="speed-reader-tab" type="button" role="tab" aria-selected="false" aria-controls="speed-reader-panel" tabindex="-1" data-lang="fr">Français</button>
           </div>
-          <div class="speed-reader-display" aria-live="polite">
+          <div id="speed-reader-panel" class="speed-reader-display" role="tabpanel" aria-labelledby="speed-reader-tab-no" aria-live="polite">
             <p class="speed-reader-count">0 / 0 ord</p>
             <p class="speed-reader-word">Trykk start</p>
             <div class="speed-reader-progress" aria-hidden="true"><span></span></div>

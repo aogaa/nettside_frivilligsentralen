@@ -67,7 +67,9 @@ exports.newsletterSignup = onRequest(
 
         res.status(200).json({ok: true});
       } catch (error) {
-        logger.error("Newsletter signup proxy error", error);
+        logger.error("Newsletter signup proxy error", {
+          message: error.message,
+        });
         res.status(502).json({error: "Signup failed"});
       }
     },

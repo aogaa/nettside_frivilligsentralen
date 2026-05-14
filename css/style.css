@@ -244,7 +244,8 @@ img {
 }
 
 .activity-card:focus-visible {
-  outline: none;
+  outline: 3px solid var(--color-primary);
+  outline-offset: 6px;
 }
 
 .subpage-header {

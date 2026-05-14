@@ -135,6 +135,7 @@
 
   function setupReader(reader) {
     const tabs = reader.querySelectorAll(".speed-reader-tab");
+    const tabPanel = reader.querySelector(".speed-reader-display");
     const count = reader.querySelector(".speed-reader-count");
     const word = reader.querySelector(".speed-reader-word");
     const progress = reader.querySelector(".speed-reader-progress span");
@@ -272,7 +273,14 @@
       word.textContent = activeLabels().loading;
 
       tabs.forEach((tab) => {
-        tab.classList.toggle("is-active", tab.dataset.lang === lang);
+        const isActiveTab = tab.dataset.lang === lang;
+        tab.classList.toggle("is-active", isActiveTab);
+        tab.setAttribute("aria-selected", String(isActiveTab));
+        tab.tabIndex = isActiveTab ? 0 : -1;
+
+        if (isActiveTab && tabPanel) {
+          tabPanel.setAttribute("aria-labelledby", tab.id);
+        }
       });
 
       try {
@@ -297,6 +305,27 @@
     tabs.forEach((tab) => {
       tab.addEventListener("click", () => {
         setLanguage(tab.dataset.lang);
+      });
+
+      tab.addEventListener("keydown", (event) => {
+        const currentIndex = Array.from(tabs).indexOf(tab);
+        let nextIndex = currentIndex;
+
+        if (event.key === "ArrowRight") {
+          nextIndex = (currentIndex + 1) % tabs.length;
+        } else if (event.key === "ArrowLeft") {
+          nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "Home") {
+          nextIndex = 0;
+        } else if (event.key === "End") {
+          nextIndex = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+        tabs[nextIndex].focus();
+        setLanguage(tabs[nextIndex].dataset.lang);
       });
     });
 
