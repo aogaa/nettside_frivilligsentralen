@@ -6,6 +6,9 @@ Dette prosjektet er en moderne gjenoppbygging av nettsiden til Vestre Aker Frivi
 🚀 Prosjektets status
 Vi har lagt det tekniske fundamentet med HTML5 og CSS3. Vi har valgt en "flat" filstruktur i starten for å holde oversikten enkel mens vi bygger.
 
+📝 Språkstandard
+Synlig norsk tekst skal skrives med norske tegn: æ, ø og å. Ikke bruk `ae`, `oe` eller `aa` som erstatning i brødtekst, titler, knapper, alt-tekster eller metadata. Tekniske URL-er, filnavn, eksterne lenker og kode-identifikatorer kan fortsatt bruke ASCII for stabile lenker og kompatibilitet.
+
 🎨 Designvalg og drøftinger
 Vi har tatt noen bevisste valg som skiller denne siden fra en standard mal:
 

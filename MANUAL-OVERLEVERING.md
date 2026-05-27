@@ -153,9 +153,10 @@ CSS ligger i:
 ## 9. Tegnkoding (æ, ø, å)
 
 Alle filer skal lagres som **UTF-8**.
+Synlig norsk tekst skal skrives med æ, ø og å. Ikke skriv `ae`, `oe`, `aa`, `pa`, `na` eller lignende som erstatning for norske tegn.
 
-Hvis du ser tekst som `Ã¥`, `Ã¸`, `Ã¦`:
-- Filen er feilkodet
+Hvis norske tegn vises som rare symboler:
+- Filen kan være feilkodet
 - Åpne filen i VS Code
 - `Save with Encoding -> UTF-8`
 
