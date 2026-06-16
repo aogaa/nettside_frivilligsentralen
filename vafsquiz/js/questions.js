@@ -28,7 +28,7 @@ export const questions = [
       "Mormors Hjelpende Hånd",
       "Sprek Senior",
       "Bestemor på Farten",
-      "Aktiv Bestemor"
+      "Aktivmormo"
     ],
     correct: 3
   },
@@ -53,7 +53,7 @@ export const questions = [
     correct: 2
   },
   {
-    q: "Hva besto masterutstillingen til Anitas datter Sara av?",
+    q: "Hva besto masterutstillingen til Anitas datter Sarah av?",
     options: ["Hender", "Øyne", "Stemmer", "Neser"],
     correct: 3
   },
