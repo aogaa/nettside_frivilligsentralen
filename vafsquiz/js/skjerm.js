@@ -1,5 +1,5 @@
 // vafsquiz/js/skjerm.js — logikk for storskjermen (projektor).
-import { questions } from "./questions.js";
+import { questions, riktigeIndekser } from "./questions.js";
 import {
   db, ref, onValue, get,
   gameRef, playersRef, visConfigAdvarselHvisNodvendig
@@ -135,10 +135,12 @@ async function renderReveal() {
     });
   });
 
-  // … deretter lyser riktig svar grønt med ✓ (litt drama).
+  // … deretter lyser riktig(e) svar grønt med ✓ (litt drama).
   setTimeout(() => {
-    const riktigRad = cont.querySelector(`.soyle-rad[data-i="${q.correct}"]`);
-    if (riktigRad) riktigRad.classList.add("riktig");
+    riktigeIndekser(q).forEach(ci => {
+      const rad = cont.querySelector(`.soyle-rad[data-i="${ci}"]`);
+      if (rad) rad.classList.add("riktig");
+    });
   }, 1500);
 }
 
@@ -195,8 +197,9 @@ function byggFasitListe() {
   questions.forEach((q, i) => {
     const rad = document.createElement("div");
     rad.className = "fasit-rad";
+    const svar = riktigeIndekser(q).map(ci => q.options[ci]).join(" / ");
     rad.innerHTML = `<span class="num">${i + 1}.</span> ${q.q}
-      <br><span class="svar">✓ ${q.options[q.correct]}</span>`;
+      <br><span class="svar">✓ ${svar}</span>`;
     cont.appendChild(rad);
   });
 }

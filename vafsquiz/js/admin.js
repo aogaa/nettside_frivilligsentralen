@@ -1,5 +1,5 @@
 // vafsquiz/js/admin.js — vertens styringsside.
-import { questions } from "./questions.js";
+import { questions, erRiktig, riktigeIndekser } from "./questions.js";
 import {
   db, ref, onValue, get, set, update, remove,
   gameRef, playersRef, visConfigAdvarselHvisNodvendig
@@ -68,7 +68,7 @@ function oppdaterUI() {
     case "reveal":
       steg.textContent = `FASIT ${qi + 1}/${questions.length}`;
       tekst.textContent = "Fasit vises på storskjermen";
-      detalj.textContent = `Riktig: ${questions[qi].options[questions[qi].correct]}`;
+      detalj.textContent = `Riktig: ${riktigeIndekser(questions[qi]).map(ci => questions[qi].options[ci]).join(" / ")}`;
       hint.textContent = "Poeng er nå beregnet. Neste: Vis ledertavle.";
       btn.ledertavle.classList.remove("skjult");
       break;
@@ -108,7 +108,7 @@ function beregnPoeng() {
     const answers = p.answers || {};
     let score = 0;
     questions.forEach((q, i) => {
-      if (answers[i] !== undefined && answers[i] !== null && Number(answers[i]) === q.correct) score++;
+      if (answers[i] !== undefined && answers[i] !== null && erRiktig(q, answers[i])) score++;
     });
     oppdatering[`${id}/score`] = score;
   });

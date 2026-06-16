@@ -40,7 +40,7 @@ export const questions = [
       "Gå på fjelltur (jo høyere, jo bedre)",
       "Svømme i sjøen (uansett årstid)"
     ],
-    correct: 1
+    correct: [1, 2, 3]
   },
   {
     q: "Hva er Mons sin hobby?",
@@ -88,3 +88,12 @@ export const questions = [
     correct: 2
   }
 ];
+
+// `correct` kan være ett tall ELLER en liste av tall (flere riktige alternativer).
+// Disse hjelperne lar resten av koden behandle begge tilfeller likt.
+export function riktigeIndekser(sporsmal) {
+  return Array.isArray(sporsmal.correct) ? sporsmal.correct : [sporsmal.correct];
+}
+export function erRiktig(sporsmal, valg) {
+  return riktigeIndekser(sporsmal).includes(Number(valg));
+}

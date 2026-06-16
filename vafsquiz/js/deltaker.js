@@ -1,5 +1,5 @@
 // vafsquiz/js/deltaker.js — logikk for deltakersiden (mobil).
-import { questions } from "./questions.js";
+import { questions, erRiktig } from "./questions.js";
 import {
   db, ref, onValue, get, set, update, push,
   gameRef, playersRef, visConfigAdvarselHvisNodvendig
@@ -170,25 +170,16 @@ async function renderReveal() {
     fb.textContent = "Du svarte ikke 😅";
     return;
   }
-  const riktig = svarSnap.val() === questions[qi].correct;
+  const riktig = erRiktig(questions[qi], svarSnap.val());
   fb.className = "feedback " + (riktig ? "riktig" : "feil");
   fb.textContent = riktig ? "Riktig! 🎉" : "Feil 😬";
 }
 
 // ── LEADERBOARD ────────────────────────────────────────────────────
-async function renderLeaderboard() {
+// Deltakeren skal IKKE få vite egen plassering underveis (spenning bevares).
+// Topp 5 vises kun på storskjermen.
+function renderLeaderboard() {
   visView("leaderboard");
-  const snap = await get(playersRef());
-  const spillere = snap.val() || {};
-  const liste = Object.entries(spillere)
-    .map(([id, p]) => ({ id, score: p.score || 0 }))
-    .sort((a, b) => b.score - a.score);
-  const total = liste.length;
-  const minPlass = liste.findIndex(p => p.id === playerId) + 1;
-  const minScore = (spillere[playerId] && spillere[playerId].score) || 0;
-  document.getElementById("lb-plass").textContent =
-    minPlass > 0 ? `Du er nr. ${minPlass} av ${total}` : "Du er med!";
-  document.getElementById("lb-poeng").textContent = `${minScore} riktige så langt`;
 }
 
 // ── RESULTS ────────────────────────────────────────────────────────
