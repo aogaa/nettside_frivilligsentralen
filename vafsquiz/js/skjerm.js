@@ -178,10 +178,10 @@ async function renderLeaderboard() {
   });
 }
 
-// ── RESULTS: fasit-oppsummering + vinnertrekning ───────────────────
+// ── RESULTS: kvalifiserte + fasit-oppsummering + vinnertrekning ────
 function renderResults(nyState) {
   visView("results");
-  if (nyState) byggFasitListe();
+  if (nyState) { byggKvalifiserte(); byggFasitListe(); }
 
   // Vinner trekkes når admin har skrevet game.winnerId (+ ny nonce ved omtrekk).
   if (game.winnerId && trekningForNonce !== game.drawNonce) {
@@ -189,6 +189,38 @@ function renderResults(nyState) {
     trekningKjort = false;
     startTrekning(game.winnerId);
   }
+}
+
+// Vis hele puljen det trekkes blant: alle med flest riktige (10; ellers 9, osv.).
+async function byggKvalifiserte() {
+  const overskrift = document.getElementById("kval-overskrift");
+  const liste = document.getElementById("kval-liste");
+  liste.innerHTML = "";
+  const snap = await get(playersRef());
+  const sp = snap.val() || {};
+  const navn = Object.values(sp);
+  if (navn.length === 0) {
+    overskrift.textContent = "Ingen deltakere registrert";
+    return;
+  }
+  const maksScore = Math.max(0, ...navn.map(p => p.score || 0));
+  const kvalifiserte = navn.filter(p => (p.score || 0) === maksScore);
+  overskrift.textContent =
+    `Disse hadde flest riktige — ${maksScore} av ${questions.length} ` +
+    `(${kvalifiserte.length} ${kvalifiserte.length === 1 ? "person" : "personer"})`;
+  kvalifiserte.forEach((p, i) => {
+    const rad = document.createElement("div");
+    rad.className = "ltrad";
+    rad.innerHTML = `<span class="plass">🎯</span><span class="navn">${p.name || "?"}</span>`;
+    rad.style.opacity = "0";
+    rad.style.transform = "translateY(16px)";
+    liste.appendChild(rad);
+    setTimeout(() => {
+      rad.style.transition = "all .5s ease";
+      rad.style.opacity = "1";
+      rad.style.transform = "translateY(0)";
+    }, 100 * i);
+  });
 }
 
 function byggFasitListe() {

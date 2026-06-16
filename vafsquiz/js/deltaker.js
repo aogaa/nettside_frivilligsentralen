@@ -183,17 +183,11 @@ function renderLeaderboard() {
 }
 
 // ── RESULTS ────────────────────────────────────────────────────────
+// Ingen plassering — kun antall rette (rangering forblir hemmelig til trekningen).
 async function renderResults() {
   visView("results");
-  const snap = await get(playersRef());
-  const spillere = snap.val() || {};
-  const liste = Object.entries(spillere)
-    .map(([id, p]) => ({ id, score: p.score || 0 }))
-    .sort((a, b) => b.score - a.score);
-  const total = liste.length;
-  const minPlass = liste.findIndex(p => p.id === playerId) + 1;
-  const minScore = (spillere[playerId] && spillere[playerId].score) || 0;
-  document.getElementById("res-plass").textContent =
-    minPlass > 0 ? `Du kom på ${minPlass}. plass av ${total}` : "Takk for at du var med!";
-  document.getElementById("res-poeng").textContent = `${minScore} av ${questions.length} riktige`;
+  const snap = await get(ref(db, `players/${playerId}/score`));
+  const minScore = snap.val() || 0;
+  document.getElementById("res-rette").textContent = `Du fikk ${minScore} rette.`;
+  document.getElementById("res-poeng").textContent = `av ${questions.length} spørsmål`;
 }
