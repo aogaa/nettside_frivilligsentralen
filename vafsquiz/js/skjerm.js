@@ -31,7 +31,6 @@ let trekningForNonce = null;
 // ── Lytt på spillere (oppdaterer tellere live) ─────────────────────
 onValue(playersRef(), snap => {
   spillere = snap.val() || {};
-  document.getElementById("lobby-antall").textContent = Object.keys(spillere).length;
   if (game.state === "question") oppdaterSvartTeller();
 });
 

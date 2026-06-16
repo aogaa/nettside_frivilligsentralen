@@ -216,6 +216,22 @@ h1, h2, h3 { margin: 0 0 .4em; line-height: 1.1; }
 }
 .presentasjon { font-size: clamp(16px, 2.4vh, 24px); max-width: 820px; margin: 0 auto; line-height: 1.45; color: var(--tekst-svak); }
 
+/* Adresse deltakerne skal til (storskjerm-lobby) — stor og lettlest */
+.url-boks {
+  display: inline-block;
+  background: #fff;
+  border: 4px solid var(--gronn);
+  color: var(--gronn-dyp);
+  font-weight: 900;
+  font-size: clamp(24px, 5vh, 56px);
+  letter-spacing: .5px;
+  padding: 14px 30px;
+  border-radius: 16px;
+  box-shadow: var(--skygge);
+  margin-top: 14px;
+  word-break: break-word;
+}
+
 /* Skjermalternativer (kun visning, ikke klikkbare) */
 .skjerm-alternativer {
   display: grid;
