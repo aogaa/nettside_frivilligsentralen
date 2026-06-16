@@ -59,10 +59,10 @@ h1, h2, h3 { margin: 0 0 .4em; line-height: 1.1; }
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 8px 0 14px;
+  padding: 6px 0 8px;
 }
 .logo-bilde {
-  height: clamp(52px, 8vh, 96px);
+  height: clamp(44px, 7vh, 80px);
   width: auto;
 }
 
@@ -174,7 +174,7 @@ h1, h2, h3 { margin: 0 0 .4em; line-height: 1.1; }
   color: var(--tekst-svak);
   margin-top: 8px;
 }
-.stortall { font-size: clamp(40px, 12vw, 120px); font-weight: 900; color: var(--gronn-mork); }
+.stortall { font-size: clamp(40px, 10vh, 104px); font-weight: 900; color: var(--gronn-mork); margin: 4px 0; }
 
 /* ── Tilbakemelding (deltaker reveal) ────────────────────────── */
 .feedback {
@@ -195,33 +195,39 @@ h1, h2, h3 { margin: 0 0 .4em; line-height: 1.1; }
   width: 100%;
   text-align: center;
   color: var(--svart);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: calc(100vh - 140px);
 }
-.skjerm-tittel { font-size: clamp(40px, 7vw, 90px); font-weight: 900; color: var(--svart); }
-.skjerm-sporsmal { font-size: clamp(30px, 5vw, 64px); font-weight: 800; margin: 12px 0 8px; color: var(--svart); }
+.skjerm-rot > section { width: 100%; }
+.skjerm-tittel { font-size: clamp(32px, 6vh, 72px); font-weight: 900; color: var(--svart); margin-bottom: .2em; }
+.skjerm-sporsmal { font-size: clamp(24px, 4.2vh, 56px); font-weight: 800; margin: 10px 0 6px; color: var(--svart); }
 
 .felles-bilde {
-  max-width: 820px;
-  width: 94%;
-  border-radius: 22px;
-  border: 8px solid #fff;
+  max-width: min(720px, 88vw);
+  max-height: 40vh;
+  width: auto;
+  border-radius: 20px;
+  border: 6px solid #fff;
   box-shadow: var(--skygge);
-  margin: 18px auto;
+  margin: 12px auto;
   display: block;
 }
-.presentasjon { font-size: clamp(18px, 2.4vw, 28px); max-width: 820px; margin: 0 auto; line-height: 1.5; color: var(--tekst-svak); }
+.presentasjon { font-size: clamp(16px, 2.4vh, 24px); max-width: 820px; margin: 0 auto; line-height: 1.45; color: var(--tekst-svak); }
 
 /* Skjermalternativer (kun visning, ikke klikkbare) */
 .skjerm-alternativer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 18px;
+  gap: clamp(10px, 1.8vh, 18px);
   max-width: 1000px;
-  margin: 24px auto;
+  margin: 16px auto;
 }
 .skjerm-alt {
   border-radius: 18px;
-  padding: 28px;
-  font-size: clamp(20px, 3vw, 36px);
+  padding: clamp(14px, 2.4vh, 26px);
+  font-size: clamp(18px, 2.9vh, 34px);
   font-weight: 800;
   color: #fff;
   display: flex;
@@ -339,16 +345,27 @@ h1, h2, h3 { margin: 0 0 .4em; line-height: 1.1; }
 @keyframes sprett { 0%{transform:scale(.2);opacity:0} 60%{transform:scale(1.15)} 100%{transform:scale(1);opacity:1} }
 
 /* ── Fasit-oppsummering (results) ────────────────────────────── */
-.fasit-liste { max-width: 900px; margin: 20px auto; text-align: left; }
+.fasit-liste {
+  max-width: 1180px;
+  margin: 14px auto;
+  text-align: left;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 .fasit-rad {
   background: #fff;
   color: var(--tekst);
-  border-radius: 14px;
-  padding: 14px 20px;
-  margin: 10px 0;
-  font-size: clamp(16px, 2.2vw, 24px);
-  box-shadow: 0 6px 16px rgba(31,60,16,.10);
+  border-radius: 12px;
+  padding: 9px 14px;
+  margin: 0;
+  font-size: clamp(13px, 1.7vh, 19px);
+  line-height: 1.25;
+  box-shadow: 0 4px 12px rgba(31,60,16,.10);
   border: 1px solid rgba(108,191,58,.18);
+}
+@media (max-width: 700px) {
+  .fasit-liste { grid-template-columns: 1fr; }
 }
 .fasit-rad .num { color: var(--gronn-mork); font-weight: 900; margin-right: 8px; }
 .fasit-rad .svar { color: var(--gronn-mork); font-weight: 800; }

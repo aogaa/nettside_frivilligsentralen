@@ -28,7 +28,7 @@ export const questions = [
       "Mormors Hjelpende Hånd",
       "Sprek Senior",
       "Bestemor på Farten",
-      "Aktivmormo"
+      "Aktivmormor"
     ],
     correct: 3
   },
