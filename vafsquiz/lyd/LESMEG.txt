@@ -1,0 +1,7 @@
+Denne mappen skal inneholde drumroll-lyden til vinnertrekningen.
+
+Filnavn (må stemme nøyaktig): drum.mp3
+
+Koden spiller denne lyden på storskjermen når verten klikker "Trekk vinner".
+Lyden er allerede lagt inn (en ~3 sek drumroll). Vil du bytte den ut,
+behold filnavnet "drum.mp3". Lyd er valgfri — animasjonen virker uansett.

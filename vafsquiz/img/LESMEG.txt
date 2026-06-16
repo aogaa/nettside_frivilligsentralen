@@ -1,0 +1,6 @@
+Denne mappen skal inneholde fellesbildet av Mons, Anita og Espen.
+
+Filnavn (må stemme nøyaktig): felles.jpg
+
+Koden viser dette bildet på storskjermen i lobbyen (skjerm/index.html).
+Bildet er allerede lagt inn. Vil du bytte det ut, behold filnavnet "felles.jpg".
