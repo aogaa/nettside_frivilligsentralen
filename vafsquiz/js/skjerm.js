@@ -264,22 +264,36 @@ async function startTrekning(winnerId) {
   try { drum.currentTime = 0; drum.play().catch(() => {}); } catch (e) { /* ignorer */ }
 
   // Lykkehjul: flimrer raskt, bremser gradvis ned (~3 sek).
-  const start = performance.now();
+  // Bruker KUN setTimeout (ikke requestAnimationFrame) — rAF pauses/throttles
+  // når storskjerm-fanen ikke er i fokus eller er tildekket (typisk på projektor/
+  // dobbeltskjerm), og da ville hjulet fryse og aldri lande på en vinner.
+  const start = Date.now();
   const varighet = 3000;
-  let nesteForsinkelse = 50;
+  let laast = false;
 
-  function tick(naa) {
-    const t = naa - start;
+  function laasEnGang() {
+    if (laast) return;
+    laast = true;
+    laasVinner(vinnerNavn, vinnerScore);
+  }
+
+  function tick() {
+    if (laast) return;
     hjulNavn.textContent = flimre[Math.floor(Math.random() * flimre.length)];
+    const t = Date.now() - start;
     if (t < varighet) {
       // Bremser ned: forsinkelsen øker mot slutten.
-      nesteForsinkelse = 50 + Math.pow(t / varighet, 3) * 350;
-      setTimeout(() => requestAnimationFrame(tick), nesteForsinkelse);
+      const nesteForsinkelse = 50 + Math.pow(t / varighet, 3) * 350;
+      setTimeout(tick, nesteForsinkelse);
     } else {
-      laasVinner(vinnerNavn, vinnerScore);
+      laasEnGang();
     }
   }
-  requestAnimationFrame(tick);
+  tick();
+
+  // Hard sikkerhets-timer: uansett hva som skjer med løkka over, skal vinneren
+  // garantert låses etter ~varigheten. Hindrer at hjulet snurrer i det uendelige.
+  setTimeout(laasEnGang, varighet + 600);
 }
 
 function laasVinner(navn, score) {
