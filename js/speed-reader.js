@@ -5,12 +5,21 @@
     return;
   }
 
-  const articlePaths = {
-    no: "beredskap-bygges-for-krisen.html",
-    en: "preparedness-is-built-before-the-crisis.html",
-    de: "vorsorge-wird-vor-der-krise-aufgebaut.html",
-    hr: "pripravnost-se-gradi-prije-krize.html",
-    fr: "la-resilience-se-construit-avant-la-crise.html",
+  const articleSets = {
+    resilience: {
+      no: "beredskap-bygges-for-krisen.html",
+      en: "preparedness-is-built-before-the-crisis.html",
+      de: "vorsorge-wird-vor-der-krise-aufgebaut.html",
+      hr: "pripravnost-se-gradi-prije-krize.html",
+      fr: "la-resilience-se-construit-avant-la-crise.html",
+    },
+    manual: {
+      no: "motstandskraft-pa-tvers-av-grenser.html",
+      en: "resilience-across-borders.html",
+      de: "resilienz-ueber-grenzen-hinweg.html",
+      hr: "otpornost-preko-granica.html",
+      fr: "la-resilience-par-dela-les-frontieres.html",
+    },
   };
 
   const labels = {
@@ -108,16 +117,16 @@
     return chunks.join(" ");
   }
 
-  async function loadWords(lang) {
-    if (textCache[lang]) {
-      return textCache[lang];
+  async function loadWords(path) {
+    if (textCache[path]) {
+      return textCache[path];
     }
 
-    const response = await fetch(articlePaths[lang]);
+    const response = await fetch(path);
     const html = await response.text();
     const doc = new DOMParser().parseFromString(html, "text/html");
     const words = normalizeWords(extractArticleText(doc));
-    textCache[lang] = words;
+    textCache[path] = words;
 
     return words;
   }
@@ -126,7 +135,7 @@
     return /[.!?]"?$/.test(word) ? 1.7 : 1;
   }
 
-  function requestedLanguage(fallback) {
+  function requestedLanguage(articlePaths, fallback) {
     const params = new URLSearchParams(window.location.search);
     const lang = params.get("lang");
 
@@ -150,7 +159,8 @@
     const speedLabels = reader.querySelectorAll(".speed-reader-speed-labels span");
     const tip = reader.querySelector("[data-reader-tip]");
 
-    let lang = requestedLanguage(reader.dataset.currentLang || "no");
+    const articlePaths = articleSets[reader.dataset.articleSet] || articleSets.resilience;
+    let lang = requestedLanguage(articlePaths, reader.dataset.currentLang || "no");
     let words = [];
     let index = 0;
     let timer = null;
@@ -284,7 +294,7 @@
       });
 
       try {
-        words = await loadWords(lang);
+        words = await loadWords(articlePaths[lang]);
       } catch (error) {
         words = [];
       }
