@@ -1250,6 +1250,27 @@ img {
   content: "»";
 }
 
+.article-body blockquote {
+  margin: 2rem 0;
+  padding: 1.1rem 1.6rem;
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 12px 12px 0;
+  background-color: rgba(10, 32, 78, 0.05);
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.article-body blockquote cite {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  font-style: normal;
+  font-weight: 600;
+  color: #5c6778;
+}
+
 .podcast-card {
   margin: 0 0 2rem;
   padding: 2.5rem;
