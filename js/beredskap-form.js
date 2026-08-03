@@ -5,7 +5,7 @@
     return;
   }
 
-  const endpoint = "https://formsubmit.co/ajax/post@vestreaker.frivilligsentral.no";
+  const endpoint = "https://formsubmit.co/ajax/6f98aaab672470053b3da65ff34dc4fc";
   const honeypotInput = form.querySelector('input[name="_honey"]');
   const submitButton = form.querySelector('button[type="submit"]');
   const message = form.querySelector("[data-beredskap-message]");
