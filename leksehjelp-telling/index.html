@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Internt registreringsskjema for leksehjelpen.">
+  <title>Leksehjelp - registrering | Vestre Aker Frivilligsentral</title>
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="../images/vafslogo.png">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .lh-intro { margin-bottom: 2rem; }
+    .lh-section { margin-bottom: 3rem; }
+    .lh-section h2 {
+      color: var(--color-primary);
+      margin-bottom: 0.75rem;
+    }
+    .lh-status-line {
+      min-height: 1.2em;
+      font-size: 0.9rem;
+      margin: 0.25rem 0 1rem;
+    }
+
+    /* Tabell */
+    .lh-table-wrap { width: 100%; }
+    table.lh-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--color-white);
+      font-size: 0.95rem;
+    }
+    table.lh-table th,
+    table.lh-table td {
+      padding: 0.5rem 0.6rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(10, 32, 78, 0.12);
+      vertical-align: middle;
+    }
+    table.lh-table thead th {
+      background: var(--color-primary);
+      color: var(--color-white);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    table.lh-table tfoot td {
+      font-weight: 700;
+      color: var(--color-primary);
+      border-top: 2px solid var(--color-primary);
+      background: var(--color-section-bg);
+    }
+    .lh-date-cell { white-space: nowrap; font-weight: 600; color: var(--color-primary); }
+    .lh-table input[type="number"] {
+      width: 5rem;
+      padding: 0.4rem;
+      border: 1px solid rgba(10, 32, 78, 0.3);
+      border-radius: 6px;
+      font: inherit;
+    }
+    .lh-table input[type="text"] {
+      width: 100%;
+      min-width: 8rem;
+      padding: 0.4rem;
+      border: 1px solid rgba(10, 32, 78, 0.3);
+      border-radius: 6px;
+      font: inherit;
+    }
+    .lh-save-btn {
+      background: var(--color-primary);
+      color: var(--color-white);
+      border: none;
+      border-radius: 6px;
+      padding: 0.45rem 0.9rem;
+      font: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .lh-save-btn:hover { background: rgb(8, 26, 64); }
+    .lh-save-btn:disabled { opacity: 0.6; cursor: default; }
+    .lh-row-status {
+      display: inline-block;
+      margin-left: 0.5rem;
+      font-size: 0.85rem;
+      min-width: 4rem;
+    }
+    .lh-row-status.is-success { color: #1a7f37; }
+    .lh-row-status.is-error { color: #b3261e; }
+    .lh-closed td {
+      background: var(--color-section-bg);
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* Responsiv: stables til kort på smale skjermer */
+    @media (max-width: 720px) {
+      table.lh-table thead { display: none; }
+      table.lh-table,
+      table.lh-table tbody,
+      table.lh-table tfoot,
+      table.lh-table tr,
+      table.lh-table td { display: block; width: 100%; }
+      table.lh-table tr {
+        border: 1px solid rgba(10, 32, 78, 0.18);
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        padding: 0.4rem 0.6rem;
+        background: var(--color-white);
+      }
+      table.lh-table td {
+        border: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.4rem 0;
+      }
+      table.lh-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--color-primary);
+      }
+      .lh-table input[type="number"] { width: 6rem; }
+      .lh-table input[type="text"] { max-width: 60%; }
+      table.lh-table tfoot td::before { content: attr(data-label); }
+    }
+  </style>
+</head>
+<body>
+  <header class="subpage-header">
+    <div class="header-inner section">
+      <a class="logo-link" href="../index.html">
+        <img
+          class="site-logo"
+          src="../images/vafslogo.png"
+          alt="Stiftelsen Vestre Aker Frivilligsentral logo"
+        >
+      </a>
+      <nav class="main-nav" aria-label="Hovedmeny">
+        <a href="../index.html">Hjem</a>
+        <a href="../om-oss.html">Om oss</a>
+        <a href="../nyhetsbrev.html">Nyhetsbrev</a>
+        <a href="../faste-aktiviteter.html">Faste aktiviteter</a>
+        <a href="../blogg.html">Blogg</a>
+        <a href="../kunnskapsbank.html">Kunnskapsbank</a>
+        <a href="../beredskap/">Beredskap</a>
+        <a href="https://kurs.frivilligsentralen.org">Kurs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="section main-container">
+      <div class="content-card">
+        <header class="page-header">
+          <h1>Leksehjelp - registrering</h1>
+        </header>
+        <div class="lh-intro">
+          <p>
+            Fyll inn antall deltakere for dagens økt og trykk <strong>Lagre</strong>. Tallene
+            lagres automatisk og er synlige her for alle med lenken. Du kan lagre på nytt hvis
+            du trenger å rette opp et tall.
+          </p>
+          <p>
+            Har du en beskjed til Espen, skriv den i <strong>Melding</strong>-feltet på raden.
+            Meldingen sendes på e-post når du lagrer (den lagres ikke i tabellen).
+          </p>
+        </div>
+
+        <p class="lh-status-line" data-lh-global-status role="status" aria-live="polite"></p>
+
+        <section class="lh-section" aria-labelledby="lh-mandager-heading">
+          <h2 id="lh-mandager-heading">Mandager - leksehjelp</h2>
+          <div class="lh-table-wrap" data-lh-mandager></div>
+        </section>
+
+        <section class="lh-section" aria-labelledby="lh-onsdager-heading">
+          <h2 id="lh-onsdager-heading">Onsdager - leksehjelp</h2>
+          <div class="lh-table-wrap" data-lh-onsdager></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <!-- Honeypot for meldings-utsending (skjult for mennesker, fanger bots) -->
+  <div style="position:absolute;left:-9999px;top:-9999px;" aria-hidden="true">
+    <label for="lh-honey">Nettside</label>
+    <input id="lh-honey" name="_honey" type="text" tabindex="-1" autocomplete="off">
+  </div>
+
+  <script src="../js/analytics.js" defer></script>
+  <script src="../js/leksehjelp.js" defer></script>
+  <script src="../js/site-footer.js" defer></script>
+  <script src="../js/site-nav.js" defer></script>
+</body>
+</html>
