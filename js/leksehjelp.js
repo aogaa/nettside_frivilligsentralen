@@ -244,16 +244,18 @@
 
   async function sendEpost(dato, ukedag, felter, inputs, melding) {
     if (honeypot && honeypot.value) return;
-    const data = new FormData();
-    data.append("Dato", norskDato(dato, ukedag));
-    felter.forEach(function (f) {
-      // Rent ASCII-feltnavn (FormSubmit forkaster navn med mellomrom/spesialtegn)
-      const navn = f.key.charAt(0).toUpperCase() + f.key.slice(1);
-      data.append(navn, String(toInt(inputs[f.key].value)));
+    const dagtekst = norskDato(dato, ukedag);
+    // Samle alt i ETT felt. FormSubmit viste bare ett felt ved separate felt,
+    // men et felt kalt "Melding" kommer trygt frem – saa vi legger alt der.
+    const deler = felter.map(function (f) {
+      return f.label + ": " + toInt(inputs[f.key].value);
     });
-    if (melding) data.append("Melding", melding);
-    data.append("_subject", "Leksehjelp " + norskDato(dato, ukedag));
-    data.append("_template", "table");
+    let tekst = dagtekst + "  •  " + deler.join("  •  ");
+    if (melding) tekst += "  •  Beskjed: " + melding;
+
+    const data = new FormData();
+    data.append("Melding", tekst);
+    data.append("_subject", "Leksehjelp " + dagtekst);
     data.append("_captcha", "false");
     if (honeypot) data.append("_honey", honeypot.value);
 
