@@ -212,6 +212,7 @@
     btn.disabled = true;
     setRowStatus(statusEl, "Lagrer …", null);
 
+    // 1) Lagre tallene i Firestore
     try {
       const response = await fetch(FUNCTION_URL, {
         method: "POST",
@@ -219,33 +220,37 @@
         body: JSON.stringify(payload)
       });
       if (!response.ok) throw new Error("save failed");
-
       // Vis normaliserte verdier tilbake
       felter.forEach(function (f) { inputs[f.key].value = payload[f.key]; });
       updateTotals(ukedag);
-
-      const melding = msgInput.value.trim();
-      if (melding) {
-        await sendMelding(dato, ukedag, melding);
-        msgInput.value = "";
-        setRowStatus(statusEl, "Lagret + melding sendt ✓", "success");
-      } else {
-        setRowStatus(statusEl, "Lagret ✓", "success");
-      }
     } catch (err) {
-      setRowStatus(statusEl, "Feil – prøv igjen", "error");
+      setRowStatus(statusEl, "Feil – ikke lagret, prøv igjen", "error");
+      btn.disabled = false;
+      return;
+    }
+
+    // 2) Send tallene (og evt. melding) paa e-post til Espen
+    const melding = msgInput.value.trim();
+    try {
+      await sendEpost(dato, ukedag, felter, inputs, melding);
+      if (melding) msgInput.value = "";
+      setRowStatus(statusEl, "Lagret + sendt på e-post ✓", "success");
+    } catch (err) {
+      setRowStatus(statusEl, "Lagret ✓, men e-post feilet", "error");
     } finally {
       btn.disabled = false;
     }
   }
 
-  async function sendMelding(dato, ukedag, melding) {
+  async function sendEpost(dato, ukedag, felter, inputs, melding) {
     if (honeypot && honeypot.value) return;
     const data = new FormData();
-    data.append("dato", norskDato(dato, ukedag));
-    data.append("ukedag", ukedag);
-    data.append("melding", melding);
-    data.append("_subject", "Leksehjelp – beskjed fra frivillig (" + norskDato(dato, ukedag) + ")");
+    data.append("Dato", norskDato(dato, ukedag));
+    felter.forEach(function (f) {
+      data.append(f.label, String(toInt(inputs[f.key].value)));
+    });
+    if (melding) data.append("Melding", melding);
+    data.append("_subject", "Leksehjelp " + norskDato(dato, ukedag));
     data.append("_template", "table");
     data.append("_captcha", "false");
     if (honeypot) data.append("_honey", honeypot.value);
@@ -255,7 +260,7 @@
       headers: { Accept: "application/json" },
       body: data
     });
-    if (!response.ok) throw new Error("melding failed");
+    if (!response.ok) throw new Error("epost failed");
   }
 
   function updateTotals(ukedag) {
