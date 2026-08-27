@@ -51,6 +51,14 @@ function toCount(value) {
   return Math.min(n, 999);
 }
 
+// Gyldige datoer for spraakkafe host 2026 (alle tirsdager, ingen hostferiepause).
+const SPRAKKAFE_DATOER = new Set([
+  "2026-09-01", "2026-09-08", "2026-09-15", "2026-09-22", "2026-09-29",
+  "2026-10-06", "2026-10-13", "2026-10-20", "2026-10-27",
+  "2026-11-03", "2026-11-10", "2026-11-17", "2026-11-24",
+  "2026-12-01", "2026-12-08", "2026-12-15",
+]);
+
 exports.newsletterSignup = onRequest(
     {
       cors: allowedOrigins,
@@ -172,6 +180,68 @@ exports.leksehjelp = onRequest(
         res.status(200).json({ok: true});
       } catch (error) {
         logger.error("Leksehjelp save failed", {message: error.message});
+        res.status(500).json({error: "Save failed"});
+      }
+    },
+);
+
+exports.sprakkafe = onRequest(
+    {
+      cors: allowedOrigins,
+      invoker: "public",
+    },
+    async (req, res) => {
+      // GET: hent alle lagrede tall for visning i tabellen.
+      if (req.method === "GET") {
+        try {
+          const snap = await db.collection("sprakkafe").get();
+          const entries = snap.docs.map((doc) => {
+            const data = doc.data();
+            return {
+              dato: data.dato,
+              deltakere: typeof data.deltakere === "number" ? data.deltakere : 0,
+            };
+          });
+          res.status(200).json({entries});
+        } catch (error) {
+          logger.error("Sprakkafe read failed", {message: error.message});
+          res.status(500).json({error: "Read failed"});
+        }
+        return;
+      }
+
+      if (req.method !== "POST") {
+        res.status(405).json({error: "Method not allowed"});
+        return;
+      }
+
+      const body = req.body || {};
+
+      // Honeypot: stille aksept av bot-innsendinger.
+      if (body.website) {
+        logger.info("Sprakkafe rejected by honeypot");
+        res.status(200).json({ok: true});
+        return;
+      }
+
+      const {dato} = body;
+
+      if (typeof dato !== "string" || !SPRAKKAFE_DATOER.has(dato)) {
+        res.status(400).json({error: "Invalid dato"});
+        return;
+      }
+
+      const doc = {
+        dato,
+        deltakere: toCount(body.deltakere),
+        oppdatert: admin.firestore.FieldValue.serverTimestamp(),
+      };
+
+      try {
+        await db.collection("sprakkafe").doc(dato).set(doc, {merge: true});
+        res.status(200).json({ok: true});
+      } catch (error) {
+        logger.error("Sprakkafe save failed", {message: error.message});
         res.status(500).json({error: "Save failed"});
       }
     },

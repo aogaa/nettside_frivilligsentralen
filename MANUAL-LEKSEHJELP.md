@@ -234,3 +234,27 @@ et FormSubmit-**alias** (tilfeldig kode fra FormSubmit), på formen
   `firebase deploy --only functions,firestore:rules`.
 - Ny mottaker-e-post: endre `FORMSUBMIT_URL` + aktiver i FormSubmit.
 - Nullstille: `firebase firestore:delete "leksehjelp/<dato>" --force` per dato.
+
+---
+
+## 13. Språkkafé – samme løsning (egen variant)
+
+Språkkaféen bruker **nøyaktig samme mønster**, men enklere:
+
+- **URL:** `/sprakkafe-telling/` (skjult, noindex – som leksehjelp).
+- **Filer:** `sprakkafe-telling/index.html` + `js/sprakkafe.js`
+  (script lastes som `sprakkafe.js?v=1` – **øk `?v=`** ved endringer, jf. punkt 7).
+- **Funksjon:** `sprakkafe` i `functions/index.js` (parallell til `leksehjelp`).
+- **Samling:** `sprakkafe` (dok-id = ISO-dato).
+- **Datoer:** alle **tirsdager** 1/9–15/12 2026, **ingen** høstferiepause. Ligger i
+  `TIRSDAGER` (`js/sprakkafe.js`) og `SPRAKKAFE_DATOER` (`functions/index.js`) – oppdater
+  **begge** ved nytt semester, og deploy funksjonen.
+- **Felt:** kun `deltakere` («Antall deltakere») + melding.
+- **E-post:** samme mottaker `espen@vestreaker.frivilligsentral.no` (allerede aktivert).
+  Emne «Språkkafé <dato>».
+
+Alt annet (deploy, cache-busting, feilsøking, nullstilling, sikkerhet) er likt som for
+leksehjelp – bytt bare `leksehjelp` med `sprakkafe` i kommandoene, f.eks.:
+```powershell
+firebase firestore:delete "sprakkafe/2026-09-01" --force --project frivilligsentralen-org
+```
