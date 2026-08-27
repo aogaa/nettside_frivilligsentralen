@@ -247,7 +247,9 @@
     const data = new FormData();
     data.append("Dato", norskDato(dato, ukedag));
     felter.forEach(function (f) {
-      data.append(f.label, String(toInt(inputs[f.key].value)));
+      // Rent ASCII-feltnavn (FormSubmit forkaster navn med mellomrom/spesialtegn)
+      const navn = f.key.charAt(0).toUpperCase() + f.key.slice(1);
+      data.append(navn, String(toInt(inputs[f.key].value)));
     });
     if (melding) data.append("Melding", melding);
     data.append("_subject", "Leksehjelp " + norskDato(dato, ukedag));
