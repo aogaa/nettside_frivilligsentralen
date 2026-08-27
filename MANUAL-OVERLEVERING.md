@@ -4,10 +4,15 @@ Denne manualen er laget for at en ny person skal kunne overta prosjektet uten mu
 
 ## 1. Hva slags nettside dette er
 
-Dette er en **statisk nettside**:
-- Ingen database
-- Ingen backend-server
+Dette er i hovedsak en **statisk nettside**:
 - Ingen byggverktøy (ingen `npm build`, ingen framework)
+- Selve sidene er ren HTML/CSS/JS
+
+**Unntak:** noen enkeltfunksjoner bruker en liten backend via **Firebase**
+(Cloud Functions + Firestore-database):
+- **Nyhetsbrev-påmelding** (funksjonen `newsletterSignup`)
+- **Leksehjelp-telling** (skjult side – lagrer antall deltakere)
+  → se egen manual: `MANUAL-LEKSEHJELP.md`
 
 Nettsiden består av vanlige:
 - HTML-filer (`*.html`)
@@ -229,4 +234,25 @@ For å drifte denne nettsiden trenger du i praksis:
 3. `git add`, `git commit`, `git push`
 4. Verifisere GitHub Pages deploy
 
-Det er hele løypa.
+Det er hele løypa for de statiske sidene.
+
+---
+
+## 15. Firebase-baserte funksjoner (nyhetsbrev + leksehjelp)
+
+Noen funksjoner bruker en liten backend via **Firebase** (prosjekt
+`frivilligsentralen-org`, Blaze-plan):
+- **Nyhetsbrev** (`newsletterSignup` i `functions/index.js`) – videresender påmelding.
+- **Leksehjelp-telling** (`leksehjelp`-funksjonen + Firestore) – skjult side som lagrer
+  antall deltakere.
+
+Disse endres/deployes **ikke** via GitHub Pages, men med **Firebase CLI**
+(`firebase deploy`). Full forklaring, oppsett-logg og oppskrifter for endringer:
+
+➡ **`MANUAL-LEKSEHJELP.md`**
+
+Ved personbytte bør også dette gis videre:
+- Tilgang til Firebase-prosjektet `frivilligsentralen-org` (Google-konto)
+- At funksjonene kjøres av compute-tjenestekontoen (trenger IAM-rollen
+  `Cloud Datastore User` for Firestore)
+- FormSubmit-mottakere (nyhetsbrev/beredskap og leksehjelp bruker ulike adresser)
