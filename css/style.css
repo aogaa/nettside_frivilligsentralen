@@ -2538,3 +2538,661 @@ img {
     padding-top: 1.5rem;
   }
 }
+
+/* ============================================================
+   60 timer som betyr noe – VID-praksis landingsside
+   ============================================================ */
+
+.vid-main {
+  color: var(--color-text);
+}
+
+.vid-section {
+  padding: 4rem 0;
+}
+
+.vid-section-tint {
+  background-color: var(--color-section-bg);
+}
+
+.vid-section-title {
+  margin: 0;
+  color: var(--color-primary);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  line-height: 1.15;
+}
+
+.vid-section-sub {
+  margin: 0.6rem 0 2rem;
+  font-size: 1.1rem;
+  color: #3a4658;
+}
+
+/* ---------- Hero ---------- */
+.vid-hero {
+  background: linear-gradient(160deg, #0d2244 0%, #0a204e 60%, #0a1c40 100%);
+  color: var(--color-white);
+}
+
+.vid-hero-inner {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center;
+  padding: clamp(2.75rem, 6vw, 4.75rem) 0;
+}
+
+.vid-overline {
+  margin: 0 0 1rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.16rem;
+  text-transform: uppercase;
+  color: #b9cdf0;
+}
+
+.vid-hero-text h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 5.4vw, 4.25rem);
+  line-height: 1.05;
+}
+
+.vid-hero-lead {
+  margin: 1.25rem 0 0;
+  max-width: 46ch;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.vid-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.vid-hero-reassure {
+  margin: 1.5rem 0 0;
+  font-size: 1rem;
+  color: #cdd9ef;
+}
+
+.vid-hero-media img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.32);
+}
+
+/* ---------- Knapper ---------- */
+.vid-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;
+  padding: 0.8rem 1.65rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.18s ease, color 0.18s ease, transform 0.18s ease;
+}
+
+.vid-btn-primary {
+  background-color: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
+}
+
+.vid-btn-primary:hover,
+.vid-btn-primary:focus-visible {
+  background-color: #e7eefb;
+  border-color: #e7eefb;
+  transform: translateY(-2px);
+}
+
+.vid-btn-ghost {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.75);
+}
+
+.vid-btn-ghost:hover,
+.vid-btn-ghost:focus-visible {
+  background-color: rgba(255, 255, 255, 0.14);
+}
+
+.vid-btn:focus-visible {
+  outline: 3px solid #ffd15c;
+  outline-offset: 3px;
+}
+
+/* ---------- Introduksjon ---------- */
+.vid-intro {
+  max-width: 760px;
+}
+
+.vid-intro h2 {
+  margin: 0 0 1rem;
+  color: var(--color-primary);
+  font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+  line-height: 1.15;
+}
+
+.vid-intro p {
+  margin: 0 0 1rem;
+  font-size: 1.12rem;
+}
+
+.vid-intro p:last-child {
+  margin-bottom: 0;
+}
+
+/* ---------- Aktivitetskort ---------- */
+.vid-cards {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.vid-card {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 14px 34px rgba(10, 32, 78, 0.12);
+}
+
+.vid-card-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center 28%;
+}
+
+.vid-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.6rem 1.6rem 1.8rem;
+}
+
+.vid-card-body h3 {
+  margin: 0 0 0.35rem;
+  color: var(--color-primary);
+  font-size: 1.4rem;
+  line-height: 1.2;
+}
+
+.vid-card-time {
+  margin: 0 0 0.9rem;
+  font-weight: 700;
+  color: #2a3a57;
+  font-size: 0.98rem;
+}
+
+.vid-card-body p {
+  margin: 0 0 0.9rem;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.vid-card-tag {
+  margin: auto 0 0;
+  padding-top: 1rem;
+  color: #4a5a76;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.02rem;
+}
+
+/* ---------- Slik fungerer det ---------- */
+.vid-steps {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.75rem;
+}
+
+.vid-step {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.vid-step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.vid-step h3 {
+  margin: 0 0 0.3rem;
+  color: var(--color-primary);
+  font-size: 1.2rem;
+}
+
+.vid-step p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* ---------- Dette får du + praktisk info ---------- */
+.vid-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.vid-checklist {
+  list-style: none;
+  margin: 1.5rem 0 0;
+  padding: 0;
+}
+
+.vid-checklist li {
+  position: relative;
+  padding: 0.5rem 0 0.5rem 2.1rem;
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.vid-checklist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72rem;
+  width: 1.1rem;
+  height: 0.6rem;
+  border-left: 3px solid #1f6b50;
+  border-bottom: 3px solid #1f6b50;
+  transform: rotate(-45deg);
+}
+
+.vid-fact-list {
+  margin: 1.5rem 0 0;
+}
+
+.vid-fact-list > div {
+  display: grid;
+  grid-template-columns: minmax(9rem, 12rem) 1fr;
+  gap: 0.5rem 1.25rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(10, 32, 78, 0.12);
+}
+
+.vid-fact-list dt {
+  margin: 0;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.vid-fact-list dd {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.vid-facts-note {
+  margin: 1.1rem 0 0;
+  font-size: 0.98rem;
+  color: #3a4658;
+}
+
+/* ---------- Skjema ---------- */
+.vid-form-section {
+  background-color: var(--color-section-bg);
+}
+
+.vid-form-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.vid-form-card {
+  width: min(100%, 760px);
+  padding: clamp(1.75rem, 4vw, 2.85rem);
+  border-radius: 16px;
+  background-color: #0d2244;
+  color: var(--color-white);
+  box-shadow: 0 20px 46px rgba(10, 32, 78, 0.28);
+}
+
+.vid-form-header h2 {
+  margin: 0 0 0.6rem;
+  color: var(--color-white);
+  font-size: clamp(1.6rem, 3.4vw, 2.35rem);
+  line-height: 1.1;
+}
+
+.vid-form-header p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.vid-form-required-note {
+  margin: 1.6rem 0 0;
+  font-size: 0.95rem;
+  color: #cdd9ef;
+}
+
+.vid-req {
+  color: #ffd0d0;
+  font-weight: 700;
+}
+
+.vid-optional {
+  font-weight: 400;
+  color: #cdd9ef;
+  font-size: 0.9em;
+}
+
+.vid-field {
+  margin-top: 1.35rem;
+}
+
+.vid-field label,
+.vid-fieldset legend {
+  display: block;
+  margin-bottom: 0.4rem;
+  color: var(--color-white);
+  font-size: 1.02rem;
+  font-weight: 700;
+}
+
+.vid-field input[type="text"],
+.vid-field input[type="email"],
+.vid-field input[type="tel"],
+.vid-field textarea {
+  width: 100%;
+  min-height: 3.35rem;
+  padding: 0.8rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: var(--color-white);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 1.05rem;
+}
+
+.vid-field textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.vid-field input:focus-visible,
+.vid-field textarea:focus-visible,
+.vid-check input:focus-visible {
+  outline: 3px solid #ffd15c;
+  outline-offset: 2px;
+}
+
+.vid-field input.is-invalid {
+  border-color: #e6455a;
+  box-shadow: 0 0 0 2px rgba(230, 69, 90, 0.35);
+}
+
+.vid-field-hint {
+  display: block;
+  margin-top: 0.35rem;
+  font-size: 0.9rem;
+  color: #cdd9ef;
+}
+
+.vid-field-err {
+  display: block;
+  margin-top: 0.4rem;
+  min-height: 1.1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffd0d0;
+}
+
+.vid-fieldset {
+  margin: 1.6rem 0 0;
+  padding: 0;
+  border: 0;
+}
+
+.vid-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  min-height: 2.75rem;
+  padding: 0.45rem 0;
+  font-weight: 400;
+  font-size: 1.02rem;
+  line-height: 1.45;
+  cursor: pointer;
+}
+
+.vid-check input[type="checkbox"] {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0.1rem 0 0;
+  flex: 0 0 auto;
+  accent-color: #ffd15c;
+  cursor: pointer;
+}
+
+.vid-consent-field {
+  margin-top: 1.7rem;
+}
+
+.vid-consent span a {
+  color: #ffe08a;
+  text-decoration: underline;
+}
+
+.vid-submit {
+  width: 100%;
+  margin-top: 1.9rem;
+  min-height: 3.6rem;
+  font-size: 1.2rem;
+}
+
+.vid-submit:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
+.vid-form-help {
+  margin: 1.3rem 0 0;
+  text-align: center;
+  color: #cdd9ef;
+  font-size: 0.98rem;
+}
+
+.vid-form-message {
+  min-height: 1.4rem;
+  margin: 1rem 0 0;
+  text-align: center;
+  font-weight: 700;
+}
+
+.vid-form-message.is-success {
+  color: #b8f4d0;
+}
+
+.vid-form-message.is-error {
+  color: #ffd0d0;
+}
+
+.vid-form-success {
+  margin: 1.5rem 0 0;
+  padding: 1.4rem 1.5rem;
+  border-radius: 12px;
+  background-color: rgba(184, 244, 208, 0.14);
+  border: 1px solid rgba(184, 244, 208, 0.45);
+}
+
+.vid-form-success h3 {
+  margin: 0 0 0.4rem;
+  color: #d5ffe6;
+  font-size: 1.4rem;
+}
+
+.vid-form-success p {
+  margin: 0;
+  color: #eafff2;
+  font-size: 1.05rem;
+}
+
+.vid-error-summary {
+  margin-top: 1.5rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: 12px;
+  background-color: rgba(255, 208, 208, 0.14);
+  border: 1px solid #ffb3b3;
+}
+
+.vid-error-summary-title {
+  margin: 0 0 0.6rem;
+  font-weight: 700;
+  color: #ffd8d8;
+}
+
+.vid-error-summary ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.vid-error-summary li {
+  margin: 0.25rem 0;
+}
+
+.vid-error-summary a {
+  color: #ffe0e0;
+  text-decoration: underline;
+}
+
+.vid-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* ---------- Avslutning / kontakt ---------- */
+.vid-close {
+  max-width: 720px;
+}
+
+.vid-close p {
+  margin: 1rem 0 0;
+  font-size: 1.12rem;
+  line-height: 1.6;
+}
+
+.vid-contact-list {
+  list-style: none;
+  margin: 1.6rem 0 0;
+  padding: 0;
+}
+
+.vid-contact-list li {
+  padding: 0.5rem 0;
+  font-size: 1.08rem;
+}
+
+.vid-contact-label {
+  display: inline-block;
+  min-width: 8.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.vid-contact-list a {
+  color: #234a8c;
+  text-decoration: underline;
+}
+
+.vid-contact-list a:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+/* ---------- Responsivt ---------- */
+@media (max-width: 900px) {
+  .vid-hero-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .vid-hero-media {
+    order: -1;
+  }
+
+  .vid-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vid-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .vid-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 620px) {
+  .vid-section {
+    padding: 3rem 0;
+  }
+
+  .vid-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .vid-steps {
+    grid-template-columns: 1fr;
+  }
+
+  .vid-hero-actions .vid-btn {
+    width: 100%;
+  }
+
+  .vid-fact-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+  }
+
+  .vid-contact-label {
+    min-width: 0;
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vid-btn,
+  .vid-card-img {
+    transition: none;
+  }
+
+  .vid-btn-primary:hover,
+  .vid-btn-primary:focus-visible {
+    transform: none;
+  }
+}
