@@ -59,6 +59,8 @@ const SPRAKKAFE_DATOER = new Set([
   "2026-12-01", "2026-12-08", "2026-12-15",
 ]);
 
+const SPRAKKAFE_FELTER = ["deltakere", "bord", "frivillige"];
+
 exports.newsletterSignup = onRequest(
     {
       cors: allowedOrigins,
@@ -197,10 +199,11 @@ exports.sprakkafe = onRequest(
           const snap = await db.collection("sprakkafe").get();
           const entries = snap.docs.map((doc) => {
             const data = doc.data();
-            return {
-              dato: data.dato,
-              deltakere: typeof data.deltakere === "number" ? data.deltakere : 0,
-            };
+            const entry = {dato: data.dato};
+            SPRAKKAFE_FELTER.forEach((key) => {
+              entry[key] = typeof data[key] === "number" ? data[key] : 0;
+            });
+            return entry;
           });
           res.status(200).json({entries});
         } catch (error) {
@@ -233,9 +236,11 @@ exports.sprakkafe = onRequest(
 
       const doc = {
         dato,
-        deltakere: toCount(body.deltakere),
         oppdatert: admin.firestore.FieldValue.serverTimestamp(),
       };
+      SPRAKKAFE_FELTER.forEach((key) => {
+        doc[key] = toCount(body[key]);
+      });
 
       try {
         await db.collection("sprakkafe").doc(dato).set(doc, {merge: true});
