@@ -243,13 +243,15 @@ Språkkaféen bruker **nøyaktig samme mønster**, men enklere:
 
 - **URL:** `/sprakkafe-telling/` (skjult, noindex – som leksehjelp).
 - **Filer:** `sprakkafe-telling/index.html` + `js/sprakkafe.js`
-  (script lastes som `sprakkafe.js?v=1` – **øk `?v=`** ved endringer, jf. punkt 7).
+  (script lastes som `sprakkafe.js?v=2` – **øk `?v=`** ved endringer, jf. punkt 7).
 - **Funksjon:** `sprakkafe` i `functions/index.js` (parallell til `leksehjelp`).
 - **Samling:** `sprakkafe` (dok-id = ISO-dato).
 - **Datoer:** alle **tirsdager** 1/9–15/12 2026, **ingen** høstferiepause. Ligger i
   `TIRSDAGER` (`js/sprakkafe.js`) og `SPRAKKAFE_DATOER` (`functions/index.js`) – oppdater
   **begge** ved nytt semester, og deploy funksjonen.
-- **Felt:** kun `deltakere` («Antall deltakere») + melding.
+- **Felt:** `deltakere` («Antall deltakere»), `bord` («Antall bord»),
+  `frivillige` («Antall frivillige») + melding. Feltlista står i `FELTER`
+  (`js/sprakkafe.js`) og `SPRAKKAFE_FELTER` (`functions/index.js`) – endre **begge**.
 - **E-post:** samme mottaker `espen@vestreaker.frivilligsentral.no` (allerede aktivert).
   Emne «Språkkafé <dato>».
 
