@@ -440,7 +440,7 @@
 
 .bf-step-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(clamp(14rem, 24vw, 17rem), 1fr));
   gap: 1.25rem;
   margin: 0;
   padding: 0;
@@ -504,7 +504,8 @@
   min-width: 0;
 }
 
-.bf-card-link {
+.bf-card-link,
+.bf-card-inner {
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -515,6 +516,10 @@
   box-shadow: 0 15px 36px rgba(20, 52, 37, 0.08);
   color: inherit;
   text-decoration: none;
+}
+
+/* Hover og overgang gjelder kun kortet som er en lenke. */
+.bf-card-link {
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
 }
 
@@ -571,6 +576,54 @@
   line-height: 1.68;
 }
 
+/* Kort med flere avsnitt (f.eks. hjemmebesøk på 60-timer) trenger luft. */
+.bf-card-body p + p {
+  margin-top: 0.8rem;
+}
+
+/* Ikon som stikker opp i kanten av kortet. Krever .bf-card-media over seg. */
+.bf-card-icon {
+  display: inline-grid;
+  width: 2.55rem;
+  height: 2.55rem;
+  margin: -2.7rem 0 0;
+  place-items: center;
+  border: 4px solid var(--bf-white);
+  border-radius: 50%;
+  background: var(--bf-green);
+  color: var(--bf-navy-dark);
+}
+
+.bf-card-icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.bf-card-icon + h3 {
+  margin-top: 1rem;
+}
+
+/* Tid eller omfang, rett under overskriften. */
+.bf-card-meta {
+  margin: 0 0 0.65rem;
+  color: var(--bf-green-dark);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+/* Avsluttende merknad nederst i kortet. */
+.bf-card-tag {
+  margin-top: auto;
+  padding-top: 1.1rem;
+  color: var(--bf-muted);
+  font-size: 0.9rem;
+}
+
 .bf-card-cta {
   margin-top: auto;
   padding-top: 1.1rem;
@@ -608,6 +661,133 @@
   margin: 0;
   color: var(--bf-body);
   line-height: 1.68;
+}
+
+/* ---------- 11b. Faktagrid ----------
+   Nøkkelopplysninger i korte bokser: tid, sted, omfang, datoer.
+   Bruk <dl> med ett <div> per par.                                        */
+
+.bf-fact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+  margin: 2.4rem 0 0;
+}
+
+.bf-fact-grid > div {
+  padding: 1.4rem;
+  border-top: 0.35rem solid var(--bf-green);
+  border-radius: 0 0 0.9rem 0.9rem;
+  background: var(--bf-pale);
+}
+
+.bf-section-pale .bf-fact-grid > div {
+  background: var(--bf-white);
+}
+
+.bf-fact-grid dt {
+  margin: 0;
+  color: var(--bf-green-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.bf-fact-grid dd {
+  margin: 0.7rem 0 0;
+  color: var(--bf-navy-dark);
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.bf-fact-grid dd span,
+.bf-fact-grid dd small {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--bf-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+/* ---------- 11c. Samarbeidspartnere ---------- */
+
+.bf-partners {
+  display: grid;
+  grid-template-columns: minmax(8rem, 1fr) auto minmax(8rem, 1fr);
+  align-items: center;
+  gap: 1.2rem;
+  padding: clamp(1.3rem, 4vw, 2.2rem);
+  border: 1px solid var(--bf-border);
+  border-radius: 1.25rem;
+  background: var(--bf-white);
+  box-shadow: 0 14px 34px rgba(20, 52, 37, 0.08);
+}
+
+.bf-partners > img {
+  max-height: 66px;
+  margin: auto;
+}
+
+.bf-partners-plus {
+  color: var(--bf-green-dark);
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.bf-partners-oslo {
+  display: grid;
+  justify-items: center;
+  gap: 0.55rem;
+}
+
+.bf-partners-oslo img {
+  width: min(100%, 120px);
+  height: auto;
+}
+
+.bf-partners-oslo strong {
+  color: var(--bf-navy-dark);
+  text-align: center;
+}
+
+/* ---------- 11d. Kontaktliste ---------- */
+
+.bf-contact-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 1.6rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bf-contact-list li {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) 1fr;
+  gap: 0.35rem 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--bf-border);
+  color: var(--bf-body);
+}
+
+.bf-contact-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.bf-contact-label {
+  color: var(--bf-green-dark);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.bf-contact-list a {
+  color: var(--bf-navy);
+  font-weight: 700;
 }
 
 /* ---------- 12. Skjema ---------- */
@@ -913,10 +1093,6 @@
   .bf-form-intro {
     position: static;
   }
-
-  .bf-step-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 780px) {
@@ -963,6 +1139,21 @@
 
   .bf-field-row,
   .bf-check-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bf-partners {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .bf-partners-plus {
+    transform: rotate(90deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .bf-contact-list li {
     grid-template-columns: 1fr;
   }
 }
