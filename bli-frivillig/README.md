@@ -162,8 +162,17 @@ Footeren skrives ikke i HTML — den bygges av `js/site-footer.js`.
 
 ## Sidene som er lenket i dag
 
-De fem første kortene peker til sider som ble laget før dette oppsettet. De har
-sine egne stilark og sin egen skjema-JS, og er bevisst ikke migrert:
+**Laget fra malen** - deler `css/bli-frivillig.css` og `js/frivillig-form.js`:
+
+| Side | Rolle | Tema |
+|---|---|---|
+| `sprakvert/` | Språkvert på språkkafeen, Røa bibliotek | standard |
+| `leksehjelper/` | Leksehjelper, Hovstua og Hovseter skole | `bf-theme-skog` |
+| `frivilligbussen/` | Sjåfør på Frivilligbussen | `bf-theme-varm` |
+| `kafevert/` | Kafévert på Møteplass Vinderen | `bf-theme-vinter` |
+
+**Laget før dette oppsettet** - har sine egne stilark og sin egen skjema-JS, og
+er bevisst ikke migrert:
 
 - `gode-stunder-vinderenhjemmet/`
 - `tid-til-aa-snakke/`
@@ -172,3 +181,20 @@ sine egne stilark og sin egen skjema-JS, og er bevisst ikke migrert:
 - `julebakst-vinderenhjemmet/`
 
 Nye sider lages fra malen.
+
+### Faktagrunnlag som bør holdes oppdatert
+
+Tidene og kravene på de fire nye sidene er hentet fra aktivitetssidene under
+`aktiviteter/`. Endrer en aktivitet tid, sted eller krav, må begge stedene
+rettes:
+
+| Rekrutteringsside | Aktivitetsside |
+|---|---|
+| `sprakvert/` | `aktiviteter/sprakkafe.html` |
+| `leksehjelper/` | `aktiviteter/leksehjelp.html` |
+| `frivilligbussen/` | `aktiviteter/frivilligbussen.html` |
+| `kafevert/` | `aktiviteter/moteplass-vinderen-kafe.html` |
+
+To opplysninger står **bare** på rekrutteringssidene og er bekreftet av Espen:
+sjåfør på Frivilligbussen krever kun førerkort klasse B, og leksehjelp krever
+politiattest (frivilligsentralen hjelper til med søknaden).
