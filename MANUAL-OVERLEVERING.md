@@ -166,6 +166,11 @@ malkommentaren og `<meta name="robots" content="noindex, nofollow">`.
 Du skal ikke lage ny CSS eller ny JS. Alle sidene deler
 `css/bli-frivillig.css` og `js/frivillig-form.js`.
 
+**Ikke gi en side sin egen farge.** Alle ni rekrutteringssidene deler én
+palett, og det er hele poenget med oppsettet. Fargene er CSS-variabler i
+`.bf-page` øverst i `css/bli-frivillig.css`. Skal noe endres, endres det der -
+for alle sidene samtidig. Brødtekst skal alltid være `var(--bf-body)`.
+
 Full oppskrift med flere detaljer: `bli-frivillig/README.md`.
 
 ### Skjemamottaker
@@ -201,10 +206,15 @@ Kontroller etterpå med `git diff --stat`: hver fil skal vise et par endrede
 linjer. Viser en fil hundrevis av endrede linjer, er linjeskiftene blitt
 normalisert - rull den tilbake med `git checkout -- <fil>`.
 
-Filene under `gode-stunder-vinderenhjemmet/`, `student-vinderenhjemmet/`,
-`julebakst-vinderenhjemmet/`, `tid-til-aa-snakke/`, `roa-soup/`,
-`bli-frivillig/` og `bli-frivillig-mal/` har sin egen lokale meny og skal
-ikke røres.
+Rekrutteringssidene har sin egen lokale ankermeny og skal ikke røres:
+`bli-frivillig/`, `bli-frivillig-mal/`, `sprakvert/`, `leksehjelper/`,
+`frivilligbussen/`, `kafevert/`, `gode-stunder-vinderenhjemmet/`,
+`student-vinderenhjemmet/`, `julebakst-vinderenhjemmet/`,
+`tid-til-aa-snakke/` og `roa-soup/`.
+
+`60-timer-som-betyr-noe/` har derimot hovedmenyen, selv om den er en
+rekrutteringsside. Det er et bevisst valg fordi siden deles på flyer til
+VID-studenter. Den skal altså med i menyendringer.
 
 ---
 

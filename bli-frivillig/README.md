@@ -56,14 +56,13 @@ tittel, beskrivelse, canonical, OG-blokka, hero, tekstseksjoner og skjemaets
 Husk å slette `<meta name="robots" content="noindex, nofollow">` og
 malkommentaren øverst.
 
-Vil du gi siden en egen fargeidentitet, legg til en temaklasse på `<body>`:
+**Ikke gi siden sin egen farge.** Alle rekrutteringssidene deler én palett, og
+det er poenget. Fargene ligger som CSS-variabler i `.bf-page` øverst i
+`css/bli-frivillig.css`. Skal noe endres, endres det der — for alle sidene
+samtidig.
 
-```html
-<body class="bf-page bf-theme-varm">
-```
-
-Valgene er `bf-theme-varm`, `bf-theme-vinter` og `bf-theme-skog`. De ligger
-nederst i `css/bli-frivillig.css` — legg gjerne til flere der.
+Brødtekst skal alltid være `var(--bf-body)`. Ikke skriv en fargekode direkte
+i en regel; det var slik de fire ulike gråtonene oppsto.
 
 ### 4. Legg til kortet på denne siden
 
@@ -162,23 +161,27 @@ Footeren skrives ikke i HTML — den bygges av `js/site-footer.js`.
 
 ## Sidene som er lenket i dag
 
-**Laget fra malen** - deler `css/bli-frivillig.css` og `js/frivillig-form.js`:
+Alle ni deler `css/bli-frivillig.css` og `js/frivillig-form.js`:
 
-| Side | Rolle | Tema |
-|---|---|---|
-| `sprakvert/` | Språkvert på språkkafeen, Røa bibliotek | standard |
-| `leksehjelper/` | Leksehjelper, Hovstua og Hovseter skole | `bf-theme-skog` |
-| `frivilligbussen/` | Sjåfør på Frivilligbussen | `bf-theme-varm` |
-| `kafevert/` | Kafévert på Møteplass Vinderen | `bf-theme-vinter` |
+| Side | Rolle |
+|---|---|
+| `sprakvert/` | Språkvert på språkkafeen, Røa bibliotek |
+| `leksehjelper/` | Leksehjelper, Hovstua og Hovseter skole |
+| `frivilligbussen/` | Sjåfør på Frivilligbussen |
+| `kafevert/` | Kafévert på Møteplass Vinderen |
+| `gode-stunder-vinderenhjemmet/` | Løpende oppdrag på Vinderenhjemmet |
+| `student-vinderenhjemmet/` | Studentvariant av samme |
+| `julebakst-vinderenhjemmet/` | Julebakst, fem datoer i desember |
+| `tid-til-aa-snakke/` | Samtalevert på Hovstua, torsdager |
+| `60-timer-som-betyr-noe/` | VID-praksis, 60 timer |
 
-**Laget før dette oppsettet** - har sine egne stilark og sin egen skjema-JS, og
-er bevisst ikke migrert:
+De fem nederste ble migrert i september 2026. Stilarkene og skjema-JS-en de
+hadde hver for seg er slettet.
 
-- `gode-stunder-vinderenhjemmet/`
-- `tid-til-aa-snakke/`
-- `student-vinderenhjemmet/`
-- `60-timer-som-betyr-noe/`
-- `julebakst-vinderenhjemmet/`
+**Ett bevisst avvik:** `60-timer-som-betyr-noe/` beholder nettstedets
+hovedmeny der de åtte andre har en kort ankermeny. Siden deles på flyer til
+VID-studenter som ikke nødvendigvis kjenner nettstedet fra før. Det står som
+kommentar i fila.
 
 Nye sider lages fra malen.
 

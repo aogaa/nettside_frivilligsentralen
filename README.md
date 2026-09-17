@@ -34,13 +34,13 @@ bli-frivillig/index.html: landingssiden med alle aktivitetskortene. Ligger i top
 
 bli-frivillig-mal/: kopier hele denne mappa når du skal lage en ny aktivitetsside. Alt som skal endres er merket BYTT.
 
-css/bli-frivillig.css: delt stilark (prefiks .bf-). Farge per side styres med en bf-theme-klasse på <body>, ikke med en ny fil.
+css/bli-frivillig.css: delt stilark (prefiks .bf-). Alle rekrutteringssidene deler farger og tekstskala herfra. Ikke innfør per-side-temaer - det var nettopp det som gjorde at sidene divergerte. Brødtekst skal alltid være var(--bf-body).
 
 js/frivillig-form.js: delt skjema. Feltene og valideringsreglene leses fra HTML, så du kan legge til og fjerne felt uten å røre JavaScript.
 
 Full oppskrift står i bli-frivillig/README.md.
 
-De fem eldste rekrutteringssidene (gode-stunder-vinderenhjemmet, student-vinderenhjemmet, julebakst-vinderenhjemmet, tid-til-aa-snakke, 60-timer-som-betyr-noe) har sine egne stilark og er bevisst ikke migrert. Nye sider lages fra malen.
+Alle ni rekrutteringssidene bruker dette oppsettet. De fem eldste ble migrert i september 2026, og de gamle stilarkene deres er slettet. Nye sider lages fra malen.
 
 🛠 Teknisk Oppbygging
 Prosjektet er organisert slik at det er lett å utvide:
