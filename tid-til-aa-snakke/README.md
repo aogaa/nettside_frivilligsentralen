@@ -18,7 +18,8 @@ python -m http.server 8765 --bind 127.0.0.1
 ## Filer
 
 - `index.html` - selve landingssiden.
-- `../css/tid-til-aa-snakke.css` - sidens egne stiler.
+- `../css/bli-frivillig.css` - delt stilark for alle rekrutteringssidene.
+- `../js/frivillig-form.js` - delt skjema for alle rekrutteringssidene.
 - `../images/tid-til-aa-snakke/hero.webp` - komprimert hero-bilde.
 - `../images/tid-til-aa-snakke/og-tid-til-aa-snakke.png` - delingsbilde.
 
