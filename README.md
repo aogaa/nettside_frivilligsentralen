@@ -26,6 +26,22 @@ Problemstilling: Skal hver side ha sin egen mappe?
 
 Beslutning: Nei. Vi beholder om-oss.html og blogg.html i rotmappen. Dette gjør filbaner til bilder og CSS mye enklere å håndtere for en nybegynner. Vi kan "pynte" på nettadressen senere via serveren (Uniweb).
 
+🤝 Bli frivillig: felles oppsett for rekrutteringssider
+
+Sidene under /bli-frivillig/ deler ett stilark og ett skjema, slik at en ny aktivitetsside ikke koster nye CSS- eller JS-linjer:
+
+bli-frivillig/index.html: landingssiden med alle aktivitetskortene. Ligger i toppmenyen.
+
+bli-frivillig-mal/: kopier hele denne mappa når du skal lage en ny aktivitetsside. Alt som skal endres er merket BYTT.
+
+css/bli-frivillig.css: delt stilark (prefiks .bf-). Farge per side styres med en bf-theme-klasse på <body>, ikke med en ny fil.
+
+js/frivillig-form.js: delt skjema. Feltene og valideringsreglene leses fra HTML, så du kan legge til og fjerne felt uten å røre JavaScript.
+
+Full oppskrift står i bli-frivillig/README.md.
+
+De fem eldste rekrutteringssidene (gode-stunder-vinderenhjemmet, student-vinderenhjemmet, julebakst-vinderenhjemmet, tid-til-aa-snakke, 60-timer-som-betyr-noe) har sine egne stilark og er bevisst ikke migrert. Nye sider lages fra malen.
+
 🛠 Teknisk Oppbygging
 Prosjektet er organisert slik at det er lett å utvide:
 

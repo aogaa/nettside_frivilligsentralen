@@ -3196,3 +3196,67 @@ img {
     transform: none;
   }
 }
+
+/* ---------- Bli frivillig: oppfordring paa forsiden ---------- */
+
+.volunteer-cta {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.volunteer-cta-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.75rem;
+  padding: clamp(1.6rem, 4vw, 2.6rem);
+  border: 1px solid rgba(10, 32, 78, 0.14);
+  border-left: 0.4rem solid #65b32e;
+  border-radius: 1.25rem;
+  background-color: var(--color-section-bg);
+}
+
+.volunteer-cta-copy {
+  min-width: 0;
+  max-width: 46rem;
+}
+
+.volunteer-cta-kicker {
+  margin: 0;
+  color: #477f20;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.volunteer-cta-copy h2 {
+  margin: 0.6rem 0 0.5rem;
+  color: var(--color-primary);
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.volunteer-cta-copy p {
+  margin: 0;
+  color: #364153;
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+.volunteer-cta-button {
+  flex: 0 0 auto;
+  min-height: 3.1rem;
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .volunteer-cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}

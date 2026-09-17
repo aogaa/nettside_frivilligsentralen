@@ -142,6 +142,72 @@ Eksempel: `aktiviteter/sproytegruppe.html` (unngå norske tegn i filnavn).
 
 ---
 
+## 7b. Slik legger du til en ny rekrutteringsside (Bli frivillig)
+
+Avsnitt 7 over gjelder de vanlige aktivitetssidene under `aktiviteter/`.
+Rekrutteringssidene - de som skal verve frivillige og har eget kontaktskjema -
+lages på en annen måte, fra en mal som allerede har skjema og stiler.
+
+1. Kopier hele malmappa:
+`Copy-Item -Recurse bli-frivillig-mal <slug>`
+Bruk ASCII i mappenavnet, ingen norske tegn.
+
+2. Legg bilder i `images/<slug>/`:
+- `hero.webp` (1536 x 1024)
+- `og-<slug>.jpg` (1200 x 630)
+
+3. Bytt ut alt som er merket `BYTT` i `<slug>/index.html`, og slett
+malkommentaren og `<meta name="robots" content="noindex, nofollow">`.
+
+4. Legg ett kort (`<li class="bf-card">`) i `bli-frivillig/index.html`.
+
+5. Legg siden i `sitemap.xml`.
+
+Du skal ikke lage ny CSS eller ny JS. Alle sidene deler
+`css/bli-frivillig.css` og `js/frivillig-form.js`.
+
+Full oppskrift med flere detaljer: `bli-frivillig/README.md`.
+
+### Skjemamottaker
+
+Standardmottaker er `espen@vestreaker.frivilligsentral.no`, satt i
+`js/frivillig-form.js`. Den vises ikke i HTML-kilden.
+
+Skal en side gå til noen andre, legg `data-formsubmit="<alias>"` på `<form>`.
+Bruk et FormSubmit-ALIAS, ikke en e-postadresse - verdien står synlig i
+kildekoden og blir høstet av spamroboter. Før opp nye aliaser i
+aliastabellen i `bli-frivillig/README.md`.
+
+En ny mottaker må aktiveres ved å sende et skjema fra den publiserte siden
+på frivilligsentralen.org. En test fra localhost aktiverer ingenting.
+
+---
+
+## 7c. Toppmenyen
+
+Menyen er ikke felles kode - den står ordrett i hver HTML-fil
+(`<nav class="main-nav">`). `js/site-nav.js` lager bare hamburgerknappen;
+den bygger ikke lenkene.
+
+Skal du legge til eller fjerne et menypunkt, må det gjøres i alle filene som
+har menyen (55 filer i dag). Gjør det med et skript, ikke for hånd, og pass på
+to ting:
+
+- Noen filer har BOM (`EF BB BF`) først i fila, andre ikke.
+- Noen filer bruker CRLF, andre LF.
+
+Skriv derfor filene som bytes og behold BOM og linjeskift slik de var.
+Kontroller etterpå med `git diff --stat`: hver fil skal vise et par endrede
+linjer. Viser en fil hundrevis av endrede linjer, er linjeskiftene blitt
+normalisert - rull den tilbake med `git checkout -- <fil>`.
+
+Filene under `gode-stunder-vinderenhjemmet/`, `student-vinderenhjemmet/`,
+`julebakst-vinderenhjemmet/`, `tid-til-aa-snakke/`, `roa-soup/`,
+`bli-frivillig/` og `bli-frivillig-mal/` har sin egen lokale meny og skal
+ikke røres.
+
+---
+
 ## 8. Mobil og responsivitet (kritisk)
 
 Dette må alltid testes før push:
