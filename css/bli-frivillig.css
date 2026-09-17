@@ -7,24 +7,27 @@
    Tokens og skjemablokk er portert fra css/gode-stunder-vinderenhjemmet.css
    slik at sidene ser ut som resten av familien.
 
-   Variasjon per side: legg en .bf-theme-*-klasse på <body>. Se punkt 13.
+   Fargene ligger som CSS-variabler i .bf-page. Alle rekrutteringssidene deler
+   dem - ikke innfør per-side-temaer igjen. Brødtekst skal alltid være
+   var(--bf-body); ikke skriv inn en fargekode direkte.
    ========================================================================== */
 
 /* ---------- 1. Tokens og reset ---------- */
 
 .bf-page {
-  --bf-navy: #123a5e;
-  --bf-navy-dark: #0c2942;
-  --bf-blue: #2c5c86;
-  --bf-green: #65b32e;
-  --bf-green-dark: #477f20;
-  --bf-pale: #f3f6fa;
+  --bf-navy: #1f4d38;
+  --bf-navy-dark: #143425;
+  --bf-blue: #2f6b4d;
+  --bf-green: #8ab52e;
+  --bf-green-dark: #4d7112;
+  --bf-pale: #f1f7f2;
   --bf-white: #ffffff;
   --bf-ink: #1a1a1a;
-  --bf-muted: #536579;
+  --bf-body: #3a5647;
+  --bf-muted: #566a5e;
   --bf-focus: #ffd359;
-  --bf-border: rgba(18, 58, 94, 0.16);
-  --bf-shadow: 0 20px 48px rgba(12, 41, 66, 0.12);
+  --bf-border: rgba(31, 77, 56, 0.16);
+  --bf-shadow: 0 20px 48px rgba(20, 52, 37, 0.12);
   margin: 0;
   color: var(--bf-ink);
   background: var(--bf-white);
@@ -67,7 +70,7 @@
 
 .bf-header {
   border-bottom-color: var(--bf-border);
-  box-shadow: 0 1px 0 rgba(18, 58, 94, 0.03);
+  box-shadow: 0 1px 0 rgba(31, 77, 56, 0.03);
 }
 
 .bf-header .header-inner {
@@ -112,8 +115,8 @@
 .bf-hero {
   position: relative;
   background:
-    radial-gradient(circle at 12% 18%, rgba(101, 179, 46, 0.15), transparent 31rem),
-    linear-gradient(135deg, #f9fbfd, var(--bf-pale));
+    radial-gradient(circle at 12% 18%, rgba(138, 181, 46, 0.15), transparent 31rem),
+    linear-gradient(135deg, #fafcfa, var(--bf-pale));
   padding: clamp(3.2rem, 8vw, 7.5rem) 0 clamp(3.4rem, 7vw, 6.5rem);
 }
 
@@ -124,9 +127,9 @@
   bottom: -7rem;
   width: 21rem;
   height: 21rem;
-  border: 1px solid rgba(101, 179, 46, 0.26);
+  border: 1px solid rgba(138, 181, 46, 0.26);
   border-radius: 50%;
-  box-shadow: 0 0 0 2.6rem rgba(101, 179, 46, 0.055), 0 0 0 5.2rem rgba(18, 58, 94, 0.025);
+  box-shadow: 0 0 0 2.6rem rgba(138, 181, 46, 0.055), 0 0 0 5.2rem rgba(31, 77, 56, 0.025);
   pointer-events: none;
 }
 
@@ -152,7 +155,7 @@
 .bf-hero-lead {
   max-width: 40rem;
   margin: 0;
-  color: #334d63;
+  color: var(--bf-body);
   font-size: clamp(1.12rem, 2vw, 1.35rem);
   line-height: 1.62;
 }
@@ -187,7 +190,7 @@
   content: "";
   position: absolute;
   inset: -1.1rem 1.4rem 1.4rem -1.1rem;
-  border: 2px solid rgba(101, 179, 46, 0.45);
+  border: 2px solid rgba(138, 181, 46, 0.45);
   border-radius: 2rem;
 }
 
@@ -208,7 +211,7 @@
   max-width: 18rem;
   padding: 0.7rem 0.9rem;
   border-radius: 0.75rem;
-  background: rgba(12, 41, 66, 0.88);
+  background: rgba(20, 52, 37, 0.88);
   color: var(--bf-white);
   font-size: 0.86rem;
   line-height: 1.35;
@@ -241,7 +244,7 @@
   gap: 0.55rem;
   padding: 0.55rem 0.85rem;
   border-radius: 999px;
-  background: rgba(101, 179, 46, 0.13);
+  background: rgba(138, 181, 46, 0.13);
   color: var(--bf-navy-dark);
 }
 
@@ -251,7 +254,7 @@
   height: 0.55rem;
   border-radius: 50%;
   background: var(--bf-green);
-  box-shadow: 0 0 0 0.28rem rgba(101, 179, 46, 0.17);
+  box-shadow: 0 0 0 0.28rem rgba(138, 181, 46, 0.17);
 }
 
 .bf-reading {
@@ -274,7 +277,7 @@
 .bf-section-heading > p:not(.bf-kicker),
 .bf-split-copy > p:not(.bf-kicker),
 .bf-form-intro > p {
-  color: #385267;
+  color: var(--bf-body);
   font-size: 1.1rem;
   line-height: 1.75;
 }
@@ -333,7 +336,7 @@
 .bf-button-primary {
   background: var(--bf-navy);
   color: var(--bf-white);
-  box-shadow: 0 12px 24px rgba(18, 58, 94, 0.2);
+  box-shadow: 0 12px 24px rgba(31, 77, 56, 0.2);
 }
 
 .bf-button-primary:hover {
@@ -341,7 +344,7 @@
 }
 
 .bf-button-secondary {
-  border-color: rgba(18, 58, 94, 0.25);
+  border-color: rgba(31, 77, 56, 0.25);
   background: var(--bf-white);
   color: var(--bf-navy-dark);
 }
@@ -389,7 +392,7 @@
 .bf-tick-list li {
   position: relative;
   padding-left: 2.4rem;
-  color: #40586b;
+  color: var(--bf-body);
   line-height: 1.68;
 }
 
@@ -403,7 +406,7 @@
   height: 1.6rem;
   place-items: center;
   border-radius: 50%;
-  background: rgba(101, 179, 46, 0.18);
+  background: rgba(138, 181, 46, 0.18);
   color: var(--bf-green-dark);
   font-size: 0.9rem;
   font-weight: 700;
@@ -420,7 +423,7 @@
   border: 1px solid var(--bf-border);
   border-radius: 1.25rem;
   background: var(--bf-white);
-  box-shadow: 0 14px 34px rgba(12, 41, 66, 0.08);
+  box-shadow: 0 14px 34px rgba(20, 52, 37, 0.08);
 }
 
 .bf-panel h3 {
@@ -452,7 +455,7 @@
   border: 1px solid var(--bf-border);
   border-radius: 1.25rem;
   background: var(--bf-white);
-  box-shadow: 0 14px 34px rgba(12, 41, 66, 0.07);
+  box-shadow: 0 14px 34px rgba(20, 52, 37, 0.07);
   counter-increment: bf-step;
 }
 
@@ -481,7 +484,7 @@
 
 .bf-step-grid p {
   margin: 0;
-  color: #40586b;
+  color: var(--bf-body);
   line-height: 1.68;
 }
 
@@ -509,7 +512,7 @@
   border: 1px solid var(--bf-border);
   border-radius: 1.35rem;
   background: var(--bf-white);
-  box-shadow: 0 15px 36px rgba(12, 41, 66, 0.08);
+  box-shadow: 0 15px 36px rgba(20, 52, 37, 0.08);
   color: inherit;
   text-decoration: none;
   transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
@@ -517,8 +520,8 @@
 
 .bf-card-link:hover {
   transform: translateY(-4px);
-  border-color: rgba(101, 179, 46, 0.5);
-  box-shadow: 0 22px 46px rgba(12, 41, 66, 0.14);
+  border-color: rgba(138, 181, 46, 0.5);
+  box-shadow: 0 22px 46px rgba(20, 52, 37, 0.14);
 }
 
 .bf-card-media {
@@ -541,7 +544,7 @@
   left: 0.8rem;
   padding: 0.35rem 0.7rem;
   border-radius: 999px;
-  background: rgba(12, 41, 66, 0.88);
+  background: rgba(20, 52, 37, 0.88);
   color: var(--bf-white);
   font-size: 0.78rem;
   font-weight: 700;
@@ -564,7 +567,7 @@
 
 .bf-card-body p {
   margin: 0;
-  color: #40586b;
+  color: var(--bf-body);
   line-height: 1.68;
 }
 
@@ -603,7 +606,7 @@
 
 .bf-faq-item p {
   margin: 0;
-  color: #40586b;
+  color: var(--bf-body);
   line-height: 1.68;
 }
 
@@ -611,7 +614,7 @@
 
 .bf-form-section {
   background:
-    linear-gradient(90deg, rgba(18, 58, 94, 0.975), rgba(12, 41, 66, 0.94)),
+    linear-gradient(90deg, rgba(31, 77, 56, 0.975), rgba(20, 52, 37, 0.94)),
     var(--bf-navy-dark);
 }
 
@@ -628,7 +631,7 @@
 }
 
 .bf-form-intro .bf-overline {
-  background: rgba(101, 179, 46, 0.18);
+  background: rgba(138, 181, 46, 0.18);
   color: var(--bf-white);
 }
 
@@ -751,7 +754,7 @@
   border: 1px solid var(--bf-border);
   border-radius: 0.72rem;
   background: var(--bf-pale);
-  color: #304b60;
+  color: var(--bf-body);
   cursor: pointer;
   line-height: 1.45;
 }
@@ -766,7 +769,7 @@
 
 .bf-check:has(input:checked) {
   border-color: var(--bf-green-dark);
-  background: rgba(101, 179, 46, 0.11);
+  background: rgba(138, 181, 46, 0.11);
 }
 
 .bf-consent-group {
@@ -828,7 +831,7 @@
 }
 
 .bf-submit:hover {
-  background: #78c642;
+  background: #9bc63f;
   transform: translateY(-1px);
 }
 
@@ -860,7 +863,7 @@
   padding: 1rem;
   border: 2px solid var(--bf-green-dark);
   border-radius: 0.8rem;
-  background: rgba(101, 179, 46, 0.12);
+  background: rgba(138, 181, 46, 0.12);
 }
 
 .bf-form-success h3 {
@@ -881,42 +884,7 @@
   white-space: nowrap !important;
 }
 
-/* ---------- 13. Temaer for undersider ----------
-   Legg én av disse på <body> sammen med .bf-page for å gi en underside sin
-   egen fargeidentitet. Ingenting annet trenger å endres.                   */
-
-.bf-theme-varm {
-  --bf-navy: #7a3b12;
-  --bf-navy-dark: #5c2b0c;
-  --bf-blue: #99551f;
-  --bf-green: #e0a53c;
-  --bf-green-dark: #8a5a15;
-  --bf-pale: #fdf6ee;
-  --bf-border: rgba(122, 59, 18, 0.16);
-  --bf-shadow: 0 20px 48px rgba(92, 43, 12, 0.12);
-}
-
-.bf-theme-vinter {
-  --bf-navy: #123a5e;
-  --bf-navy-dark: #0c2942;
-  --bf-blue: #2c5c86;
-  --bf-green: #c0524f;
-  --bf-green-dark: #8f2f2c;
-  --bf-pale: #f5f1ec;
-}
-
-.bf-theme-skog {
-  --bf-navy: #1f4d38;
-  --bf-navy-dark: #143425;
-  --bf-blue: #2f6b4d;
-  --bf-green: #8ab52e;
-  --bf-green-dark: #567d14;
-  --bf-pale: #f1f7f2;
-  --bf-border: rgba(31, 77, 56, 0.16);
-  --bf-shadow: 0 20px 48px rgba(20, 52, 37, 0.12);
-}
-
-/* ---------- 14. Responsivt ---------- */
+/* ---------- 13. Responsivt ---------- */
 
 @media (max-width: 960px) {
   .bf-hero-inner,
