@@ -17,8 +17,8 @@ python -m http.server 8765 --bind 127.0.0.1
 ## Filer
 
 - `julebakst-vinderenhjemmet/index.html` - siden.
-- `css/julebakst-vinderenhjemmet.css` - kampanjens responsive juleprofil.
-- `js/julebakst-vinderenhjemmet-form.js` - validering og innsending.
+- `css/bli-frivillig.css` - delt stilark for alle rekrutteringssidene.
+- `js/frivillig-form.js` - delt skjema for alle rekrutteringssidene.
 - `images/julebakst-vinderenhjemmet/hero.webp` - hovedmotiv.
 - `images/julebakst-vinderenhjemmet/og-julebakst-vinderenhjemmet.png` - Open
   Graph-bilde.
