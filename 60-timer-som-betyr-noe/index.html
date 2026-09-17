@@ -21,9 +21,17 @@
   <meta name="twitter:card" content="summary_large_image">
 
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/bli-frivillig.css">
 </head>
-<body>
-  <header class="subpage-header">
+<body class="bf-page">
+  <a class="bf-skip-link" href="#hovedinnhold">Hopp til hovedinnholdet</a>
+
+  <!--
+    Denne siden beholder hovedmenyen, i motsetning til de andre
+    rekrutteringssidene. Den deles på flyer til VID-studenter som ikke
+    nødvendigvis kjenner nettstedet fra før.
+  -->
+  <header class="subpage-header bf-header">
     <div class="header-inner section">
       <a class="logo-link" href="../index.html">
         <img
@@ -45,27 +53,29 @@
     </div>
   </header>
 
-  <main class="vid-main">
+  <main id="hovedinnhold" class="bf-main">
+
     <!-- 1. HERO -->
-    <section class="vid-hero" aria-labelledby="vid-hero-title">
-      <div class="vid-hero-inner section">
-        <div class="vid-hero-text">
-          <p class="vid-overline">Praksis for studenter ved VID</p>
-          <h1 id="vid-hero-title">60 timer som betyr noe</h1>
-          <p class="vid-hero-lead">
+    <section class="bf-hero" aria-labelledby="bf-hero-title">
+      <div class="section bf-hero-inner">
+        <div class="bf-hero-copy">
+          <p class="bf-overline">Praksis for studenter ved VID</p>
+          <h1 id="bf-hero-title">60 timer som betyr noe</h1>
+          <p class="bf-hero-lead">
             Møt mennesker i ulike aldre og livssituasjoner. Hos Vestre Aker
             Frivilligsentral kan du gjennomføre alle de 60 praksistimene og velge
             én aktivitet – eller sette sammen din egen kombinasjon.
           </p>
-          <div class="vid-hero-actions">
-            <a class="vid-btn vid-btn-primary" href="#skjema" data-vid-hero-cta>Meld interesse</a>
-            <a class="vid-btn vid-btn-ghost" href="#aktivitetene">Se aktivitetene</a>
+          <div class="bf-actions">
+            <a class="bf-button bf-button-primary" href="#skjema">Meld interesse</a>
+            <a class="bf-button bf-button-secondary" href="#aktivitetene">Se aktivitetene</a>
           </div>
-          <p class="vid-hero-reassure">
+          <p class="bf-hero-note">
             Du får opplæring, veiledning og en avtalt praksisplan før oppstart.
           </p>
         </div>
-        <div class="vid-hero-media">
+
+        <figure class="bf-hero-media">
           <img
             src="../images/vid-praksis/hero-60-timer.avif"
             width="1600" height="900"
@@ -73,104 +83,117 @@
             fetchpriority="high"
             decoding="async"
           >
-        </div>
+          <figcaption>Reelle oppgaver, ekte møter.</figcaption>
+        </figure>
       </div>
     </section>
 
     <!-- 2. INTRODUKSJON -->
-    <section class="vid-section" aria-labelledby="vid-intro-title">
-      <div class="section">
-        <div class="vid-intro">
-          <h2 id="vid-intro-title">Praksis med variasjon – hvis du ønsker det</h2>
-          <p>
-            Noen ønsker å fordype seg i én aktivitet. Andre vil prøve flere. Hos oss
-            kan du velge språkkafé, leksehjelp, hjemmebesøk eller en kombinasjon. Vi
-            lager praksisplanen sammen med deg, slik at oppgavene passer med rammene
-            fra VID og det du ønsker å lære mer om.
-          </p>
-          <p>
-            Primærmålgruppen er studenter i sosialt arbeid, men praksistilbudet er
-            åpent for alle VID-studenter som kan gjennomføre praksisen hos oss.
-          </p>
-        </div>
+    <section class="bf-section" aria-labelledby="bf-intro-title">
+      <div class="bf-reading">
+        <p class="bf-kicker">Praksis hos oss</p>
+        <h2 id="bf-intro-title">Praksis med variasjon – hvis du ønsker det</h2>
+        <p>
+          Noen ønsker å fordype seg i én aktivitet. Andre vil prøve flere. Hos oss
+          kan du velge språkkafé, leksehjelp, hjemmebesøk eller en kombinasjon. Vi
+          lager praksisplanen sammen med deg, slik at oppgavene passer med rammene
+          fra VID og det du ønsker å lære mer om.
+        </p>
+        <p>
+          Primærmålgruppen er studenter i sosialt arbeid, men praksistilbudet er
+          åpent for alle VID-studenter som kan gjennomføre praksisen hos oss.
+        </p>
       </div>
     </section>
 
-    <!-- 3. AKTIVITETSKORT -->
-    <section class="vid-section vid-section-tint" id="aktivitetene" aria-labelledby="vid-akt-title">
+    <!-- 3. AKTIVITETENE -->
+    <section class="bf-section bf-section-pale" id="aktivitetene" aria-labelledby="bf-akt-title">
       <div class="section">
-        <h2 id="vid-akt-title" class="vid-section-title">Aktivitetene</h2>
-        <p class="vid-section-sub">Velg én – eller sett sammen din egen kombinasjon.</p>
-        <ul class="vid-cards" role="list">
-          <li class="vid-card">
-            <img
-              class="vid-card-img"
-              src="../images/vid-praksis/sprakkafe.avif"
-              width="900" height="675"
-              alt="Student og deltakere i samtale rundt et bord på språkkafé"
-              loading="lazy" decoding="async"
-            >
-            <div class="vid-card-body">
-              <h3>Språkkafé</h3>
-              <p class="vid-card-time">Tirsdager kl. 16.30–19.30</p>
-              <p>
-                Bidra til språktrening, inkludering og gode møter mellom mennesker med
-                ulik bakgrunn. Her får du erfaring med å skape trygge samtaler, bygge
-                relasjoner og legge til rette for at flere kan delta aktivt.
-              </p>
-              <p class="vid-card-tag">Språk · inkludering · fellesskap</p>
+        <div class="bf-section-heading">
+          <p class="bf-kicker">Velg din kombinasjon</p>
+          <h2 id="bf-akt-title">Aktivitetene</h2>
+          <p>Velg én – eller sett sammen din egen kombinasjon.</p>
+        </div>
+
+        <ul class="bf-card-grid" role="list">
+          <li class="bf-card">
+            <div class="bf-card-inner">
+              <span class="bf-card-media">
+                <img
+                  src="../images/vid-praksis/sprakkafe.avif"
+                  width="900" height="675"
+                  alt="Student og deltakere i samtale rundt et bord på språkkafé"
+                  loading="lazy" decoding="async"
+                >
+              </span>
+              <div class="bf-card-body">
+                <h3>Språkkafé</h3>
+                <p class="bf-card-meta">Tirsdager kl. 16.30–19.30</p>
+                <p>
+                  Bidra til språktrening, inkludering og gode møter mellom mennesker med
+                  ulik bakgrunn. Her får du erfaring med å skape trygge samtaler, bygge
+                  relasjoner og legge til rette for at flere kan delta aktivt.
+                </p>
+                <p class="bf-card-tag">Språk · inkludering · fellesskap</p>
+              </div>
             </div>
           </li>
 
-          <li class="vid-card">
-            <img
-              class="vid-card-img"
-              src="../images/vid-praksis/leksehjelp.avif"
-              width="900" height="675"
-              alt="Student hjelper en ungdom med skolearbeid"
-              loading="lazy" decoding="async"
-            >
-            <div class="vid-card-body">
-              <h3>Leksehjelp</h3>
-              <p class="vid-card-time">
-                Mandager kl. 17.00–19.00: barn og deltakere fra voksenopplæringen<br>
-                Onsdager kl. 13.15–15.30: ungdomsskoleelever
-              </p>
-              <p>
-                Hjelp barn, ungdom og voksne med læring, mestring og motivasjon. Du
-                deltar sammen med andre og får erfaring med å møte ulike læringsbehov
-                på en støttende og respektfull måte.
-              </p>
-              <p class="vid-card-tag">Læring · mestring · motivasjon</p>
+          <li class="bf-card">
+            <div class="bf-card-inner">
+              <span class="bf-card-media">
+                <img
+                  src="../images/vid-praksis/leksehjelp.avif"
+                  width="900" height="675"
+                  alt="Student hjelper en ungdom med skolearbeid"
+                  loading="lazy" decoding="async"
+                >
+              </span>
+              <div class="bf-card-body">
+                <h3>Leksehjelp</h3>
+                <p class="bf-card-meta">
+                  Mandager kl. 17.00–19.00: barn og deltakere fra voksenopplæringen<br>
+                  Onsdager kl. 13.15–15.30: ungdomsskoleelever
+                </p>
+                <p>
+                  Hjelp barn, ungdom og voksne med læring, mestring og motivasjon. Du
+                  deltar sammen med andre og får erfaring med å møte ulike læringsbehov
+                  på en støttende og respektfull måte.
+                </p>
+                <p class="bf-card-tag">Læring · mestring · motivasjon</p>
+              </div>
             </div>
           </li>
 
-          <li class="vid-card">
-            <img
-              class="vid-card-img"
-              src="../images/vid-praksis/hjemmebesok.avif"
-              width="900" height="675"
-              alt="To studenter i samtale med en eldre mann hjemme hos ham"
-              loading="lazy" decoding="async"
-            >
-            <div class="vid-card-body">
-              <h3>Hjemmebesøk</h3>
-              <p>
-                Besøk hjemmeboende eldre og bruk den gode samtalen til å finne ut hva
-                den enkelte ønsker og savner i hverdagen. Ved neste besøk presenterer
-                dere aktiviteter, møteplasser og andre relevante tilbud som kan passe.
-              </p>
-              <p>
-                Hjemmebesøkene gjennomføres fortrinnsvis av to studenter sammen. Det
-                samme studentparet følger personen gjennom begge besøkene. Hvert besøk
-                varer normalt én til to timer.
-              </p>
-              <p>
-                Du får samtalekurs og opplæring i aktuelle tilbud før du gjennomfører
-                besøk. Frivilligsentralen avtaler besøkene og har ansvaret for
-                oppfølgingen.
-              </p>
-              <p class="vid-card-tag">Samtale · kartlegging · muligheter</p>
+          <li class="bf-card">
+            <div class="bf-card-inner">
+              <span class="bf-card-media">
+                <img
+                  src="../images/vid-praksis/hjemmebesok.avif"
+                  width="900" height="675"
+                  alt="To studenter i samtale med en eldre mann hjemme hos ham"
+                  loading="lazy" decoding="async"
+                >
+              </span>
+              <div class="bf-card-body">
+                <h3>Hjemmebesøk</h3>
+                <p>
+                  Besøk hjemmeboende eldre og bruk den gode samtalen til å finne ut hva
+                  den enkelte ønsker og savner i hverdagen. Ved neste besøk presenterer
+                  dere aktiviteter, møteplasser og andre relevante tilbud som kan passe.
+                </p>
+                <p>
+                  Hjemmebesøkene gjennomføres fortrinnsvis av to studenter sammen. Det
+                  samme studentparet følger personen gjennom begge besøkene. Hvert besøk
+                  varer normalt én til to timer.
+                </p>
+                <p>
+                  Du får samtalekurs og opplæring i aktuelle tilbud før du gjennomfører
+                  besøk. Frivilligsentralen avtaler besøkene og har ansvaret for
+                  oppfølgingen.
+                </p>
+                <p class="bf-card-tag">Samtale · kartlegging · muligheter</p>
+              </div>
             </div>
           </li>
         </ul>
@@ -178,48 +201,46 @@
     </section>
 
     <!-- 4. SLIK FUNGERER DET -->
-    <section class="vid-section" aria-labelledby="vid-steps-title">
+    <section class="bf-section" aria-labelledby="bf-steps-title">
       <div class="section">
-        <h2 id="vid-steps-title" class="vid-section-title">Slik fungerer det</h2>
-        <ol class="vid-steps" role="list">
-          <li class="vid-step">
-            <span class="vid-step-num" aria-hidden="true">1</span>
-            <div>
-              <h3>Meld interesse</h3>
-              <p>Fortell litt om studiet ditt, når du ønsker praksis og hvilke aktiviteter du er interessert i.</p>
-            </div>
+        <div class="bf-section-heading">
+          <p class="bf-kicker">Fra interesse til oppstart</p>
+          <h2 id="bf-steps-title">Slik fungerer det</h2>
+        </div>
+
+        <ol class="bf-step-grid">
+          <li>
+            <h3>Meld interesse</h3>
+            <p>Fortell litt om studiet ditt, når du ønsker praksis og hvilke aktiviteter du er interessert i.</p>
           </li>
-          <li class="vid-step">
-            <span class="vid-step-num" aria-hidden="true">2</span>
-            <div>
-              <h3>Vi tar en prat</h3>
-              <p>Sammen avklarer vi rammene fra VID og finner en kombinasjon som passer.</p>
-            </div>
+          <li>
+            <h3>Vi tar en prat</h3>
+            <p>Sammen avklarer vi rammene fra VID og finner en kombinasjon som passer.</p>
           </li>
-          <li class="vid-step">
-            <span class="vid-step-num" aria-hidden="true">3</span>
-            <div>
-              <h3>Du får opplæring</h3>
-              <p>Nødvendig introduksjon, samtalekurs og opplæring inngår i praksistimene.</p>
-            </div>
+          <li>
+            <h3>Du får opplæring</h3>
+            <p>Nødvendig introduksjon, samtalekurs og opplæring inngår i praksistimene.</p>
           </li>
-          <li class="vid-step">
-            <span class="vid-step-num" aria-hidden="true">4</span>
-            <div>
-              <h3>Praksisen starter</h3>
-              <p>Du deltar sammen med andre, får oppfølging underveis og dokumenterer timene dine.</p>
-            </div>
+          <li>
+            <h3>Praksisen starter</h3>
+            <p>Du deltar sammen med andre, får oppfølging underveis og dokumenterer timene dine.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <!-- 5. HVA STUDENTEN FÅR + 6. PRAKTISK INFO -->
-    <section class="vid-section vid-section-tint" aria-labelledby="vid-get-title">
-      <div class="section vid-two-col">
-        <div class="vid-get">
-          <h2 id="vid-get-title" class="vid-section-title">Dette får du hos oss</h2>
-          <ul class="vid-checklist" role="list">
+    <!-- 5. DETTE FÅR DU -->
+    <section class="bf-section bf-section-pale" aria-labelledby="bf-get-title">
+      <div class="section bf-split">
+        <div class="bf-split-copy">
+          <p class="bf-kicker">Det du sitter igjen med</p>
+          <h2 id="bf-get-title">Dette får du hos oss</h2>
+          <p>
+            Praksisen skal gi deg noe å ta med videre - ikke bare timer å krysse av.
+          </p>
+        </div>
+        <div class="bf-panel">
+          <ul class="bf-tick-list" role="list">
             <li>Mulighet til å gjennomføre alle de 60 praksistimene hos oss</li>
             <li>Reelle og meningsfulle oppgaver</li>
             <li>Erfaring med mennesker i ulike aldre og livssituasjoner</li>
@@ -229,116 +250,135 @@
             <li>Dokumentasjon av gjennomførte praksistimer</li>
           </ul>
         </div>
-        <div class="vid-facts">
-          <h2 class="vid-section-title">Praktisk informasjon</h2>
-          <dl class="vid-fact-list">
-            <div><dt>Omfang</dt><dd>60 timer</dd></div>
-            <div><dt>Antall plasser</dt><dd>Inntil 20 studenter</dd></div>
-            <div><dt>Praksisplan</dt><dd>Avtales individuelt før oppstart</dd></div>
-            <div><dt>Målgruppe</dt><dd>Primært studenter i sosialt arbeid, men åpent for andre VID-studenter</dd></div>
-            <div><dt>Kontaktperson</dt><dd>Espen Watne Andresen</dd></div>
-          </dl>
-          <p class="vid-facts-note">VID setter rammene for når timene skal gjennomføres.</p>
+      </div>
+    </section>
+
+    <!-- 6. PRAKTISK INFORMASJON -->
+    <section class="bf-section" aria-labelledby="bf-facts-title">
+      <div class="section">
+        <div class="bf-section-heading">
+          <p class="bf-kicker">Rammene</p>
+          <h2 id="bf-facts-title">Praktisk informasjon</h2>
         </div>
+
+        <dl class="bf-fact-grid">
+          <div><dt>Omfang</dt><dd>60 timer</dd></div>
+          <div><dt>Antall plasser</dt><dd>Inntil 20 studenter</dd></div>
+          <div><dt>Praksisplan</dt><dd>Avtales individuelt før oppstart</dd></div>
+          <div><dt>Målgruppe</dt><dd>Primært studenter i sosialt arbeid<span>Åpent for andre VID-studenter</span></dd></div>
+          <div><dt>Kontaktperson</dt><dd>Espen Watne Andresen</dd></div>
+        </dl>
+
+        <p class="bf-field-hint" style="margin-top: 1.4rem;">
+          VID setter rammene for når timene skal gjennomføres.
+        </p>
       </div>
     </section>
 
     <!-- 7. INTERESSESKJEMA -->
-    <section class="vid-section vid-form-section" id="skjema" aria-labelledby="vid-form-title">
-      <div class="section vid-form-wrap">
-        <form class="vid-form-card" data-vid-form novalidate>
-          <header class="vid-form-header">
-            <h2 id="vid-form-title">Vil du bruke 60 timer på noe som betyr noe?</h2>
-            <p>Fyll ut skjemaet, så tar Espen kontakt med deg for en uforpliktende prat om mulighetene.</p>
-          </header>
+    <section class="bf-section bf-form-section" id="skjema" aria-labelledby="bf-form-title">
+      <div class="section bf-form-layout">
+        <div class="bf-form-intro">
+          <p class="bf-overline">Helt uforpliktende</p>
+          <h2 id="bf-form-title">Vil du bruke 60 timer på noe som betyr noe?</h2>
+          <p>
+            Fyll ut skjemaet, så tar Espen kontakt med deg for en uforpliktende prat
+            om mulighetene.
+          </p>
+          <p class="bf-form-contact">
+            Har du spørsmål først? Ring Espen på
+            <a href="tel:+4748137180">481 37 180</a> eller send e-post til
+            <a href="mailto:espen@vestreaker.frivilligsentral.no">espen@vestreaker.frivilligsentral.no</a>.
+          </p>
+        </div>
 
-          <p class="vid-form-required-note">Felt merket med <span class="vid-req" aria-hidden="true">*</span> er obligatoriske.</p>
+        <form
+          class="bf-form-card"
+          data-frivillig-form
+          data-subject="Ny interessert – 60 timer som betyr noe (VID-praksis)"
+          data-intro="Ny interessent til 60 timer som betyr noe"
+          novalidate
+        >
+          <p class="bf-required-note">Felt merket med <span aria-hidden="true">*</span> er obligatoriske.</p>
 
-          <div class="vid-error-summary" data-vid-error-summary tabindex="-1" role="alert" hidden>
-            <p class="vid-error-summary-title">Skjemaet mangler noe. Sjekk feltene under:</p>
-            <ul data-vid-error-list></ul>
+          <div class="bf-error-summary" data-bf-error-summary tabindex="-1" role="alert" hidden>
+            <p>Skjemaet mangler noe. Sjekk feltene under:</p>
+            <ul data-bf-error-list></ul>
           </div>
 
-          <div class="vid-field">
-            <label for="vid-navn">Navn <span class="vid-req" aria-hidden="true">*</span></label>
-            <input id="vid-navn" name="navn" type="text" autocomplete="name" required
-                   aria-required="true" aria-describedby="vid-navn-err">
-            <span class="vid-field-err" id="vid-navn-err" data-err-for="vid-navn"></span>
+          <div class="bf-field">
+            <label for="bf-navn">Navn <span aria-hidden="true">*</span></label>
+            <input id="bf-navn" name="navn" type="text" autocomplete="name" required aria-required="true" data-bf-label="Navn" aria-describedby="bf-navn-err">
+            <span class="bf-field-error" id="bf-navn-err" data-err-for="bf-navn"></span>
           </div>
 
-          <div class="vid-field">
-            <label for="vid-epost">E-post <span class="vid-req" aria-hidden="true">*</span></label>
-            <input id="vid-epost" name="epost" type="email" inputmode="email" autocomplete="email"
-                   required aria-required="true" aria-describedby="vid-epost-err">
-            <span class="vid-field-err" id="vid-epost-err" data-err-for="vid-epost"></span>
+          <div class="bf-field">
+            <label for="bf-epost">E-post <span aria-hidden="true">*</span></label>
+            <input id="bf-epost" name="epost" type="email" inputmode="email" autocomplete="email" required aria-required="true" data-bf-label="E-post" aria-describedby="bf-epost-err">
+            <span class="bf-field-error" id="bf-epost-err" data-err-for="bf-epost"></span>
           </div>
 
-          <div class="vid-field">
-            <label for="vid-telefon">Telefonnummer <span class="vid-req" aria-hidden="true">*</span></label>
-            <input id="vid-telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel"
-                   required aria-required="true" aria-describedby="vid-telefon-err">
-            <span class="vid-field-err" id="vid-telefon-err" data-err-for="vid-telefon"></span>
+          <div class="bf-field">
+            <label for="bf-telefon">Telefonnummer <span aria-hidden="true">*</span></label>
+            <input id="bf-telefon" name="telefon" type="tel" inputmode="tel" autocomplete="tel" required aria-required="true" data-bf-label="Telefon" aria-describedby="bf-telefon-err">
+            <span class="bf-field-error" id="bf-telefon-err" data-err-for="bf-telefon"></span>
           </div>
 
-          <div class="vid-field">
-            <label for="vid-studium">Studium ved VID <span class="vid-req" aria-hidden="true">*</span></label>
-            <input id="vid-studium" name="studium" type="text" required aria-required="true"
-                   aria-describedby="vid-studium-err">
-            <span class="vid-field-err" id="vid-studium-err" data-err-for="vid-studium"></span>
+          <div class="bf-field">
+            <label for="bf-studium">Studium ved VID <span aria-hidden="true">*</span></label>
+            <input id="bf-studium" name="studium" type="text" required aria-required="true" data-bf-label="Studium" data-bf-error="Skriv hva du studerer ved VID." aria-describedby="bf-studium-err">
+            <span class="bf-field-error" id="bf-studium-err" data-err-for="bf-studium"></span>
           </div>
 
-          <div class="vid-field">
-            <label for="vid-periode">Ønsket praksisperiode <span class="vid-req" aria-hidden="true">*</span></label>
-            <input id="vid-periode" name="periode" type="text" required aria-required="true"
-                   placeholder="For eksempel uke 40–48 eller høsten 2026"
-                   aria-describedby="vid-periode-hint vid-periode-err">
-            <span class="vid-field-hint" id="vid-periode-hint">Skriv gjerne omtrentlig – vi finner ut av det sammen.</span>
-            <span class="vid-field-err" id="vid-periode-err" data-err-for="vid-periode"></span>
+          <div class="bf-field">
+            <label for="bf-periode">Ønsket praksisperiode <span aria-hidden="true">*</span></label>
+            <input id="bf-periode" name="periode" type="text" required aria-required="true" data-bf-label="Ønsket praksisperiode" data-bf-error="Skriv omtrent når du ønsker praksis." placeholder="For eksempel uke 40–48 eller høsten 2026" aria-describedby="bf-periode-hint bf-periode-err">
+            <span class="bf-field-hint" id="bf-periode-hint">Skriv gjerne omtrentlig – vi finner ut av det sammen.</span>
+            <span class="bf-field-error" id="bf-periode-err" data-err-for="bf-periode"></span>
           </div>
 
-          <fieldset class="vid-fieldset">
-            <legend>Hvilke aktiviteter er du interessert i? <span class="vid-optional">(velg gjerne flere)</span></legend>
-            <label class="vid-check"><input type="checkbox" name="aktiviteter" value="Språkkafé"> Språkkafé</label>
-            <label class="vid-check"><input type="checkbox" name="aktiviteter" value="Leksehjelp mandag"> Leksehjelp mandag</label>
-            <label class="vid-check"><input type="checkbox" name="aktiviteter" value="Leksehjelp onsdag"> Leksehjelp onsdag</label>
-            <label class="vid-check"><input type="checkbox" name="aktiviteter" value="Hjemmebesøk"> Hjemmebesøk</label>
-            <label class="vid-check"><input type="checkbox" name="aktiviteter" value="Jeg er åpen for forslag"> Jeg er åpen for forslag</label>
+          <!-- Valgfritt: ingen data-bf-required-group. .bf-check-grid grupperer
+               likevel valgene under legenden i e-posten. -->
+          <fieldset class="bf-fieldset" id="bf-aktiviteter" aria-describedby="bf-aktiviteter-hint">
+            <legend>Hvilke aktiviteter er du interessert i?</legend>
+            <p class="bf-field-hint" id="bf-aktiviteter-hint">Velg gjerne flere.</p>
+            <div class="bf-check-grid">
+              <label class="bf-check"><input type="checkbox" name="aktiviteter" value="Språkkafé"><span>Språkkafé</span></label>
+              <label class="bf-check"><input type="checkbox" name="aktiviteter" value="Leksehjelp mandag"><span>Leksehjelp mandag</span></label>
+              <label class="bf-check"><input type="checkbox" name="aktiviteter" value="Leksehjelp onsdag"><span>Leksehjelp onsdag</span></label>
+              <label class="bf-check"><input type="checkbox" name="aktiviteter" value="Hjemmebesøk"><span>Hjemmebesøk</span></label>
+              <label class="bf-check"><input type="checkbox" name="aktiviteter" value="Jeg er åpen for forslag"><span>Jeg er åpen for forslag</span></label>
+            </div>
           </fieldset>
 
-          <div class="vid-field">
-            <label for="vid-erfaring">Hva ønsker du å få erfaring med? <span class="vid-optional">(valgfritt)</span></label>
-            <textarea id="vid-erfaring" name="erfaring" rows="4"></textarea>
+          <div class="bf-field">
+            <label for="bf-erfaring">Hva ønsker du å få erfaring med? <span class="bf-required-note">(valgfritt)</span></label>
+            <textarea id="bf-erfaring" name="erfaring" rows="4" data-bf-label="Ønsket erfaring"></textarea>
           </div>
 
-          <div class="vid-field vid-consent-field">
-            <label class="vid-check vid-consent">
-              <input type="checkbox" id="vid-samtykke" name="samtykke" required aria-required="true"
-                     aria-describedby="vid-samtykke-err">
+          <div class="bf-consent-group">
+            <label class="bf-check bf-consent">
+              <input type="checkbox" id="bf-samtykke" name="samtykke" required aria-required="true" data-bf-label="Samtykke" data-bf-error="Du må samtykke før vi kan ta kontakt." aria-describedby="bf-samtykke-err">
               <span>
                 Jeg samtykker til at Vestre Aker Frivilligsentral lagrer opplysningene mine for å
                 kunne ta kontakt om praksistilbudet. Se
                 <a href="../om-oss.html#personvern">personvernerklæringen</a>.
-                <span class="vid-req" aria-hidden="true">*</span>
+                <b aria-hidden="true">*</b>
               </span>
             </label>
-            <span class="vid-field-err" id="vid-samtykke-err" data-err-for="vid-samtykke"></span>
+            <span class="bf-field-error" id="bf-samtykke-err" data-err-for="bf-samtykke"></span>
           </div>
 
-          <!-- FormSubmit-innstillinger (emne, captcha og reply-to settes i vid-praksis-form.js) -->
-
-          <!-- Honeypot mot bots -->
-          <div class="vid-honeypot" aria-hidden="true">
-            <label for="vid-website">Nettside (la stå tom)</label>
-            <input id="vid-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+          <div class="bf-honeypot" aria-hidden="true">
+            <label for="bf-website">Nettside (la stå tom)</label>
+            <input id="bf-website" name="_honey" type="text" tabindex="-1" autocomplete="off">
           </div>
 
-          <button class="vid-btn vid-btn-primary vid-submit" type="submit">Meld interesse</button>
+          <button class="bf-submit" type="submit">Meld interesse</button>
+          <p class="bf-form-help">Det er uforpliktende å melde interesse. Vi tar kontakt før noe blir avtalt.</p>
+          <p class="bf-form-message" data-bf-message role="status" aria-live="polite"></p>
 
-          <p class="vid-form-help">Det er uforpliktende å melde interesse. Vi tar kontakt før noe blir avtalt.</p>
-
-          <p class="vid-form-message" data-vid-message role="status" aria-live="polite"></p>
-
-          <div class="vid-form-success" data-vid-success hidden tabindex="-1">
+          <div class="bf-form-success" data-bf-success hidden tabindex="-1">
             <h3>Takk for interessen!</h3>
             <p>Vi har mottatt opplysningene dine. Espen tar kontakt med deg så snart som mulig.</p>
           </div>
@@ -346,29 +386,36 @@
       </div>
     </section>
 
-    <!-- 8. AVSLUTNING / KONTAKT -->
-    <section class="vid-section" aria-labelledby="vid-close-title">
-      <div class="section">
-        <div class="vid-close">
-          <h2 id="vid-close-title" class="vid-section-title">Har du spørsmål før du bestemmer deg?</h2>
-          <p>
-            Ta kontakt med Espen Watne Andresen ved Vestre Aker Frivilligsentral. Vi hjelper
-            deg gjerne med å avklare om praksistilbudet passer for deg og rammene du har fått
-            fra VID.
-          </p>
-          <ul class="vid-contact-list" role="list">
-            <li><span class="vid-contact-label">Telefon</span> <a href="tel:+4748137180">481 37 180</a></li>
-            <li><span class="vid-contact-label">E-post</span> <a href="mailto:espen@vestreaker.frivilligsentral.no">espen@vestreaker.frivilligsentral.no</a></li>
-            <li><span class="vid-contact-label">Besøksadresse</span> Ris Skolevei 14, 0373 Oslo</li>
-          </ul>
-        </div>
+    <!-- 8. KONTAKT -->
+    <section class="bf-section bf-section-pale" aria-labelledby="bf-close-title">
+      <div class="bf-reading">
+        <h2 id="bf-close-title">Har du spørsmål før du bestemmer deg?</h2>
+        <p>
+          Ta kontakt med Espen Watne Andresen ved Vestre Aker Frivilligsentral. Vi hjelper
+          deg gjerne med å avklare om praksistilbudet passer for deg og rammene du har fått
+          fra VID.
+        </p>
+        <ul class="bf-contact-list">
+          <li>
+            <span class="bf-contact-label">Telefon</span>
+            <a href="tel:+4748137180">481 37 180</a>
+          </li>
+          <li>
+            <span class="bf-contact-label">E-post</span>
+            <a href="mailto:espen@vestreaker.frivilligsentral.no">espen@vestreaker.frivilligsentral.no</a>
+          </li>
+          <li>
+            <span class="bf-contact-label">Besøksadresse</span>
+            <span>Ris Skolevei 14, 0373 Oslo</span>
+          </li>
+        </ul>
       </div>
     </section>
   </main>
 
   <script src="../js/analytics.js" defer></script>
-  <script src="../js/vid-praksis-form.js" defer></script>
   <script src="../js/site-footer.js" defer></script>
   <script src="../js/site-nav.js" defer></script>
+  <script src="../js/frivillig-form.js" defer></script>
 </body>
 </html>
