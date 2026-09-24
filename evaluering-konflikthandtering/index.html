@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Evaluering av konflikthåndteringskurset. Tar omtrent fire minutter og er anonymt.">
+  <title>Evaluering - konflikthåndteringskurs | Oslo Frivilligsentraler</title>
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    body { background: var(--color-section-bg); }
+    .ev-main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 2.5rem 1rem 3rem;
+      text-align: center;
+    }
+    .ev-logo {
+      display: block;
+      width: min(320px, 80%);
+      height: auto;
+      margin: 0 auto 2rem;
+    }
+    .ev-main h1 {
+      color: var(--color-primary);
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      margin: 0 0 1.5rem;
+    }
+    .ev-form {
+      background: var(--color-white);
+      border-radius: 12px;
+      box-shadow: 0 2px 12px rgba(10, 32, 78, 0.08);
+      padding: 0.5rem 0;
+      overflow: hidden;
+    }
+    .ev-form iframe {
+      display: block;
+      width: 100%;
+      max-width: 640px;
+      height: 3153px;
+      margin: 0 auto;
+      border: 0;
+    }
+    .ev-fallback {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+    }
+    .ev-fallback a { color: var(--color-primary); }
+    @media (max-width: 600px) {
+      /* Smal skjerm gir flere linjer per spørsmål, så skjemaet blir høyere */
+      .ev-form iframe { height: 3700px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="ev-main">
+    <img
+      class="ev-logo"
+      src="../images/evaluering-konflikthandtering/oslo-frivilligsentraler-logo.webp"
+      alt="Oslo Frivilligsentraler"
+      width="800" height="482"
+    >
+    <h1>Evaluering av konflikthåndteringskurset</h1>
+
+    <div class="ev-form">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSdETKttRQ5cTcOgcketRnaHDWSs4YRz2nQCVzR1BADIfOb9WQ/viewform?embedded=true"
+        title="Evalueringsskjema for konflikthåndteringskurset"
+        loading="lazy"
+      >Laster inn …</iframe>
+    </div>
+
+    <p class="ev-fallback">
+      Vises ikke skjemaet?
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdETKttRQ5cTcOgcketRnaHDWSs4YRz2nQCVzR1BADIfOb9WQ/viewform" target="_blank" rel="noopener">Åpne det i en ny fane</a>.
+    </p>
+  </main>
+</body>
+</html>
