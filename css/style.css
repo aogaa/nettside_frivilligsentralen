@@ -175,6 +175,72 @@ img {
   border-radius: 999px;
 }
 
+/* Kampanjebanner som ligger oppå hero-bildet i stedet for nav-island.
+   Fjernes etter kampanjen (se kommentar i index.html). */
+.campaign-banner {
+  margin-top: -80px;
+  position: relative;
+  z-index: 2;
+  padding: 0 0 3rem;
+}
+
+.campaign-banner-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.25rem 2rem 1.25rem 1.25rem;
+  border-left: 0.4rem solid #65b32e;
+  border-radius: 1.5rem;
+  background-color: var(--color-white);
+  box-shadow: 0 12px 32px rgba(10, 32, 78, 0.18);
+}
+
+.campaign-banner-image {
+  flex: 0 0 auto;
+  width: 220px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.campaign-banner-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.campaign-banner-kicker {
+  margin: 0;
+  color: #477f20;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.campaign-banner-copy h2 {
+  margin: 0.4rem 0 0.4rem;
+  color: var(--color-primary);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.campaign-banner-copy p {
+  margin: 0;
+  color: #364153;
+  font-size: 1.08rem;
+  line-height: 1.5;
+}
+
+.campaign-banner-button {
+  flex: 0 0 auto;
+  padding: 1rem 2.25rem;
+  border-radius: 50px;
+  font-size: 1.15rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
 .activities-section {
   padding: 4rem 0 5rem;
   background-color: #dbeaf2;
@@ -1937,6 +2003,28 @@ img {
 
   .nav-island-image {
     width: min(400px, 100%);
+  }
+
+  .campaign-banner {
+    margin-top: -32px;
+  }
+
+  .campaign-banner-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.1rem;
+    padding: 1rem 1rem 1.25rem;
+    border-left: none;
+    border-top: 0.4rem solid #65b32e;
+  }
+
+  .campaign-banner-image {
+    width: 100%;
+    height: 170px;
+  }
+
+  .campaign-banner-button {
+    text-align: center;
   }
 
   .activities-section {
