@@ -187,14 +187,23 @@ Alternativt: slett dokumentene i Firestore-konsollen (lenke i punkt 4).
 
 ## 9. E-postformat
 
-Alt samles i **ett** felt («Melding») fordi FormSubmit viste bare ett felt da vi sendte
-flere separate felt. E-posten ser slik ut i «Value»-kolonnen:
+Alt samles i **ett** felt («Melding»). Innsendingen bruker JSON med
+`Content-Type: application/json`, som i FormSubmits AJAX-dokumentasjon.
+Tallene hentes fra den samme datapakken som ble sendt til databasen.
+E-posten skal inneholde:
 
 ```
 Mandag 31. aug  •  Antall barn: 5  •  Voksenopplæring: 2  •  Frivillige: 3  •  Beskjed: ...
 ```
 
 Datoen står også i emnefeltet: «Leksehjelp Mandag 31. aug».
+Et vellykket HTTP-svar er ikke nok: siden kontrollerer også at FormSubmit svarer
+med `success: true` (eller strengen `"true"`). Det bekrefter at tjenesten har
+godtatt innsendingen, men garanterer ikke levering eller riktig innhold i innboksen.
+
+27. oktober 2026: Rapportert tom e-post med standardemne. Byttet fra FormData til
+det dokumenterte JSON-formatet. Ny e-post må kontrolleres etter publisering for
+å bekrefte at endringen løser problemet.
 Vil du hindre spam-innhøsting av adressen, kan `FORMSUBMIT_URL` byttes fra rå e-post til
 et FormSubmit-**alias** (tilfeldig kode fra FormSubmit), på formen
 `https://formsubmit.co/ajax/<alias>`.

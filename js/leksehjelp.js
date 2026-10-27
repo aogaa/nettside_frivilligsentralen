@@ -232,7 +232,7 @@
     // 2) Send tallene (og evt. melding) paa e-post til Espen
     const melding = msgInput.value.trim();
     try {
-      await sendEpost(dato, ukedag, felter, inputs, melding);
+      await sendEpost(dato, ukedag, felter, payload, melding);
       if (melding) msgInput.value = "";
       setRowStatus(statusEl, "Lagret + sendt på e-post ✓", "success");
     } catch (err) {
@@ -242,29 +242,34 @@
     }
   }
 
-  async function sendEpost(dato, ukedag, felter, inputs, melding) {
+  async function sendEpost(dato, ukedag, felter, verdier, melding) {
     if (honeypot && honeypot.value) return;
     const dagtekst = norskDato(dato, ukedag);
-    // Samle alt i ETT felt. FormSubmit viste bare ett felt ved separate felt,
-    // men et felt kalt "Melding" kommer trygt frem – saa vi legger alt der.
+    // Bruk de samme tallene som ble sendt til databasen.
     const deler = felter.map(function (f) {
-      return f.label + ": " + toInt(inputs[f.key].value);
+      return f.label + ": " + verdier[f.key];
     });
     let tekst = dagtekst + "  •  " + deler.join("  •  ");
     if (melding) tekst += "  •  Beskjed: " + melding;
 
-    const data = new FormData();
-    data.append("Melding", tekst);
-    data.append("_subject", "Leksehjelp " + dagtekst);
-    data.append("_captcha", "false");
-    if (honeypot) data.append("_honey", honeypot.value);
+    // JSON-formatet følger FormSubmits dokumenterte AJAX-eksempel.
+    const data = {
+      Melding: tekst,
+      _subject: "Leksehjelp " + dagtekst,
+      _captcha: "false"
+    };
+    if (honeypot) data._honey = honeypot.value;
 
     const response = await fetch(FORMSUBMIT_URL, {
       method: "POST",
-      headers: { Accept: "application/json" },
-      body: data
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify(data)
     });
     if (!response.ok) throw new Error("epost failed");
+    const result = await response.json();
+    if (!result || (result.success !== true && result.success !== "true")) {
+      throw new Error("epost rejected");
+    }
   }
 
   function updateTotals(ukedag) {
