@@ -1,0 +1,16 @@
+.grasrot-card { max-width: 1000px; margin-inline: auto; }
+.grasrot-eyebrow { color: #236246; font-weight: 700; }
+.grasrot-support { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 2rem; align-items: center; background: #edf5ef; border-radius: 16px; padding: 2rem; margin: 2rem 0; }
+.grasrot-support h2 { margin-top: 0; }
+.grasrot-support ol { padding-left: 1.4rem; }
+.grasrot-support li + li { margin-top: .75rem; }
+.grasrot-button { display: inline-block; background: #146238; color: #fff; padding: 1rem 1.4rem; border-radius: 8px; font-weight: 700; text-decoration: none; }
+.grasrot-button:hover { background: #0b4626; }
+.grasrot-button:focus-visible, .grasrot-download:focus-visible { outline: 3px solid #0a204e; outline-offset: 4px; }
+.grasrot-note { font-size: .9rem; }
+.grasrot-qr { margin: 0; text-align: center; }
+.grasrot-qr img { width: 230px; height: auto; padding: 23px; background: white; margin: 0 auto .5rem; }
+.grasrot-poster { display: grid; grid-template-columns: 160px minmax(0, 1fr); align-items: center; gap: 2rem; border-block: 1px solid #d7e0dc; padding-block: 2rem; margin-block: 2rem; }
+.grasrot-poster img { width: 160px; height: auto; }
+.grasrot-download { font-weight: 700; color: #0a204e; text-underline-offset: .2em; }
+@media (max-width: 650px) { .grasrot-support, .grasrot-poster { grid-template-columns: minmax(0, 1fr); padding: 1.25rem; gap: 1.5rem; } .grasrot-button { width: 100%; text-align: center; } .grasrot-poster img { margin-inline: auto; } .grasrot-card h1 { font-size: clamp(1.8rem, 7vw, 2.8rem); overflow-wrap: anywhere; } }
