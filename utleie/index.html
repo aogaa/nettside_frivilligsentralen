@@ -103,17 +103,14 @@
             <span class="bf-field-error" id="bf-helg-err" data-err-for="bf-helg"></span>
           </div>
           <div class="bf-field">
-            <label for="bf-antall">Antall gjester <span aria-hidden="true">*</span></label>
-            <select id="bf-antall" name="antall" required data-bf-label="Antall gjester" aria-describedby="bf-antall-err">
-              <option value="">Velg antall</option>
-              <option>Inntil 24 personer</option>
-              <option>25–32 personer (med sidebord)</option>
-            </select>
+            <label for="bf-antall">Antall personer <span aria-hidden="true">*</span></label>
+            <input id="bf-antall" name="antall" type="number" inputmode="numeric" min="1" max="32" step="1" required aria-required="true" data-bf-label="Antall personer" data-bf-error="Skriv inn et helt antall personer fra 1 til 32." aria-describedby="bf-antall-err">
             <span class="bf-field-error" id="bf-antall-err" data-err-for="bf-antall"></span>
           </div>
           <div class="bf-field">
-            <label for="bf-melding">Fortell litt om arrangementet (valgfritt)</label>
-            <textarea id="bf-melding" name="melding" rows="4" data-bf-label="Om arrangementet"></textarea>
+            <label for="bf-melding">Fortell litt om arrangementet <span aria-hidden="true">*</span></label>
+            <textarea id="bf-melding" name="melding" rows="4" required aria-required="true" data-bf-label="Om arrangementet" aria-describedby="bf-melding-err"></textarea>
+            <span class="bf-field-error" id="bf-melding-err" data-err-for="bf-melding"></span>
           </div>
           <div class="bf-consent-group">
             <label class="bf-check bf-consent">

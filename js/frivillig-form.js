@@ -200,7 +200,7 @@
       el: el,
       label: label,
       test: function () {
-        return el.value.trim().length > 0;
+        return el.value.trim().length > 0 && (el.type !== "number" || el.validity.valid);
       },
       message: custom || "Dette feltet må fylles ut.",
     };
