@@ -18,6 +18,7 @@
         <p><strong>E-POST</strong> <span>post@vestreaker.frivilligsentral.no</span></p>
         <p>Ris Skolevei 14, 0373 Oslo</p>
         <p><a href="/grasrotandelen.html" style="color: inherit; text-underline-offset: .2em">Støtt oss med Grasrotandelen</a></p>
+        <p><a href="/utleie/" style="color: inherit; text-underline-offset: .2em">Lei sentralen</a></p>
         <p>Møteplass Vinderen<br>Slemdalsveien 72</p>
       </div>
     </div>
