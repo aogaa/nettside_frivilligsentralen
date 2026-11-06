@@ -22,10 +22,11 @@
   }
   async function submit(id,data,{website='',expectedRevision,signal}={}){
     const body={data,website,...(expectedRevision===undefined?{}:{expectedRevision})};
-    const fingerprint=JSON.stringify(body),prior=pending.get(id);
+    const slot=id+':'+(typeof data.dato==='string'?data.dato:'');
+    const fingerprint=JSON.stringify(body),prior=pending.get(slot);
     // Keep key after uncertain network outcomes. A changed payload gets a new key.
     const key=prior?.fingerprint===fingerprint?prior.key:crypto.randomUUID();
-    pending.set(id,{key,fingerprint});
+    pending.set(slot,{key,fingerprint});
     const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),20000);
     try{
       const response=await fetch(base+'/api/v1/forms/'+encodeURIComponent(id)+'/submissions',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':key,...(identityToken?{Authorization:'Bearer '+identityToken}:{})},body:JSON.stringify(body),signal:signal||controller.signal});
@@ -34,7 +35,7 @@
         const error=new Error(result?.error?.code==='revision_conflict'?'Tallene er endret av en annen bruker. Last inn siden på nytt før du retter.':response.status===401?'Logg inn før du lagrer.':'Innsendingen er ikke bekreftet.');
         error.code=result?.error?.code;throw error;
       }
-      pending.delete(id);return result;
+      if(pending.get(slot)?.key===key)pending.delete(slot);return result;
     }finally{clearTimeout(timeout);}
   }
   async function attendance(id){
