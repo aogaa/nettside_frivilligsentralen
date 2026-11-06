@@ -195,7 +195,7 @@
   }
 
   async function saveRow(dato, ukedag, felter, inputs, msgInput, btn, statusEl) {
-    if (!loaded || (honeypot && honeypot.value)) { setRowStatus(statusEl, 'Logg inn og hent tall før du lagrer.', 'error'); return; }
+    if (!loaded || (honeypot && honeypot.value)) { setRowStatus(statusEl, 'Vent til tallene er hentet før du lagrer.', 'error'); return; }
     const payload = {dato: dato, kommentar: msgInput.value.trim(), ukedag: ukedag};
     felter.forEach(function (f) { payload[f.key] = Number(inputs[f.key].value); });
     btn.disabled = true;
@@ -250,11 +250,11 @@
     } catch (err) {
       if (sequence !== loadSequence) return;
       loaded = false;
-      setGlobal("Logg inn med godkjent Google-konto for å hente og registrere tall.", "error");
+      setGlobal("Kunne ikke hente tallene. Last siden på nytt og prøv igjen.", "error");
     }
   }
 
-  window.addEventListener("skjema-authenticated", loadSaved);
+
 
   function init() {
     const mContainer = document.querySelector("[data-lh-mandager]");
