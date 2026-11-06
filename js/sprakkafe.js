@@ -1,14 +1,9 @@
 (function () {
   "use strict";
 
-  // Endepunkt for lagring/henting av tall (Cloud Function, egen samling for sprakkafe)
-  const FUNCTION_URL =
-    "https://europe-west1-frivilligsentralen-org.cloudfunctions.net/sprakkafe";
-
-  // FormSubmit-endepunkt (samme mottaker som leksehjelp, allerede aktivert).
-  const FORMSUBMIT_URL =
-    "https://formsubmit.co/ajax/espen@vestreaker.frivilligsentral.no";
-
+  const FORM_ID = 'sprakkafe-telling';
+  let loaded = false;
+  let loadSequence = 0;
   const MND = ["jan", "feb", "mar", "apr", "mai", "jun", "jul", "aug", "sep", "okt", "nov", "des"];
 
   // Tirsdager hosten 2026 – ingen hostferiepause (alle tirsdager med).
@@ -155,7 +150,7 @@
       saveRow(dato, inputs, msgInput, btn, statusEl);
     });
 
-    rowIndex[dato] = { inputs: inputs, statusEl: statusEl };
+    rowIndex[dato] = { inputs: inputs, statusEl: statusEl, msgInput: msgInput, revision: 0 };
     return tr;
   }
 
@@ -166,67 +161,20 @@
   }
 
   async function saveRow(dato, inputs, msgInput, btn, statusEl) {
-    if (honeypot && honeypot.value) return; // bot
-
-    const payload = { dato: dato, website: honeypot ? honeypot.value : "" };
-    FELTER.forEach(function (f) {
-      payload[f.key] = toInt(inputs[f.key].value);
-    });
-
+    if (!loaded || (honeypot && honeypot.value)) { setRowStatus(statusEl, 'Logg inn og hent tall før du lagrer.', 'error'); return; }
+    const payload = {dato: dato, kommentar: msgInput.value.trim()};
+    FELTER.forEach(function (f) { payload[f.key] = Number(inputs[f.key].value); });
     btn.disabled = true;
-    setRowStatus(statusEl, "Lagrer …", null);
-
-    // 1) Lagre tallene i Firestore
+    setRowStatus(statusEl, 'Lagrer …', null);
     try {
-      const response = await fetch(FUNCTION_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
-      if (!response.ok) throw new Error("save failed");
-      FELTER.forEach(function (f) { inputs[f.key].value = payload[f.key]; });
+      const result = await window.Skjema.submit(FORM_ID, payload, {expectedRevision: rowIndex[dato].revision || 0});
+      if (result.replayed) { await loadSaved(); }
+      else { rowIndex[dato].revision = result.revision; }
       updateTotals();
-    } catch (err) {
-      setRowStatus(statusEl, "Feil – ikke lagret, prøv igjen", "error");
-      btn.disabled = false;
-      return;
-    }
-
-    // 2) Send tallene (og evt. melding) paa e-post til Espen
-    const melding = msgInput.value.trim();
-    try {
-      await sendEpost(dato, inputs, melding);
-      if (melding) msgInput.value = "";
-      setRowStatus(statusEl, "Lagret + sendt på e-post ✓", "success");
-    } catch (err) {
-      setRowStatus(statusEl, "Lagret ✓, men e-post feilet", "error");
-    } finally {
-      btn.disabled = false;
-    }
-  }
-
-  async function sendEpost(dato, inputs, melding) {
-    if (honeypot && honeypot.value) return;
-    const dagtekst = norskDato(dato);
-    // Samle alt i ETT "Melding"-felt (FormSubmit viste bare ett felt ved separate felt).
-    const deler = FELTER.map(function (f) {
-      return f.label + ": " + toInt(inputs[f.key].value);
-    });
-    let tekst = dagtekst + "  •  " + deler.join("  •  ");
-    if (melding) tekst += "  •  Beskjed: " + melding;
-
-    const data = new FormData();
-    data.append("Melding", tekst);
-    data.append("_subject", "Språkkafé " + dagtekst);
-    data.append("_captcha", "false");
-    if (honeypot) data.append("_honey", honeypot.value);
-
-    const response = await fetch(FORMSUBMIT_URL, {
-      method: "POST",
-      headers: { Accept: "application/json" },
-      body: data
-    });
-    if (!response.ok) throw new Error("epost failed");
+      setRowStatus(statusEl, 'Lagret – e-post satt i kø ✓', 'success');
+    } catch (error) {
+      setRowStatus(statusEl, error.message || 'Ikke bekreftet lagret. Prøv igjen.', 'error');
+    } finally { btn.disabled = false; }
   }
 
   function updateTotals() {
@@ -242,14 +190,17 @@
   }
 
   async function loadSaved() {
+    const sequence = ++loadSequence;
+    loaded = false;
+    setGlobal("Henter lagrede tall …", null);
     try {
-      const response = await fetch(FUNCTION_URL, { method: "GET" });
-      if (!response.ok) throw new Error("load failed");
-      const json = await response.json();
-      const entries = (json && json.entries) || [];
+      const entries = await window.Skjema.attendance(FORM_ID);
+      if (sequence !== loadSequence) return;
       entries.forEach(function (entry) {
         const row = rowIndex[entry.dato];
         if (!row) return;
+        row.revision = entry.revision;
+        row.msgInput.value = entry.kommentar || "";
         FELTER.forEach(function (f) {
           if (typeof entry[f.key] === "number" && row.inputs[f.key]) {
             row.inputs[f.key].value = entry[f.key];
@@ -257,11 +208,16 @@
         });
       });
       updateTotals();
+      loaded = true;
       setGlobal("", null);
     } catch (err) {
-      setGlobal("Kunne ikke hente lagrede tall akkurat nå. Du kan fortsatt registrere.", "error");
+      if (sequence !== loadSequence) return;
+      loaded = false;
+      setGlobal("Logg inn med godkjent Google-konto for å hente og registrere tall.", "error");
     }
   }
+
+  window.addEventListener("skjema-authenticated", loadSaved);
 
   function init() {
     const container = document.querySelector("[data-sprakkafe]");

@@ -116,138 +116,14 @@ exports.newsletterSignup = onRequest(
     },
 );
 
-exports.leksehjelp = onRequest(
-    {
-      cors: allowedOrigins,
-      invoker: "public",
-    },
-    async (req, res) => {
-      // GET: hent alle lagrede tall for visning i tabellen.
-      if (req.method === "GET") {
-        try {
-          const snap = await db.collection("leksehjelp").get();
-          const entries = snap.docs.map((doc) => {
-            const data = doc.data();
-            const felter = LEKSEHJELP_FELTER[data.ukedag] || [];
-            const entry = {dato: data.dato, ukedag: data.ukedag};
-            felter.forEach((key) => {
-              entry[key] = typeof data[key] === "number" ? data[key] : 0;
-            });
-            return entry;
-          });
-          res.status(200).json({entries});
-        } catch (error) {
-          logger.error("Leksehjelp read failed", {message: error.message});
-          res.status(500).json({error: "Read failed"});
-        }
-        return;
-      }
-
-      if (req.method !== "POST") {
-        res.status(405).json({error: "Method not allowed"});
-        return;
-      }
-
-      const body = req.body || {};
-
-      // Honeypot: stille aksept av bot-innsendinger.
-      if (body.website) {
-        logger.info("Leksehjelp rejected by honeypot");
-        res.status(200).json({ok: true});
-        return;
-      }
-
-      const {ukedag, dato} = body;
-
-      if (ukedag !== "mandag" && ukedag !== "onsdag") {
-        res.status(400).json({error: "Invalid ukedag"});
-        return;
-      }
-      if (typeof dato !== "string" || !LEKSEHJELP_DATOER[ukedag].has(dato)) {
-        res.status(400).json({error: "Invalid dato"});
-        return;
-      }
-
-      const doc = {
-        dato,
-        ukedag,
-        oppdatert: admin.firestore.FieldValue.serverTimestamp(),
-      };
-      LEKSEHJELP_FELTER[ukedag].forEach((key) => {
-        doc[key] = toCount(body[key]);
-      });
-
-      try {
-        await db.collection("leksehjelp").doc(dato).set(doc, {merge: true});
-        res.status(200).json({ok: true});
-      } catch (error) {
-        logger.error("Leksehjelp save failed", {message: error.message});
-        res.status(500).json({error: "Save failed"});
-      }
-    },
-);
-
-exports.sprakkafe = onRequest(
-    {
-      cors: allowedOrigins,
-      invoker: "public",
-    },
-    async (req, res) => {
-      // GET: hent alle lagrede tall for visning i tabellen.
-      if (req.method === "GET") {
-        try {
-          const snap = await db.collection("sprakkafe").get();
-          const entries = snap.docs.map((doc) => {
-            const data = doc.data();
-            const entry = {dato: data.dato};
-            SPRAKKAFE_FELTER.forEach((key) => {
-              entry[key] = typeof data[key] === "number" ? data[key] : 0;
-            });
-            return entry;
-          });
-          res.status(200).json({entries});
-        } catch (error) {
-          logger.error("Sprakkafe read failed", {message: error.message});
-          res.status(500).json({error: "Read failed"});
-        }
-        return;
-      }
-
-      if (req.method !== "POST") {
-        res.status(405).json({error: "Method not allowed"});
-        return;
-      }
-
-      const body = req.body || {};
-
-      // Honeypot: stille aksept av bot-innsendinger.
-      if (body.website) {
-        logger.info("Sprakkafe rejected by honeypot");
-        res.status(200).json({ok: true});
-        return;
-      }
-
-      const {dato} = body;
-
-      if (typeof dato !== "string" || !SPRAKKAFE_DATOER.has(dato)) {
-        res.status(400).json({error: "Invalid dato"});
-        return;
-      }
-
-      const doc = {
-        dato,
-        oppdatert: admin.firestore.FieldValue.serverTimestamp(),
-      };
-      SPRAKKAFE_FELTER.forEach((key) => {
-        doc[key] = toCount(body[key]);
-      });
-
-      try {
-        await db.collection("sprakkafe").doc(dato).set(doc, {merge: true});
-        res.status(200).json({ok: true});
-      } catch (error) {
-        logger.error("Sprakkafe save failed", {message: error.message});
-        res.status(500).json({error: "Save failed"});
-      }
-    },
-);
+// Etter kontrollert migrering skal gamle klienter ikke kunne bekrefte nye
+// Firebase-skrivinger. Nyhetsbrevfunksjonen over er uendret.
+function movedAttendance(req, res) {
+  res.status(410).json({
+    ok: false,
+    error: "Oppmøteregistreringen er flyttet. Last nettsiden på nytt og logg inn.",
+    url: "https://frivilligsentralen.org/",
+  });
+}
+exports.leksehjelp = onRequest({cors: allowedOrigins, invoker: "public"}, movedAttendance);
+exports.sprakkafe = onRequest({cors: allowedOrigins, invoker: "public"}, movedAttendance);
