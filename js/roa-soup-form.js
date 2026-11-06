@@ -4,10 +4,8 @@
   const form = document.querySelector("[data-soup-form]");
   if (!form) return;
 
-  // Mottaker for Røa Soup. Merk: FormSubmit må aktiveres én gang per mottaker,
-  // og aktiveringen gjelder per origin (fungerer i praksis kun fra produksjon).
-  const FORMSUBMIT_URL =
-    "https://formsubmit.co/ajax/mari@oslovest.frivilligsentral.no";
+  // Mottaker og e-postkø styres av skjematjenestens serverkonfigurasjon.
+
 
   const submitButton = form.querySelector(".soup-submit");
   const message = form.querySelector("[data-soup-message]");
@@ -186,35 +184,8 @@
     submitButton.textContent = "Sender …";
     setMessage("Sender inn ideen din …", null);
 
-    const data = new FormData();
-    data.append("Melding", buildMessage());
-    data.append("_subject", "Ny idé til Røa Soup");
-    data.append("_captcha", "false");
-    data.append("_replyto", value("soup-epost"));
-    if (honeypot) data.append("_honey", honeypot.value);
-
     try {
-      const response = await fetch(FORMSUBMIT_URL, {
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
-      });
-
-      if (!response.ok) throw new Error("Innsending feilet: " + response.status);
-
-      let payload = null;
-      try {
-        payload = await response.json();
-      } catch (error) {
-        payload = null;
-      }
-
-      const confirmed =
-        !payload ||
-        payload.success === true ||
-        String(payload.success).toLowerCase() === "true";
-      if (!confirmed) throw new Error(payload && payload.message ? payload.message : "Uventet svar fra tjenesten");
-
+      await window.Skjema.submit('roa-soup', window.Skjema.serialize(form), { website: honeypot ? honeypot.value : '' });
       form.reset();
       if (counter && ideField) counter.textContent = "0 av 1500 tegn";
       setMessage("", null);

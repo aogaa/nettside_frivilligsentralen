@@ -5,7 +5,7 @@
     return;
   }
 
-  const endpoint = "https://formsubmit.co/ajax/6f98aaab672470053b3da65ff34dc4fc";
+  // Mottaker styres av skjematjenestens serverkonfigurasjon.
   const honeypotInput = form.querySelector('input[name="_honey"]');
   const submitButton = form.querySelector('button[type="submit"]');
   const message = form.querySelector("[data-beredskap-message]");
@@ -22,6 +22,7 @@
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    if (submitButton.disabled) return;
 
     if (honeypotInput && honeypotInput.value) {
       return;
@@ -37,17 +38,7 @@
     setMessage("", null);
 
     try {
-      const response = await fetch(endpoint, {
-        method: "POST",
-        headers: {
-          "Accept": "application/json"
-        },
-        body: new FormData(form)
-      });
-
-      if (!response.ok) {
-        throw new Error("Beredskap signup failed");
-      }
+      await window.Skjema.submit('beredskap', window.Skjema.serialize(form), {website: honeypotInput ? honeypotInput.value : ''});
 
       form.reset();
       setMessage("Takk! Vi tar kontakt med deg.", "success");
