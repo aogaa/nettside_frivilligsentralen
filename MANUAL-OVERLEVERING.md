@@ -175,16 +175,9 @@ Full oppskrift med flere detaljer: `bli-frivillig/README.md`.
 
 ### Skjemamottaker
 
-Standardmottaker er `espen@vestreaker.frivilligsentral.no`, satt i
-`js/frivillig-form.js`. Den vises ikke i HTML-kilden.
-
-Skal en side gå til noen andre, legg `data-formsubmit="<alias>"` på `<form>`.
-Bruk et FormSubmit-ALIAS, ikke en e-postadresse - verdien står synlig i
-kildekoden og blir høstet av spamroboter. Før opp nye aliaser i
-aliastabellen i `bli-frivillig/README.md`.
-
-En ny mottaker må aktiveres ved å sende et skjema fra den publiserte siden
-på frivilligsentralen.org. En test fra localhost aktiverer ingenting.
+Mottaker og feltregler konfigureres på serveren i aogaa/skjematjeneste.
+Se docs/CODEX_INTEGRASJON.md i dette private repositoriet. Ingen mottaker eller
+hemmelig API-nøkkel skal velges i nettleseren. Test isolert før publisering.
 
 ---
 

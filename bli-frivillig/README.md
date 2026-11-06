@@ -96,7 +96,7 @@ Alle skjemaene under `/bli-frivillig/` drives av `js/frivillig-form.js`.
 
 ### Feltene styres fra HTML
 
-Du kan legge til og fjerne felt uten å røre JavaScript. Reglene leses fra
+Klientvalideringen leses fra HTML. Oppdater også serverkonfigurasjonen når felt endres. Reglene leses fra
 attributtene:
 
 | Attributt | Virkning |
@@ -113,40 +113,17 @@ e-post, `type="tel"` krever minst seks sifre, avkrysningsbokser må hukes av.
 Et `<fieldset>` med `data-bf-required-group` **må ha en `id`**, ellers blir
 regelen hoppet over.
 
-### Mottaker
+### Mottaker og servervalidering
 
-Standardmottaker er `espen@vestreaker.frivilligsentral.no`. Den ligger som
-konstant i `js/frivillig-form.js` og vises aldri i HTML-kilden.
+Mottaker, feltregler og oppbevaring konfigureres på serveren i det private
+repositoriet aogaa/skjematjeneste. Følg docs/CODEX_INTEGRASJON.md der.
+HTML-validering må holdes i samsvar med serverens JSON Schema. Nye felt
+skal registreres på serveren før siden publiseres. Ikke legg mottaker eller
+hemmelige API-nøkler i nettleserkoden. Test med isolert database og fanget e-post.
 
-Skal en side gå til noen andre, legg `data-formsubmit` på `<form>`:
-
-```html
-<form data-frivillig-form data-formsubmit="6f98aaab672470053b3da65ff34dc4fc" …>
-```
-
-**Bruk et FormSubmit-alias, ikke en e-postadresse.** Verdien står i HTML-kilden
-på en side som er laget for å få trafikk, og adresser som ligger åpent der blir
-høstet av spamroboter. Et alias lager du ved å sende ett skjema til adressen én
-gang; FormSubmit svarer med et alias du kan bruke i stedet. Samme grep brukes
-allerede i `js/beredskap-form.js`.
-
-Skriv en kommentar rett over skjemaet om hvilken innboks aliaset går til, og
-før det opp her:
-
-| Alias | Går til | Brukes på |
-|---|---|---|
-| *(ingen — standard)* | espen@vestreaker.frivilligsentral.no | `/bli-frivillig/` |
-
-### Ny mottaker må aktiveres fra produksjon
-
-FormSubmit aktiverer en mottaker ved første innsending, og bindingen skjer mot
-det domenet innsendingen kom fra. **En test fra `127.0.0.1` aktiverer ingenting.**
-
-Publiser først, åpne så den ferdige siden på `frivilligsentralen.org`, og send
-en test derfra. Er mottakeren ny, kommer det en bekreftelses-e-post fra
-FormSubmit som må klikkes én gang. Deretter går skjemaet av seg selv.
-
----
+Malen er deaktivert i produksjon. Fjern data-demo, inert og aria-disabled først
+på en ny side med egen registrert skjema-ID. Last js/skjema-client.js før
+js/frivillig-form.js. Stien til siden bestemmer skjema-ID.
 
 ## Filer
 

@@ -1,6 +1,6 @@
 # Mal for nye aktivitetssider
 
-Dette er ikke en publisert side. Det er en kjørbar mal du kopierer når du skal
+Dette er en offentlig tilgjengelig, deaktivert skjemamal du kopierer når du skal
 lage en ny side under «Bli frivillig».
 
 Malen har `noindex, nofollow` og ligger ikke i `sitemap.xml`.
@@ -24,5 +24,5 @@ python -m http.server 8765 --bind 127.0.0.1
 
 Åpne `http://127.0.0.1:8765/bli-frivillig-mal/`.
 
-Skjemaet i malen fungerer. Ikke send inn test herfra i produksjon — svarene
-går til standardmottakeren.
+Skjemaet er deaktivert med data-demo og inert, og malens ID er sperret i API-et.
+Registrer en ny skjema-ID på serveren og last skjema-client.js før du aktiverer en kopi.

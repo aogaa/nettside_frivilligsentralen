@@ -1,31 +1,8 @@
-/* ==========================================================================
-   Generisk skjema for /bli-frivillig/ og aktivitetsundersidene
-   --------------------------------------------------------------------------
-   Initialiserer alle <form data-frivillig-form> på siden.
-
-   Reglene leses fra HTML, ikke fra en liste her i fila. Det betyr at du kan
-   legge til og fjerne felt på en underside uten å røre denne koden:
-
-     <input id="bf-navn" name="navn" type="text" required data-bf-label="Navn">
-     <span class="bf-field-error" data-err-for="bf-navn"></span>
-
-   Attributter på <form>:
-     data-subject     emnefeltet i e-posten     (standard: sidetittelen)
-     data-intro       første linje i meldingen  (standard: sidetittelen)
-     data-formsubmit  ALTERNATIV mottaker. Bruk et FormSubmit-ALIAS her, ikke
-                      en e-postadresse - dette står i HTML-kilden og høstes av
-                      spamroboter. Utelates feltet, går skjemaet til
-                      standardmottakeren under, som aldri vises i kilden.
-
-   Attributter på felt:
-     data-bf-label          navn på feltet i feiloppsummering og e-post
-     data-bf-error          egen feilmelding
-     data-bf-required-group på <fieldset>: krev minst én avhuket i gruppa
-     data-bf-skip           hold feltet utenfor e-posten
-
-   MERK: FormSubmit viser bare ett felt i e-posten, så alt samles i "Melding".
-   Se MANUAL-LEKSEHJELP.md.
-   ========================================================================== */
+/* Felles skjemaklient. Felt og klientvalidering leses fra HTML.
+ * Mottaker, lagringspolicy og autoritativ validering ligger i skjematjenesten.
+ * Skjema-ID følger sidens sti. Malen med data-demo sender aldri.
+ * buildMessage brukes bare til brukerens valgfrie mailto-reserve ved feil.
+ */
 
 (function () {
   "use strict";
@@ -37,6 +14,7 @@
   Array.prototype.forEach.call(forms, initForm);
 
   function initForm(form) {
+    if (form.dataset.demo === "true") return;
     var submitButton = form.querySelector(".bf-submit");
     var message = form.querySelector("[data-bf-message]");
     var successBox = form.querySelector("[data-bf-success]");
@@ -46,8 +24,7 @@
     var defaultButtonText = submitButton ? submitButton.textContent : "Send";
     var submitting = false;
 
-    var target = (form.dataset.formsubmit || "").trim() || DEFAULT_ENDPOINT;
-    var endpoint = "https://formsubmit.co/ajax/" + encodeURIComponent(target);
+    var formId = location.pathname.split("/").filter(Boolean)[0];
 
     var rules = buildRules(form);
     wireLiveValidation(form, rules);
@@ -77,34 +54,11 @@
     });
 
     function send() {
-      var data = new FormData();
-      data.append("Melding", buildMessage(form));
-      data.append("_subject", form.dataset.subject || ("Ny frivillig - " + document.title));
-      data.append("_captcha", "false");
-
-      var email = form.querySelector('input[type="email"]');
-      if (email && email.value.trim()) data.append("_replyto", email.value.trim());
-      if (honeypot) data.append("_honey", honeypot.value);
-
       var controller = new AbortController();
       var timeout = setTimeout(function () { controller.abort(); }, 20000);
-
-      fetch(endpoint, {
-        signal: controller.signal,
-        method: "POST",
-        headers: { Accept: "application/json" },
-        body: data,
-      })
-        .then(function (response) {
-          if (!response.ok) throw new Error("Innsending feilet: " + response.status);
-          return response.json();
-        })
-        .then(function (payload) {
-          var confirmed =
-            payload && (payload.success === true ||
-            String(payload.success).toLowerCase() === "true");
-          if (!confirmed) throw new Error("Uventet svar fra tjenesten");
-
+      window.Skjema.submit(formId, window.Skjema.serialize(form), {
+        website: honeypot ? honeypot.value : "", signal: controller.signal
+      }).then(function () {
           form.reset();
           setMessage(message, "", null);
           if (successBox) {
