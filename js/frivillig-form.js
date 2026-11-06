@@ -86,22 +86,23 @@
       if (email && email.value.trim()) data.append("_replyto", email.value.trim());
       if (honeypot) data.append("_honey", honeypot.value);
 
+      var controller = new AbortController();
+      var timeout = setTimeout(function () { controller.abort(); }, 20000);
+
       fetch(endpoint, {
+        signal: controller.signal,
         method: "POST",
         headers: { Accept: "application/json" },
         body: data,
       })
         .then(function (response) {
           if (!response.ok) throw new Error("Innsending feilet: " + response.status);
-          return response.json().catch(function () {
-            return null;
-          });
+          return response.json();
         })
         .then(function (payload) {
           var confirmed =
-            !payload ||
-            payload.success === true ||
-            String(payload.success).toLowerCase() === "true";
+            payload && (payload.success === true ||
+            String(payload.success).toLowerCase() === "true");
           if (!confirmed) throw new Error("Uventet svar fra tjenesten");
 
           form.reset();
@@ -114,11 +115,28 @@
         .catch(function () {
           setMessage(
             message,
-            "Noe gikk galt, og meldingen ble ikke sendt. Prøv igjen, eller ring oss på 23 22 05 80.",
+            "Vi fikk ikke bekreftet innsendingen. Opplysningene dine er beholdt. Du kan prøve igjen eller ringe oss på 23 22 05 80.",
             "error"
           );
+          // Alias-mottakere må oppgi sin egen reserveadresse eksplisitt.
+          var fallbackEmail = form.dataset.fallbackEmail ||
+            (!form.dataset.formsubmit ? DEFAULT_ENDPOINT : "");
+          if (message && EMAIL_RE.test(fallbackEmail)) {
+            var fallback = document.createElement("a");
+            fallback.className = "bf-button bf-button-secondary";
+            fallback.href = "mailto:" + fallbackEmail +
+              "?subject=" + encodeURIComponent(form.dataset.subject || document.title) +
+              "&body=" + encodeURIComponent(buildMessage(form));
+            fallback.textContent = "Send påmeldingen med e-post";
+            message.appendChild(document.createElement("br"));
+            message.appendChild(fallback);
+            var hint = document.createElement("span");
+            hint.textContent = " Åpner e-postprogrammet ditt med opplysningene ferdig utfylt. Du må selv trykke Send der.";
+            message.appendChild(hint);
+          }
         })
         .then(function () {
+          clearTimeout(timeout);
           submitting = false;
           if (submitButton) {
             submitButton.disabled = false;
