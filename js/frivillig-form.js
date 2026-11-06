@@ -127,7 +127,7 @@
             fallback.href = "mailto:" + fallbackEmail +
               "?subject=" + encodeURIComponent(form.dataset.subject || document.title) +
               "&body=" + encodeURIComponent(buildMessage(form));
-            fallback.textContent = "Send påmeldingen med e-post";
+            fallback.textContent = form.dataset.fallbackLabel || "Send påmeldingen med e-post";
             message.appendChild(document.createElement("br"));
             message.appendChild(fallback);
             var hint = document.createElement("span");
