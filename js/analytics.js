@@ -33,7 +33,7 @@
     banner.innerHTML = `
       <p class="cookie-banner__text">
         Vi bruker informasjonskapsler (cookies) for å analysere trafikk og forbedre nettsiden.
-        Les mer i vår <a href="om-oss.html#personvern">personvernerklæring</a>.
+        Les mer i vår <a href="/om-oss.html#personvern">personvernerklæring</a>.
       </p>
       <div class="cookie-banner__actions">
         <button class="cookie-banner__btn cookie-banner__btn--accept">Godta</button>
