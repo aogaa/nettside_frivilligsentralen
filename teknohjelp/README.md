@@ -25,3 +25,7 @@ Backup følger separat 30-dagers oppbevaring. Avbestillinger gjøres av sentrale
 Tester i skjematjeneste: tests/teknohjelp.test.js og tests/teknohjelp-ui.test.js.
 WEBSITE_ROOT settes til nettsidecheckout for DOM-test av faktisk HTML/JS.
 Ingen fiktive bestillinger skal sendes til Julie for å teste produksjonen.
+
+Fra 7. desember 2026 gjelder 10.00–10.45, 10.50–11.35, 11.40–12.25
+(kun drop-in), 12.45–13.30 og 13.35–14.20. Tidligere datoer og eksisterende
+reservasjoner beholder opprinnelige tider. Drop-in vises uten bestillingsknapp.

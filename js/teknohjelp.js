@@ -16,6 +16,9 @@
     label.append(el('h3',new Intl.DateTimeFormat('nb-NO',{day:'numeric',month:'long',timeZone:'Europe/Oslo'}).format(new Date(day.date+'T12:00:00Z'))),el('p',day.closed?'Mandag · stengt':'Mandag'));
     const list=el('div',null,'th-slots');
     for(const slot of day.slots){
+     if(slot.status==='dropin'){
+      const dropin=el('div',null,'th-slot th-slot-dropin');dropin.append(el('strong',time(slot)),el('span','Kun drop-in'),el('span','Kan ikke reserveres'));list.append(dropin);continue;
+     }
      const available=slot.status==='free',button=el('button',time(slot),'th-slot');button.type='button';button.disabled=!available;
      button.append(el('span',({free:'Ledig',booked:'Opptatt',closed:'Stengt',past:'Passert'})[slot.status]||'Utilgjengelig'));
      button.setAttribute('aria-label',format(day.date)+', '+time(slot)+', '+button.lastChild.textContent);
